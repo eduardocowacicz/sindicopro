@@ -1,6 +1,6 @@
 # Sistema de Gestão Condominial
 
-Repositório de documentação acadêmica para um sistema web de gestão condominial. Aqui estão reunidos o escopo revisado do produto, os questionários de validação, a estimativa simplificada de ROI e três propostas de mockup em HTML, CSS e JavaScript.
+Repositório de documentação acadêmica para um sistema web de gestão condominial. Aqui estão reunidos o escopo revisado do produto, os questionários de validação, a estimativa simplificada de ROI e quatro propostas de mockup: três versões estáticas em HTML, CSS e JavaScript e uma versão SPA em React, TypeScript e Vite.
 
 ## Resumo
 
@@ -27,7 +27,7 @@ O MVP foi definido para cobrir os seguintes módulos:
 | Documentação principal | Escopo consolidado, requisitos e planejamento visual | [ProjetoRevisado](ProjetoRevisado/README.md) |
 | Validação do escopo | Questionários respondidos ao longo do levantamento | [Questionários](Questionários/README.md) |
 | Viabilidade inicial | Estimativa de custo mensal e leitura simplificada de ROI | [ROI](ROI/README.md) |
-| Protótipos visuais | Três versões de mockup navegável | [Mockup 1](mockup1/README.md), [Mockup 2](mockup2/README.md), [Mockup 3](mockup3/README.md) |
+| Protótipos visuais | Quatro versões de mockup navegável | [Mockup 1](mockup1/README.md), [Mockup 2](mockup2/README.md), [Mockup 3](mockup3/README.md), [Mockup 4](mockup4/README.md) |
 
 ## Estrutura do repositório
 
@@ -56,12 +56,26 @@ O MVP foi definido para cobrir os seguintes módulos:
 |   |-- index.html
 |   |-- style.css
 |   `-- app.js
-`-- mockup3/
+|-- mockup3/
+|   |-- README.md
+|   |-- index.html
+|   |-- style.css
+|   `-- app.js
+`-- mockup4/
     |-- README.md
-    |-- index.html
-    |-- style.css
-    `-- app.js
+    |-- package.json
+    |-- src/
+    `-- public/
 ```
+
+## Evolução dos mockups
+
+| Versão | Tecnologias | Papel no projeto |
+| --- | --- | --- |
+| Mockup 1 | HTML, CSS e JavaScript | Primeira exploração visual do sistema |
+| Mockup 2 | HTML, CSS e JavaScript | Expansão do escopo funcional do MVP |
+| Mockup 3 | HTML, CSS e JavaScript | Versão estática mais madura para apresentação |
+| Mockup 4 | React, TypeScript, Vite e `shadcn/ui` | Protótipo SPA mais próximo de uma futura aplicação |
 
 ## Fluxo sugerido de leitura
 
@@ -71,7 +85,7 @@ Se a ideia for entender o projeto rapidamente no GitHub, este caminho funciona b
 2. Aprofunde nos [requisitos revisados](ProjetoRevisado/LevantamentoDeRequisitosRevisado.txt)
 3. Consulte os [questionários de validação](Questionários/README.md)
 4. Veja a [estimativa simplificada de ROI](ROI/README.md)
-5. Explore os [mockups navegáveis](mockup3/README.md)
+5. Explore os [mockups navegáveis](mockup4/README.md)
 
 ## Módulos principais do sistema
 
@@ -87,17 +101,26 @@ Se a ideia for entender o projeto rapidamente no GitHub, este caminho funciona b
 
 ## Como visualizar os mockups
 
-Os mockups são estáticos e não exigem instalação.
+Os `mockup1`, `mockup2` e `mockup3` são estáticos e não exigem instalação.
 
-1. Abra uma das pastas `mockup1`, `mockup2` ou `mockup3`
+1. Abra uma dessas pastas
 2. Execute o arquivo `index.html` no navegador
 3. Navegue entre as telas pelos links internos
+
+O `mockup4` é uma aplicação React/Vite e exige instalação das dependências.
+
+```bash
+cd mockup4
+npm install
+npm run dev
+```
 
 Entradas recomendadas:
 
 - [mockup1/index.html](mockup1/index.html)
 - [mockup2/index.html](mockup2/index.html)
 - [mockup3/index.html](mockup3/index.html)
+- [mockup4/README.md](mockup4/README.md)
 
 ## Decisões importantes de escopo
 
@@ -111,7 +134,7 @@ Entradas recomendadas:
 
 ## Contexto do repositório
 
-Este material foi organizado para apresentação acadêmica e apoio ao planejamento do produto. O foco atual está em documentação, definição do escopo e exploração visual da interface, e não em uma aplicação final implementada com backend e banco de dados.
+Este material foi organizado para apresentação acadêmica e apoio ao planejamento do produto. O foco atual está em documentação, definição do escopo e exploração visual da interface. O `mockup4` amplia essa exploração com uma SPA front-end navegável, ainda sem backend ou banco de dados reais.
 
 ## Navegação rápida
 
@@ -121,3 +144,4 @@ Este material foi organizado para apresentação acadêmica e apoio ao planejame
 - [Mockup 1](mockup1/README.md)
 - [Mockup 2](mockup2/README.md)
 - [Mockup 3](mockup3/README.md)
+- [Mockup 4](mockup4/README.md)
