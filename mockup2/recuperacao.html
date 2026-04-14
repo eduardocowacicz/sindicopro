@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Recuperação de Acesso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-copy">
+      <div class="brand-line">
+        <span class="brand-dot">CP</span>
+        <div>
+          <strong class="display">Condomínio Pátio</strong>
+          <div class="muted">Fluxo dedicado para recuperação de acesso e reentrada segura.</div>
+        </div>
+      </div>
+
+      <p class="eyebrow" style="margin-top: 34px;">Recuperação de senha</p>
+      <h1>Um caminho simples para voltar ao sistema sem depender da administração.</h1>
+      <p>
+        A proposta desta tela é deixar claro o que acontece depois do envio do e-mail,
+        quem pode recuperar acesso e quando o usuário deve procurar suporte.
+      </p>
+
+      <div class="mini-stats">
+        <div class="mini-box">
+          <strong>Quem pode usar</strong>
+          <div class="muted">Moradores cadastrados, proprietários não residentes e perfis administrativos com login ativo.</div>
+        </div>
+        <div class="mini-box">
+          <strong>Canal previsto</strong>
+          <div class="muted">Link enviado por e-mail, em linha com o requisito de recuperação de senha do sistema.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="login-card-wrap">
+      <div class="login-card" style="width: min(540px, 100%);">
+        <p class="eyebrow">Recuperar acesso</p>
+        <h2 class="section-heading">Informe o e-mail vinculado</h2>
+
+        <div class="field" style="margin-bottom: 16px;">
+          <label>E-mail de acesso</label>
+          <input type="email" value="morador.blocoB302@exemplo.com">
+        </div>
+
+        <div class="note-box" style="margin-bottom: 16px;">
+          O morador continua sem editar os próprios dados cadastrais.
+          Esta tela trata apenas da redefinição de senha e do retorno ao sistema.
+        </div>
+
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-index">1</div>
+            <div>
+              <strong>Receber o link</strong>
+              <p>O sistema envia um e-mail com link temporário para redefinição da senha.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-index">2</div>
+            <div>
+              <strong>Confirmar a identidade</strong>
+              <p>O fluxo reforça que a conta está vinculada a uma pessoa cadastrada e a uma unidade já registrada.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-index">3</div>
+            <div>
+              <strong>Voltar ao sistema</strong>
+              <p>O usuário retorna ao painel adequado ao seu perfil após redefinir a senha com sucesso.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-row" style="margin-top: 20px;">
+          <button class="button js-demo" data-message="E-mail de recuperação enviado no mockup.">Enviar link</button>
+          <a class="button-alt" href="index.html">Voltar ao login</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

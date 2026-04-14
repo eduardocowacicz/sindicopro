@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Fechamentos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/fechamentos</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Fechamentos</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link active" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Fechamentos</h1>
+            <div class="page-subtitle">Fechamento mensal, anual, exportação e histórico de reabertura</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Relatório PDF exportado no mockup.">Exportar PDF</button>
+            <button class="secondary-button js-demo" data-message="Relatório Excel exportado no mockup.">Exportar Excel</button>
+            <button class="primary-button js-demo" data-message="Fechamento mensal acionado manualmente no mockup.">Fechar período</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-3">
+            <article class="metric-card">
+              <div>
+                <h3>Período atual</h3>
+                <span class="metric-value">Abr/2026</span>
+                <div class="metric-note">Fechamento manual</div>
+              </div>
+              <div class="metric-icon metric-primary">◷</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Status</h3>
+                <span class="metric-value">Bloqueado</span>
+                <div class="metric-note">Versão oficial publicada</div>
+              </div>
+              <div class="metric-icon metric-success">✓</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Reaberturas</h3>
+                <span class="metric-value">2</span>
+                <div class="metric-note">Histórico preservado</div>
+              </div>
+              <div class="metric-icon metric-warning">↺</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel section-anchor" id="mensal">
+              <div class="panel-title-row">
+                <h2 class="card-title">Fechamento Mensal</h2>
+              </div>
+              <div class="summary-row"><span>Receitas do período</span><strong>R$ 53.000,00</strong></div>
+              <div class="summary-row"><span>Despesas do período</span><strong>R$ 44.000,00</strong></div>
+              <div class="summary-row"><span>Saldo consolidado</span><strong>R$ 9.000,00</strong></div>
+              <div class="summary-row"><span>Cota por apartamento</span><strong>Gerada após consolidação</strong></div>
+              <div class="notice-box" style="margin-top: 12px;">
+                <strong>Regra visual importante</strong>
+                <div class="small">O mockup evidencia que o sistema calcula primeiro o total do período e depois a composição individual por apartamento.</div>
+              </div>
+            </article>
+
+            <article class="panel section-anchor" id="anual">
+              <div class="panel-title-row">
+                <h2 class="card-title">Fechamento Anual</h2>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Mês</th><th>Receitas</th><th>Despesas</th><th>Saldo</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Jan</td><td>R$ 49.200</td><td>R$ 42.800</td><td>R$ 6.400</td></tr>
+                    <tr><td>Fev</td><td>R$ 50.800</td><td>R$ 43.600</td><td>R$ 7.200</td></tr>
+                    <tr><td>Mar</td><td>R$ 53.000</td><td>R$ 44.000</td><td>R$ 9.000</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Histórico de Reabertura</h2>
+              </div>
+              <div class="timeline">
+                <div class="timeline-entry">
+                  <strong>14/04/2026 · Carlos Silva</strong>
+                  <div class="small">Motivo: lançamento de manutenção registrado após fechamento.</div>
+                </div>
+                <div class="timeline-entry">
+                  <strong>02/04/2026 · Subsíndico</strong>
+                  <div class="small">Motivo: ajuste em categoria de cobrança do proprietário.</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Versões Arquivadas</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Fechamento Abr/2026 · versão 1</strong>
+                    <div class="small">Arquivada antes da reabertura</div>
+                  </div>
+                  <span class="status-pill status-primary">PDF + Excel</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Fechamento Mar/2026 · versão oficial</strong>
+                    <div class="small">Disponível para conselho e síndico</div>
+                  </div>
+                  <span class="status-pill status-success">Publicado</span>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

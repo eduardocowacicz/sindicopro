@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Financeiro e fechamento</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link" href="dashboard-admin.html"><span>Dashboard administrativo</span><span class="nav-tag">Hoje</span></a>
+        <a class="nav-link" href="dashboard-morador.html"><span>Dashboard do morador</span><span class="nav-tag">Perfil</span></a>
+        <a class="nav-link" href="cadastros.html"><span>Cadastros e permissões</span><span class="nav-tag">Base</span></a>
+        <a class="nav-link active" href="financeiro.html"><span>Financeiro e fechamento</span><span class="nav-tag">Core</span></a>
+        <a class="nav-link" href="reservas.html"><span>Reservas de ambientes</span><span class="nav-tag">2 salões</span></a>
+        <a class="nav-link" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Fluxo</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Financeiro simplificado</p>
+          <h1 class="section-title">Contas, lançamentos, inadimplência e fechamento em um mesmo fluxo visual.</h1>
+        </div>
+        <div class="toolbar">
+          <span class="chip">Conta principal</span>
+          <span class="chip">Abril 2026</span>
+          <button class="ghost-button js-demo" data-message="Novo lançamento iniciado no mockup.">Novo lançamento</button>
+          <button class="button js-demo" data-message="Pré-fechamento gerado no mockup.">Gerar pré-fechamento</button>
+        </div>
+      </div>
+
+      <section class="stats-grid">
+        <article class="metric">
+          <span class="eyebrow">Saldo atual</span>
+          <h3>Conta principal</h3>
+          <span class="metric-value">R$ 218,4 mil</span>
+          <p>Saldo consolidado com base nas entradas e saídas registradas.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Cobrança</span>
+          <h3>Débitos gerados</h3>
+          <span class="metric-value">144</span>
+          <p>Unidades processadas com composição entre morador e proprietário.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Acompanhamento</span>
+          <h3>Inadimplência</h3>
+          <span class="metric-value">14</span>
+          <p>Casos em aberto com alerta visível na operação diária.</p>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Lançamentos recentes</p>
+              <h3>Receitas e despesas do período</h3>
+            </div>
+            <div class="chips">
+              <span class="chip">Todas</span>
+              <span class="chip">Despesas</span>
+              <span class="chip">Receitas</span>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Data</th><th>Categoria</th><th>Conta</th><th>Valor</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>03/04</td><td>Energia</td><td>Principal</td><td>R$ 12.440</td></tr>
+              <tr><td>05/04</td><td>Condomínio</td><td>Principal</td><td>R$ 37.280</td></tr>
+              <tr><td>09/04</td><td>Manutenção</td><td>Principal</td><td>R$ 8.970</td></tr>
+              <tr><td>11/04</td><td>Água</td><td>Principal</td><td>R$ 6.680</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Fechamento mensal</p>
+          <h3>Composição visual do fechamento</h3>
+          <div class="list">
+            <div class="record-row"><span>Total de despesas do mês</span><strong>R$ 97.200</strong></div>
+            <div class="record-row"><span>Valores do morador</span><strong>R$ 76.510</strong></div>
+            <div class="record-row"><span>Valores do proprietário</span><strong>R$ 20.690</strong></div>
+            <div class="record-row"><span>Unidades isentas no período</span><strong>3</strong></div>
+          </div>
+          <div class="split-actions" style="margin-top: 16px;">
+            <button class="ghost-button js-demo" data-message="Versão anterior arquivada no mockup.">Reabrir fechamento</button>
+            <button class="button js-demo" data-message="Fechamento publicado no mockup.">Publicar fechamento</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Inadimplência</p>
+              <h3>Unidades com alerta</h3>
+            </div>
+            <span class="status-pill status-danger">Acompanhamento diário</span>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Unidade</th><th>Responsável</th><th>Em aberto</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>D-104</td><td>Morador</td><td>R$ 1.784</td><td><span class="status-pill status-danger">Atrasado</span></td></tr>
+              <tr><td>F-203</td><td>Proprietário</td><td>R$ 2.940</td><td><span class="status-pill status-warn">Negociação</span></td></tr>
+              <tr><td>B-302</td><td>Morador</td><td>R$ 0</td><td><span class="status-pill status-success">Em dia</span></td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Camadas da interface</p>
+          <h3>Elementos que o mockup precisa mostrar</h3>
+          <div class="list">
+            <div class="list-item"><span>Filtros por conta, categoria e período</span><span class="status-pill status-info">Tabela</span></div>
+            <div class="list-item"><span>Resumo do fechamento por tipo de cobrança</span><span class="status-pill status-info">Cards</span></div>
+            <div class="list-item"><span>Visual de reabertura com motivo e histórico</span><span class="status-pill status-info">Drawer</span></div>
+            <div class="list-item"><span>Consulta de cobrança pelo morador</span><span class="status-pill status-info">Detalhe</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

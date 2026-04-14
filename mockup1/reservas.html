@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Reservas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Reservas de ambientes</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link" href="dashboard-admin.html"><span>Dashboard administrativo</span><span class="nav-tag">Hoje</span></a>
+        <a class="nav-link" href="dashboard-morador.html"><span>Dashboard do morador</span><span class="nav-tag">Perfil</span></a>
+        <a class="nav-link" href="cadastros.html"><span>Cadastros e permissões</span><span class="nav-tag">Base</span></a>
+        <a class="nav-link" href="financeiro.html"><span>Financeiro e fechamento</span><span class="nav-tag">Core</span></a>
+        <a class="nav-link active" href="reservas.html"><span>Reservas de ambientes</span><span class="nav-tag">2 salões</span></a>
+        <a class="nav-link" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Fluxo</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Reserva por faixa de horário</p>
+          <h1 class="section-title">Calendário operacional com regras de bloqueio, taxa e ação da administração.</h1>
+        </div>
+        <div class="toolbar">
+          <span class="chip">Antecedência mínima: 48h</span>
+          <span class="chip">Cancelamento: até 24h</span>
+          <button class="button js-demo" data-message="Reserva simulada no mockup.">Nova reserva</button>
+        </div>
+      </div>
+
+      <section class="columns-2">
+        <article class="card">
+          <p class="eyebrow">Regras do salão</p>
+          <div class="list">
+            <div class="list-item"><span>Salão 1 · taxa</span><strong>R$ 180</strong></div>
+            <div class="list-item"><span>Salão 2 · taxa</span><strong>R$ 140</strong></div>
+            <div class="list-item"><span>Morador inadimplente</span><span class="status-pill status-danger">Bloqueado</span></div>
+            <div class="list-item"><span>Proprietário não residente</span><span class="status-pill status-warn">Não reserva por padrão</span></div>
+          </div>
+        </article>
+
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Datas bloqueadas</p>
+              <h3>Intervenções da administração</h3>
+            </div>
+            <button class="ghost-button js-demo" data-message="Bloqueio incluído no mockup.">Bloquear data</button>
+          </div>
+          <div class="list">
+            <div class="list-item"><span>21/04 · Salão 2</span><span class="status-pill status-warn">Manutenção</span></div>
+            <div class="list-item"><span>01/05 · Ambos</span><span class="status-pill status-info">Evento interno</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Agenda da semana</p>
+              <h3>Disponibilidade por período</h3>
+            </div>
+            <div class="chips">
+              <span class="chip">Salão 1</span>
+              <span class="chip">Salão 2</span>
+            </div>
+          </div>
+          <div class="calendar-board">
+            <div class="slot"><div><strong>Sex · 18/04 · Noite</strong><span class="muted">Salão 1 reservado pela unidade B-302.</span></div><span class="status-pill status-success">Confirmado</span></div>
+            <div class="slot"><div><strong>Sáb · 19/04 · Manhã</strong><span class="muted">Salão 2 disponível para moradores adimplentes.</span></div><span class="status-pill status-info">Livre</span></div>
+            <div class="slot"><div><strong>Dom · 20/04 · Noite</strong><span class="muted">Salão 2 reservado pela unidade G-201.</span></div><span class="status-pill status-success">Confirmado</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Painel de aprovação</p>
+          <h3>Reservas recentes</h3>
+          <div class="list">
+            <div class="ticket">
+              <div><strong>B-302 · Salão 1</strong><span class="muted">18/04 · período noite · taxa já vinculada.</span></div>
+              <span class="status-pill status-success">Aprovada</span>
+            </div>
+            <div class="ticket">
+              <div><strong>E-108 · Salão 2</strong><span class="muted">Tentativa com menos de 48 horas.</span></div>
+              <span class="status-pill status-danger">Bloqueada</span>
+            </div>
+            <div class="ticket">
+              <div><strong>F-410 · Salão 2</strong><span class="muted">Cancelada pelo morador dentro do prazo.</span></div>
+              <span class="status-pill status-warn">Cancelada</span>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

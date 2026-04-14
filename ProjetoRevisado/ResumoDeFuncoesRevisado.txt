@@ -1,0 +1,149 @@
+RESUMO DE FUNÇÕES REVISADO - SISTEMA DE GESTÃO CONDOMINIAL
+Projeto: Condomínio
+Data: 14/04/2026
+
+=====================================================================
+1. OBJETIVO
+=====================================================================
+
+Entregar um sistema web funcional para gestão condominial com foco em cadastro administrativo, controle de acesso, financeiro, fechamento periódico, reservas, comunicados e ocorrências.
+
+Contexto conhecido do condomínio:
+- 9 prédios.
+- 144 apartamentos.
+- 2 salões de festas.
+
+=====================================================================
+2. PRIORIDADE DO MVP
+=====================================================================
+
+1. Administração básica
+2. Usuários e controle de acesso
+3. Financeiro
+4. Fechamento mensal e anual
+5. Reserva de ambientes
+6. Comunicados
+7. Ocorrências
+
+=====================================================================
+3. FUNÇÕES PRINCIPAIS
+=====================================================================
+
+3.1 Administração básica
+- Cadastro de prédios/blocos.
+- Cadastro de apartamentos vinculados aos prédios.
+- Cadastro de moradores, proprietários e demais vínculos da unidade.
+- Inativação de moradores para preservar histórico, sem exclusão definitiva.
+- Campo de observações em texto livre por bloco e por apartamento.
+- Cadastro de múltiplos veículos por apartamento.
+- Separação entre pessoa, vínculo com apartamento e usuário de acesso.
+
+3.2 Usuários e acesso
+- Login por e-mail e senha.
+- Um apartamento pode ter vários moradores com login.
+- O proprietário não residente também pode ter acesso ao sistema.
+- Um mesmo usuário pode acumular mais de um perfil.
+- Síndico com acesso total ao sistema.
+- Subsíndico com acesso administrativo amplo e participação nas rotinas de gestão.
+- Conselho com acesso apenas para consulta.
+- Permissões dos demais perfis e usuários devem ser configuráveis em tela simples.
+- Morador não edita os próprios dados cadastrais.
+- Regras específicas por usuário podem ser configuradas, como permitir ou bloquear reservas.
+
+3.3 Financeiro
+- Cadastro de contas bancárias do condomínio.
+- Cadastro aberto de categorias de entrada e saída.
+- Lançamento de receitas e despesas por conta e categoria.
+- Registro de valores fixos e custos variáveis do mês.
+- Regra de cobrança por tipo de documento: há valores do morador e valores do proprietário.
+- Possibilidade de apartamentos isentos em determinados tipos de cobrança.
+- Quando houver isenção, o valor correspondente deve ser redistribuído entre os demais moradores responsáveis.
+- Geração do valor total do fechamento e depois composição do valor devido por apartamento.
+- Geração de débito para morador ou proprietário conforme o tipo de cobrança.
+- Controle de inadimplência com relatórios.
+- Registro manual de recebimento no fluxo mínimo do MVP.
+- Possibilidade desejável de gerar arquivo CNAB/remessa e importar retorno bancário, se for viável.
+- Correção ou estorno de lançamentos com registro em log.
+- Anexos em lançamentos financeiros.
+- Tratamento de pagamento em duplicidade por crédito ou devolução.
+- Pagamento parcial somente mediante acordo.
+
+3.4 Fechamento mensal e anual
+- Fechamento mensal acionado manualmente.
+- Bloqueio do período após fechamento.
+- Geração de relatório mensal com receitas, despesas, saldos e valores por apartamento.
+- Geração de relatório anual consolidado.
+- Exportação em PDF e Excel.
+- Reabertura de fechamento com registro do motivo e guarda da versão anterior.
+- Histórico da reabertura visível para usuários autorizados.
+- Não há limite definido para quantidade de reaberturas.
+
+3.5 Reserva de ambientes
+- Controle de reserva dos 2 salões de festas.
+- Os salões são independentes e podem ser reservados no mesmo dia por apartamentos diferentes.
+- Reserva por faixa de horário.
+- Faixas de horário cadastradas manualmente, considerando manhã e noite.
+- Aprovação automática da reserva.
+- Síndico ou subsíndico podem validar ou cancelar, quando necessário.
+- Morador deve respeitar antecedência mínima de 48 horas.
+- Reservas com menos de 48 horas só podem ser feitas pela administração.
+- Cancelamento pelo morador até 24 horas antes.
+- Não há limite mensal de reservas por apartamento.
+- Taxa de reserva configurável.
+- Regra de bloqueio para inadimplente deve existir, mas precisa ser configurável.
+- Administração pode bloquear datas e horários.
+- Proprietário não residente não reserva salão por padrão, mas isso pode ser configurado no usuário.
+
+3.6 Comunicados
+- Publicação de comunicados pelo síndico ou subsíndico.
+- Envio por e-mail.
+- Segmentação por bloco/prédio.
+- Histórico permanente de comunicados.
+- Suporte a anexos.
+- WhatsApp removido do escopo do sistema.
+
+3.7 Ocorrências
+- Cadastro configurável de tipos de ocorrência.
+- Registro de ocorrências por moradores e pela administração.
+- Registro de ocorrência interna pela administração.
+- Campos mínimos: motivo e observação.
+- Vínculo com apartamento não é obrigatório no registro inicial.
+- A administração pode vincular outro apartamento e adicionar comentário visível ao outro morador.
+- Anexos permitidos.
+- Sem prioridade no MVP.
+- Sem prazo formal de resposta no MVP.
+- Apenas síndico e subsíndico respondem e atualizam o status.
+
+=====================================================================
+4. REGRAS IMPORTANTES CONSOLIDADAS
+=====================================================================
+
+- O sistema não terá integração com WhatsApp neste projeto.
+- Todo morador cadastrado pode ter login, e um apartamento pode ter vários logins.
+- O proprietário não residente acessa o sistema para acompanhar cobranças e avisos.
+- O morador visualiza sua cota e o fechamento publicado, sem acesso ao extrato geral do condomínio.
+- O fechamento gera o valor total do período e depois o valor individual por apartamento.
+- O histórico deve ser preservado em cadastros, movimentações e fechamentos.
+
+=====================================================================
+5. REQUISITOS OPERACIONAIS RELEVANTES
+=====================================================================
+
+- Sistema responsivo, com uso em celular e computador.
+- Exportação de relatórios em PDF e Excel.
+- Backup semanal.
+- Retenção de logs por 5 anos.
+- Anexos com tamanho máximo de 5 MB por arquivo.
+- Formatos aceitos: imagens e PDF.
+- Capacidade esperada de anexos: 100 mil.
+- Acesso a anexos, logs e dados financeiros históricos restrito ao síndico e a usuários com permissão marcada.
+
+=====================================================================
+6. FORA DO ESCOPO OU NÃO OBRIGATÓRIO
+=====================================================================
+
+- WhatsApp no sistema.
+- Aplicativo mobile nativo.
+- Contabilidade avançada.
+- Emissão bancária automática obrigatória.
+- Importação bancária obrigatória.

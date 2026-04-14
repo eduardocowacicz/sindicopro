@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Dashboard do Morador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Área do morador e proprietário</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link" href="dashboard-admin.html"><span>Painel da administração</span><span class="nav-tag">Switch</span></a>
+        <a class="nav-link active" href="dashboard-morador.html"><span>Minha visão geral</span><span class="nav-tag">Unidade 302</span></a>
+        <a class="nav-link" href="financeiro.html"><span>Minhas cobranças</span><span class="nav-tag">Cota</span></a>
+        <a class="nav-link" href="reservas.html"><span>Reservas</span><span class="nav-tag">Salões</span></a>
+        <a class="nav-link" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Histórico</span></a>
+      </nav>
+      <div class="sidebar-card">
+        <p class="eyebrow">Perfil ativo</p>
+        <strong>Morador titular</strong>
+        <p class="muted">Pode reservar, abrir ocorrência e acompanhar sua própria cobrança.</p>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Unidade 302 · Bloco B</p>
+          <h1 class="section-title">Tudo o que importa para a rotina da unidade em um só painel.</h1>
+        </div>
+        <div class="toolbar">
+          <span class="search-pill">Próximo vencimento: 10/05 · R$ 892,40</span>
+          <button class="ghost-button js-demo" data-message="Abertura de ocorrência simulada.">Nova ocorrência</button>
+          <a class="button" href="reservas.html">Reservar salão</a>
+        </div>
+      </div>
+
+      <section class="stats-grid">
+        <article class="metric">
+          <span class="eyebrow">Financeiro</span>
+          <h3>Cota atual</h3>
+          <span class="metric-value">R$ 892,40</span>
+          <p>Inclui despesas do morador e fechamento publicado de abril.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Reservas</span>
+          <h3>Próxima reserva</h3>
+          <span class="metric-value">18 mai</span>
+          <p>Salão 1, período da noite, taxa já confirmada.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Comunicados</span>
+          <h3>Novidades</h3>
+          <span class="metric-value">3</span>
+          <p>Dois avisos gerais e um comunicado segmentado para o bloco B.</p>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="card">
+          <p class="eyebrow">Último fechamento publicado</p>
+          <h3>Resumo da composição da cota</h3>
+          <div class="list">
+            <div class="list-item"><span>Despesas ordinárias do morador</span><strong>R$ 672,10</strong></div>
+            <div class="list-item"><span>Rateio de manutenção</span><strong>R$ 146,30</strong></div>
+            <div class="list-item"><span>Fundo interno</span><strong>R$ 74,00</strong></div>
+          </div>
+          <div class="chips" style="margin-top: 14px;">
+            <span class="status-pill status-success">Fechamento publicado</span>
+            <span class="status-pill status-info">PDF disponível</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Acompanhamento</p>
+          <h3>Ocorrências e solicitações</h3>
+          <div class="list">
+            <div class="ticket">
+              <div><strong>Iluminação da garagem</strong><span class="muted">Aberta em 09/04 com foto anexa.</span></div>
+              <span class="status-pill status-warn">Em andamento</span>
+            </div>
+            <div class="ticket">
+              <div><strong>Ruído no salão</strong><span class="muted">Registro concluído com resposta da administração.</span></div>
+              <span class="status-pill status-success">Finalizada</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Comunicados recentes</p>
+              <h3>Leitura rápida da unidade</h3>
+            </div>
+            <a class="ghost-button" href="operacao.html">Abrir histórico</a>
+          </div>
+          <div class="notice">
+            <div>
+              <strong>Limpeza da caixa d'água</strong>
+              <span class="muted">Aviso geral para todos os prédios, com PDF anexo.</span>
+            </div>
+            <span class="status-pill status-info">Hoje</span>
+          </div>
+          <div class="notice">
+            <div>
+              <strong>Bloqueio do salão 2</strong>
+              <span class="muted">Comunicado segmentado para reservas do próximo feriado.</span>
+            </div>
+            <span class="status-pill status-warn">Bloco B</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Atalhos da unidade</p>
+          <div class="list">
+            <div class="record-row"><strong>Ver histórico de cobranças</strong><a class="button" href="financeiro.html">Abrir</a></div>
+            <div class="record-row"><strong>Consultar disponibilidade do salão</strong><a class="button" href="reservas.html">Abrir</a></div>
+            <div class="record-row"><strong>Acompanhar ocorrências</strong><a class="button" href="operacao.html">Abrir</a></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

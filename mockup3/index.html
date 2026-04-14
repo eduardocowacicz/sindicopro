@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Acesso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-visual">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <h1>Um painel condominial com cara de produto pronto para uso.</h1>
+      <p>
+        Este mockup segue a linguagem da referência: barra superior escura, navegação lateral clara,
+        cards discretos e foco na leitura rápida de gestão.
+      </p>
+
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <strong>Dashboard limpo</strong>
+          <p>Métricas, pendências, resumo financeiro e comunicação diária na mesma tela.</p>
+        </article>
+        <article class="highlight-card">
+          <strong>Perfis diferentes</strong>
+          <p>Síndico, subsíndico, conselho, morador e proprietário com visual coerente.</p>
+        </article>
+        <article class="highlight-card">
+          <strong>Uso responsivo</strong>
+          <p>Estrutura pensada para desktop, mas com adaptação clara para tablet e celular.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="section-label">Acesso ao sistema</div>
+        <h2 class="page-title" style="margin: 8px 0 6px;">Entrar no CondoGest</h2>
+        <p class="page-subtitle" style="margin-bottom: 18px;">Escolha uma das áreas de demonstração do mockup.</p>
+
+        <div class="field" style="margin-bottom: 14px;">
+          <label>E-mail</label>
+          <input type="email" value="carlos.silva@condogest.com.br">
+        </div>
+        <div class="field" style="margin-bottom: 18px;">
+          <label>Senha</label>
+          <input type="password" value="123456">
+        </div>
+
+        <div class="login-actions">
+          <a class="primary-button" href="dashboard-admin.html">Entrar como síndico</a>
+          <a class="secondary-button" href="dashboard-morador.html">Ver área do morador</a>
+          <a class="secondary-button" href="recuperacao.html">Recuperar acesso</a>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+          <div class="card-title">Recuperação de acesso</div>
+          <p class="card-subtitle">Fluxo simples por e-mail, sem complicar a primeira experiência.</p>
+          <div class="field" style="margin-top: 12px;">
+            <label>E-mail para recuperação</label>
+            <input type="email" placeholder="usuario@exemplo.com">
+          </div>
+          <div class="action-row" style="margin-top: 14px;">
+            <button class="primary-button js-demo" data-message="Link de recuperação enviado no mockup.">Enviar link</button>
+            <a class="secondary-button" href="recuperacao.html">Abrir tela dedicada</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

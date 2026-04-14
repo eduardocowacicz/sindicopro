@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Cadastros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Estrutura condominial, pessoas, vínculos e veículos</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <button class="button-alt js-demo" data-message="Novo apartamento iniciado no mockup.">Novo apartamento</button>
+          <button class="button js-demo" data-message="Cadastro salvo no mockup.">Salvar cadastro</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill active" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Base do sistema</p>
+        <h1 class="section-heading">Uma leitura organizada para separar prédio, apartamento, pessoa, vínculo com a unidade e usuário de acesso.</h1>
+      </section>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Estrutura</span>
+          <h3>Blocos ativos</h3>
+          <span class="big-number">9</span>
+          <p>Cadastro com edição, inativação e observações por bloco.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Unidades</span>
+          <h3>Apartamentos</h3>
+          <span class="big-number">144</span>
+          <p>Todos vinculados a bloco, pessoas, observações e veículos.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Pessoas</span>
+          <h3>Moradores ativos</h3>
+          <span class="big-number">312</span>
+          <p>Com histórico preservado por inativação, sem exclusão definitiva.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Veículos</span>
+          <h3>Placas vinculadas</h3>
+          <span class="big-number">226</span>
+          <p>Múltiplos veículos podem ser associados ao mesmo apartamento.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Prédios e blocos</p>
+              <h2>Cadastro estrutural</h2>
+            </div>
+            <span class="tag">Observações livres</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Bloco</th><th>Unidades</th><th>Status</th><th>Observação</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Bloco A</td><td>16</td><td><span class="state ok">Ativo</span></td><td>Entrada principal em revisão visual.</td></tr>
+                <tr><td>Bloco B</td><td>16</td><td><span class="state ok">Ativo</span></td><td>Maior volume de reservas de salão.</td></tr>
+                <tr><td>Bloco F</td><td>16</td><td><span class="state warn">Observação</span></td><td>Elevador em manutenção programada.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Apartamentos e vínculos</p>
+              <h2>Leitura por unidade</h2>
+            </div>
+            <span class="tag">Histórico preservado</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Unidade</th><th>Moradores</th><th>Proprietário</th><th>Usuários</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>B-302</td><td>2 ativos</td><td>Ricardo Lemos</td><td>2 logins</td></tr>
+                <tr><td>D-104</td><td>1 ativo</td><td>Patrícia Nunes</td><td>Conselho consulta</td></tr>
+                <tr><td>G-201</td><td>3 vínculos</td><td>Ana Duarte</td><td>Regra especial de reserva</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="triple-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <p class="eyebrow">Pessoa</p>
+          <h3>Cadastro individual</h3>
+          <p>Nome, contato e documentos da pessoa física antes de qualquer regra de acesso.</p>
+          <div class="chip-cloud">
+            <span class="tag">Morador</span>
+            <span class="tag">Proprietário</span>
+            <span class="tag">Conselho</span>
+          </div>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">Vínculo</p>
+          <h3>Relação com a unidade</h3>
+          <p>Define se a pessoa mora, possui, consulta ou já teve histórico naquela unidade.</p>
+          <div class="chip-cloud">
+            <span class="tag">Ativo</span>
+            <span class="tag">Inativado</span>
+            <span class="tag">Histórico</span>
+          </div>
+        </article>
+        <article class="panel">
+          <p class="eyebrow">Usuário</p>
+          <h3>Acesso ao sistema</h3>
+          <p>Conta autenticada com e-mail e senha, separada do vínculo físico com o apartamento.</p>
+          <div class="chip-cloud">
+            <span class="tag">Login ativo</span>
+            <span class="tag">Sem acesso</span>
+            <span class="tag">Recuperação</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Veículos</p>
+              <h2>Cadastro por apartamento</h2>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Unidade</th><th>Veículo</th><th>Placa</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>B-302</td><td>Honda City</td><td>ABC-1D23</td><td><span class="state ok">Ativo</span></td></tr>
+                <tr><td>B-302</td><td>Moto Yamaha</td><td>FGH-4J56</td><td><span class="state info">2ª vaga</span></td></tr>
+                <tr><td>G-201</td><td>Jeep Compass</td><td>KLM-7N89</td><td><span class="state ok">Ativo</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Editor lateral</p>
+              <h2>Unidade B-302</h2>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Bloco</label>
+              <select><option>Bloco B</option></select>
+            </div>
+            <div class="field">
+              <label>Apartamento</label>
+              <input value="302">
+            </div>
+            <div class="field">
+              <label>Proprietário principal</label>
+              <input value="Ricardo Lemos">
+            </div>
+            <div class="field">
+              <label>Regra de reserva</label>
+              <select><option>Permitida para morador titular</option></select>
+            </div>
+          </div>
+          <div class="field" style="margin-top: 14px;">
+            <label>Observações da unidade</label>
+            <textarea>Unidade com duas vagas, pet cadastrado e proprietário não residente com acesso liberado para consulta de cobranças e avisos.</textarea>
+          </div>
+          <div class="action-row" style="margin-top: 16px;">
+            <button class="button-alt js-demo" data-message="Histórico preservado no mockup.">Inativar morador</button>
+            <button class="button js-demo" data-message="Unidade atualizada no mockup.">Atualizar unidade</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

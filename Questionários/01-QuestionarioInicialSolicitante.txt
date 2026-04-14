@@ -1,0 +1,102 @@
+QUESTIONÁRIO 01 - VALIDAÇÃO INICIAL DO PROJETO CONDOMÍNIO (MVP)
+
+Objetivo:
+Este questionário reúne a validação inicial do projeto com foco nos pontos que precisavam de confirmação do solicitante.
+As perguntas foram reescritas para ficar mais naturais, mas as respostas foram mantidas como foram registradas.
+
+=====================================================================
+1) ADMINISTRAÇÃO BÁSICA
+=====================================================================
+1.1 As observações de bloco e apartamento devem ser totalmente livres ou você prefere categorias prontas, como "possui pet" e "acessibilidade"?
+R: Vai ser livre
+
+1.2 Quando um morador se mudar, o cadastro dele deve ser inativado ou excluído do sistema?
+R: Inativado (mantém histórico)
+
+1.3 Um mesmo apartamento pode ter mais de um veículo cadastrado?
+R: Sim
+
+=====================================================================
+2) USUÁRIOS E ACESSO
+=====================================================================
+2.1 Uma mesma pessoa pode acumular dois perfis ao mesmo tempo, como síndico e morador?
+R: Sim, acumula permissões de ambos os perfis
+
+2.2 Cada membro do conselho terá seu próprio login ou o grupo usará um acesso compartilhado?
+R: Vai ser o login com base no perfil
+
+=====================================================================
+3) FINANCEIRO SIMPLIFICADO
+=====================================================================
+3.1 Quantas contas bancárias ativas o condomínio possui hoje?
+R: Uma
+
+3.2 A cota condominial é dividida igualmente entre os 144 apartamentos ou existe alguma regra diferente por bloco, metragem ou tipo de cobrança?
+R: Existe diverenças, tem itens que são cobrados do morador e itens cobrados do priprietário
+
+3.3 Quais categorias de entrada e saída precisam existir no sistema?
+R: Este exemplos são usados, mas, quero um cadastro desta informações.
+
+3.4 O morador deve visualizar apenas a própria cota ou também pode acompanhar o fechamento publicado pelo síndico?
+R: Ele tem acesso a cota e ao fechamento que for postado pelo sindico.
+
+=====================================================================
+4) FECHAMENTO MENSAL E ANUAL
+=====================================================================
+4.1 Depois que o fechamento do mês for gerado, o período deve ficar bloqueado para impedir alterações retroativas?
+R: Sim, bloquear após fechamento
+
+4.2 O fechamento mensal será acionado manualmente ou deve acontecer automaticamente em uma data fixa?
+R: Manual, acionado pelo síndico
+
+=====================================================================
+5) RESERVA DE AMBIENTES
+=====================================================================
+5.1 Os dois salões de festa podem ser reservados no mesmo dia por apartamentos diferentes?
+R: Sim, são independentes
+
+5.2 Quem aprova uma reserva?
+R: Reserva é aprovada automatica, mas o Síndico ou subsíndico pode validar ou cancelar se necessário.
+
+5.3 Uma reserva já aprovada pode ser cancelada? Se sim, por quem?
+R: Sim, Síndico ou subsíndico
+
+=====================================================================
+6) COMUNICADOS
+=====================================================================
+6.1 O comunicado pode ser enviado para um bloco ou prédio específico, ou sempre deve ir para todos os moradores?
+R: Pode segmentar por bloco/prédio
+
+6.2 O envio via WhatsApp precisa fazer parte do MVP ou pode ficar para uma fase futura?
+R: Obrigatório no MVP
+
+=====================================================================
+7) OCORRÊNCIAS
+=====================================================================
+7.1 Quando um apartamento registra uma reclamação contra outro, o apartamento reclamado consegue ver esse registro?
+R: Não, apenas a administração vê e trata
+
+7.2 Quem pode responder e atualizar o status de uma ocorrência?
+R: Apenas síndico e subsíndico
+
+=====================================================================
+CONFIRMAÇÃO FINAL DO ESCOPO INFORMADO
+=====================================================================
+Confira se estes pontos representam corretamente o projeto:
+
+- 9 prédios e 144 apartamentos.
+- 2 salões de festas.
+- Perfis: síndico, subsíndico, conselho e morador.
+- Acesso por celular (sistema responsivo) incluso no MVP.
+- Exportação de relatórios para PDF e Excel.
+- WhatsApp como canal de comunicado
+- Fora do MVP: integração bancária, boleto automático e app mobile.
+
+R: _______________________________________________
+
+Observações adicionais:
+_______________________________________________________________
+_______________________________________________________________
+
+Assinatura do solicitante: ______________________________
+Data: ____/____/______

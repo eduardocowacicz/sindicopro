@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Acessos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Usuários, perfis, permissões e trilha de acesso</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <a class="button-alt" href="recuperacao.html">Fluxo de recuperação</a>
+          <button class="button js-demo" data-message="Permissões atualizadas no mockup.">Salvar permissões</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill active" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Controle de acesso</p>
+        <h1 class="section-heading">Perfis cumulativos, regras por usuário e uma tela simples para configurar o que cada pessoa pode visualizar.</h1>
+        <div class="tag-row">
+          <span class="state ok">Autenticação por e-mail</span>
+          <span class="state info">Perfis cumulativos</span>
+          <span class="state warn">Conselho apenas consulta</span>
+        </div>
+      </section>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Usuários</span>
+          <h3>Logins ativos</h3>
+          <span class="big-number">196</span>
+          <p>Moradores, proprietários e equipe administrativa com acesso autenticado.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Perfis</span>
+          <h3>Combinações</h3>
+          <span class="big-number">28</span>
+          <p>Usuários com mais de um perfil e permissões cumulativas.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Regras</span>
+          <h3>Exceções ativas</h3>
+          <span class="big-number">7</span>
+          <p>Exemplos: bloquear reserva ou liberar proprietário não residente.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Auditoria</span>
+          <h3>Logs sensíveis</h3>
+          <span class="big-number">84</span>
+          <p>Ações de acesso e atualização relevantes para auditoria.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Perfis padrão</p>
+              <h2>Escopo por função</h2>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Perfil</th><th>Escopo</th><th>Reserva</th><th>Financeiro</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Síndico</td><td>Total</td><td>Livre</td><td>Completo</td></tr>
+                <tr><td>Subsíndico</td><td>Administrativo amplo</td><td>Intervém</td><td>Completo</td></tr>
+                <tr><td>Conselho</td><td>Consulta</td><td>Sem ação</td><td>Consulta</td></tr>
+                <tr><td>Morador</td><td>Própria unidade</td><td>Configuração padrão</td><td>Sua cota</td></tr>
+                <tr><td>Proprietário</td><td>Próprias cobranças e avisos</td><td>Bloqueado por padrão</td><td>Suas cobranças</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Permissões por usuário</p>
+              <h2>Leitura simplificada</h2>
+            </div>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Maria Lopes</span><strong>Síndico + Moradora</strong></div>
+            <div class="summary-line"><span>Patrícia Nunes</span><strong>Conselho</strong></div>
+            <div class="summary-line"><span>Ricardo Lemos</span><strong>Proprietário não residente</strong></div>
+            <div class="summary-line"><span>Gustavo Rocha</span><strong>Morador + regra especial de reserva</strong></div>
+          </div>
+          <div class="action-row" style="margin-top: 16px;">
+            <span class="tag">Permitir reserva</span>
+            <span class="tag">Bloquear reserva</span>
+            <span class="tag">Acesso a anexos</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Acompanhamento</p>
+              <h2>Logs e ações sensíveis</h2>
+            </div>
+          </div>
+          <div class="timeline-list">
+            <div class="timeline-item"><strong>10/04 08:42</strong><p>Síndico reabriu o fechamento de fevereiro com motivo registrado.</p></div>
+            <div class="timeline-item"><strong>10/04 10:17</strong><p>Subsíndico alterou regra de reserva da unidade G-201.</p></div>
+            <div class="timeline-item"><strong>11/04 07:58</strong><p>Usuário do conselho acessou relatórios financeiros em modo consulta.</p></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Recuperação de acesso</p>
+              <h2>Status recente</h2>
+            </div>
+            <a class="button-alt" href="recuperacao.html">Abrir tela</a>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Link enviado para B-302</strong><div class="muted">Moradora titular solicitou redefinição por e-mail.</div></div><span class="state ok">Enviado</span></div>
+            <div class="queue-item"><div><strong>Link expirado para G-201</strong><div class="muted">Nova solicitação pode ser gerada sem editar cadastro da pessoa.</div></div><span class="state warn">Expirado</span></div>
+            <div class="queue-item"><div><strong>Conta bloqueada por tentativas</strong><div class="muted">Ação administrativa para liberar o acesso com segurança.</div></div><span class="state alert">Atenção</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

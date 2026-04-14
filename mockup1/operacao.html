@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Operação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Comunicados e ocorrências</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link" href="dashboard-admin.html"><span>Dashboard administrativo</span><span class="nav-tag">Hoje</span></a>
+        <a class="nav-link" href="dashboard-morador.html"><span>Dashboard do morador</span><span class="nav-tag">Perfil</span></a>
+        <a class="nav-link" href="cadastros.html"><span>Cadastros e permissões</span><span class="nav-tag">Base</span></a>
+        <a class="nav-link" href="financeiro.html"><span>Financeiro e fechamento</span><span class="nav-tag">Core</span></a>
+        <a class="nav-link" href="reservas.html"><span>Reservas de ambientes</span><span class="nav-tag">2 salões</span></a>
+        <a class="nav-link active" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Fluxo</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Módulo operacional</p>
+          <h1 class="section-title">Comunicação do condomínio e fila de atendimento em uma mesma área de trabalho.</h1>
+        </div>
+        <div class="toolbar">
+          <button class="ghost-button js-demo" data-message="Novo comunicado iniciado no mockup.">Novo comunicado</button>
+          <button class="button js-demo" data-message="Ocorrência aberta no mockup.">Nova ocorrência</button>
+        </div>
+      </div>
+
+      <section class="columns-2">
+        <article class="card">
+          <p class="eyebrow">Comunicados</p>
+          <h3>Publicação, segmentação e histórico</h3>
+          <div class="notice">
+            <div>
+              <strong>Manutenção do portão principal</strong>
+              <span class="muted">Envio geral por e-mail, com PDF anexo e destaque na home.</span>
+            </div>
+            <span class="status-pill status-info">Publicado hoje</span>
+          </div>
+          <div class="notice">
+            <div>
+              <strong>Interdição do salão 2</strong>
+              <span class="muted">Comunicado segmentado apenas para usuários com acesso a reservas.</span>
+            </div>
+            <span class="status-pill status-warn">Segmentado</span>
+          </div>
+          <div class="field" style="margin-top: 18px;">
+            <label>Título do comunicado</label>
+            <input value="Inspeção preventiva dos elevadores">
+          </div>
+          <div class="field">
+            <label>Mensagem</label>
+            <textarea>Prezados moradores, a inspeção preventiva será realizada no dia 22/04, entre 9h e 15h. O acesso aos elevadores será alternado por torre.</textarea>
+          </div>
+          <div class="split-actions">
+            <button class="ghost-button js-demo" data-message="Rascunho salvo no mockup.">Salvar rascunho</button>
+            <button class="button js-demo" data-message="Comunicado enviado no mockup.">Publicar comunicado</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Ocorrências</p>
+          <h3>Fila da administração</h3>
+          <div class="ticket">
+            <div>
+              <strong>Garagem com luz intermitente</strong>
+              <span class="muted">Unidade B-302 · foto anexa · aberta em 09/04.</span>
+            </div>
+            <span class="status-pill status-warn">Em andamento</span>
+          </div>
+          <div class="ticket">
+            <div>
+              <strong>Barulho após as 23h</strong>
+              <span class="muted">Registro interno com unidade vinculada pela administração.</span>
+            </div>
+            <span class="status-pill status-danger">Aguardando resposta</span>
+          </div>
+          <div class="ticket">
+            <div>
+              <strong>Vazamento na área comum</strong>
+              <span class="muted">Ocorrência concluída com histórico preservado.</span>
+            </div>
+            <span class="status-pill status-success">Finalizada</span>
+          </div>
+          <div class="chips" style="margin-top: 18px;">
+            <span class="chip">Anexos</span>
+            <span class="chip">Comentário da administração</span>
+            <span class="chip">Histórico por status</span>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

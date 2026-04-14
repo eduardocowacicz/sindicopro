@@ -1,0 +1,113 @@
+QUESTIONÁRIO 03 - DEFINIÇÕES FINAIS DAS PENDÊNCIAS
+
+Objetivo:
+Este questionário organiza as respostas dadas na etapa final de revisão, transformando as pendências em perguntas mais diretas.
+As perguntas foram reescritas para melhorar a leitura, mas as respostas foram preservadas como vieram do solicitante.
+
+=====================================================================
+1) COMUNICADOS E ESCOPO
+=====================================================================
+1.1 O WhatsApp continuará fazendo parte do sistema?
+R: Sim, não vai ser utilizado o WhatsApp no sistema, isso foi removido do projeto.
+
+=====================================================================
+2) COTA CONDOMINIAL E RATEIO
+=====================================================================
+2.1 A divisão da cota deve considerar os apartamentos ativos em cada tipo de cobrança?
+R: Sim.
+
+2.2 Quando houver isenção de síndico ou subsíndico, esse valor será redistribuído entre os demais moradores?
+R: O valor é dividido entre os outros moradores.
+
+2.3 Além de calcular a cota, o sistema também deve compor o valor final cobrado por unidade?
+R: O Fechamento vai gerar o valor total, depois deve ser gerado o valor que cada apartamento.
+Lembrando de trazer o valor para o morador e para o proprietário com base no tipo de documento a ser pago.
+
+=====================================================================
+3) PERFIS E PERMISSÕES
+=====================================================================
+3.1 O síndico terá acesso total ao sistema?
+R: Sindico vai ser tudo liberado, o restante der todo configurável com pode acessar, pode editar..
+
+3.2 Como deve funcionar o cadastro das permissões dos demais perfis?
+R: Sindico pode fazer tudo, restante vai ser cadastrado pelo Sindico, a tela deve ser bem otimizada para que seja um cadastro simples e rápido.
+
+=====================================================================
+4) ACESSO DO PROPRIETÁRIO
+=====================================================================
+4.1 O proprietário não residente poderá ver reservas, ocorrências e comunicados da unidade?
+R: Sim.
+
+4.2 Haverá diferença entre o acesso do morador e o do proprietário não residente?
+R: Sim, proprietário não residente não pode fazer reserva do salão por exemplo, mas isso também deve ser configuravel no usuário, pois pode ser alterado.
+
+=====================================================================
+5) FINANCEIRO
+=====================================================================
+5.1 Se a importação bancária não for implementada, como o fluxo mínimo do financeiro deve funcionar?
+R: Vai ser feito o lançamento das despesas, feito o fechamdo e gerado o valor da cota de cada apartamento.
+Quando é gerada a cota, vai ser criado um débito para o morador ou proprietário, se possível vai ser gerado o arquivo do cnab do banco para registro dos boletos.
+O pagamento vai ser feito manualmente e se possível implementada a importação do arquivo de retorno do banco, que é utilizado para baixa nos boletos.
+O valor do recebimento pode ser atualizado manualmente.
+
+5.2 A geração de remessa ou arquivo CNAB é obrigatória no MVP?
+R: Se possível Sim, não obrigatório, mas seria muito relevante ter.
+
+5.3 Como o sistema deve tratar pagamento em duplicidade?
+R: duplicidade é gerado um crédito ou devolvido o valor ao morador, com base no que for definido.
+
+5.4 Pagamento parcial só deve acontecer quando houver acordo?
+R: Pagamento parcial só pode ser feito com base em um acordo.
+
+=====================================================================
+6) REABERTURA DE FECHAMENTO
+=====================================================================
+6.1 Depois de reabrir um fechamento, a versão anterior do relatório deve continuar disponível apenas como histórico?
+R: Arquivado para quem tem permissão visualizar.
+
+6.2 Existe limite de vezes que um período pode ser reaberto?
+R: Não.
+
+=====================================================================
+7) RESERVA DE AMBIENTES
+=====================================================================
+7.1 A antecedência mínima de 48 horas continua valendo para reservas feitas pelo morador?
+R: Sim, menos que isso deve ser feito pelo Sindico ou subsíndico.
+
+7.2 O morador pode cancelar a reserva até 24 horas antes?
+R: Sim.
+
+7.3 Haverá mais de uma faixa de horário por dia?
+R: Sim, isso é cadastrado manulmente, mas é manhã e noite.
+
+=====================================================================
+8) OCORRÊNCIAS
+=====================================================================
+8.1 No cadastro da ocorrência, os campos mínimos obrigatórios serão motivo e observação?
+R: Motivo e uma observação, não é necessário vincular apartamento e nada. Mas o Sindico pode vincular isso a outro apartaento e colocar um comentário visivel ao outro morador
+
+8.2 Ocorrências internas terão um fluxo diferente das ocorrências abertas pelos moradores?
+R: Não.
+
+=====================================================================
+9) ANEXOS
+=====================================================================
+9.1 O limite informado de anexos se refere à capacidade esperada do sistema?
+R: Capacidade esperada.
+
+9.2 Qual será o tamanho máximo por arquivo?
+R: Pode ser de 5 mb.
+
+9.3 Quais formatos de arquivo serão aceitos?
+R: imagens e pdf.
+
+=====================================================================
+10) SEGURANÇA E ACESSO A DADOS
+=====================================================================
+10.1 Quais dados pessoais sensíveis o sistema armazenará?
+R: Só dados pessoais, como foto, cpf e ocorrencia deve ser considerado como dado sensíveis
+
+10.2 Quem poderá acessar anexos, logs e dados financeiros históricos?
+R: Só o Sindido e usuário com permissão marcada.
+
+Data: ____/____/______

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Comunicados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/comunicados</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Comunicados</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link active" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Comunicados</h1>
+            <div class="page-subtitle">Publicação, segmentação, envio por e-mail, anexos e histórico permanente</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Rascunho salvo no mockup.">Salvar rascunho</button>
+            <button class="primary-button js-demo" data-message="Comunicado publicado e enviado por e-mail no mockup.">Publicar comunicado</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-2">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Novo Comunicado</h2>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Título</label>
+                <input value="Inspeção preventiva dos elevadores">
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Público</label>
+                <select>
+                  <option>Todos os moradores</option>
+                  <option>Bloco/Prédio específico</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Mensagem</label>
+                <textarea>Prezados moradores, a inspeção preventiva será realizada no dia 22/04, entre 9h e 15h. O acesso aos elevadores será alternado por prédio.</textarea>
+              </div>
+              <div class="pill-set">
+                <span class="pill">Enviar por e-mail</span>
+                <span class="pill">Anexo PDF</span>
+                <span class="pill">Histórico ativo</span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Histórico de Comunicados</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Limpeza das caixas d'água</strong>
+                    <div class="small">10/04/2026 · Todos · PDF anexo</div>
+                  </div>
+                  <span class="status-pill status-success">Publicado</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Bloqueio do salão 2</strong>
+                    <div class="small">09/04/2026 · Bloco B · aviso segmentado</div>
+                  </div>
+                  <span class="status-pill status-primary">Segmentado</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Manutenção elevador Bloco A</strong>
+                    <div class="small">Rascunho interno aguardando publicação</div>
+                  </div>
+                  <span class="status-pill status-warning">Rascunho</span>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

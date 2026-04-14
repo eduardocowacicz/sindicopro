@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Ocorrências</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/ocorrencias</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Ocorrências</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link active" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Ocorrências</h1>
+            <div class="page-subtitle">Tipos configuráveis, abertura por morador ou administração, anexos e acompanhamento por status</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Tipo de ocorrência configurado no mockup.">Novo tipo</button>
+            <button class="primary-button js-demo" data-message="Ocorrência aberta no mockup.">Nova ocorrência</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-2">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Abrir Ocorrência</h2>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Tipo</label>
+                <select>
+                  <option>Barulho fora de horário</option>
+                  <option>Iluminação</option>
+                  <option>Manutenção</option>
+                </select>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Motivo</label>
+                <input value="Luz intermitente na garagem do bloco B">
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Observação</label>
+                <textarea>O problema ocorre principalmente no período da noite. Foi anexada uma foto para facilitar a identificação.</textarea>
+              </div>
+              <div class="pill-set">
+                <span class="pill">Apartamento inicial opcional</span>
+                <span class="pill">Imagem/PDF</span>
+                <span class="pill">Sem prioridade no MVP</span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Fila de Atendimento</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Garagem com luz intermitente</strong>
+                    <div class="small">Origem: morador · anexo disponível</div>
+                  </div>
+                  <span class="status-pill status-warning">Em andamento</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Barulho após as 23h</strong>
+                    <div class="small">Ocorrência interna com unidade vinculada depois</div>
+                  </div>
+                  <span class="status-pill status-danger">Aberta</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Vazamento na área comum</strong>
+                    <div class="small">Comentário visível ao morador relacionado</div>
+                  </div>
+                  <span class="status-pill status-success">Finalizada</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Tipos Configuráveis</h2>
+              </div>
+              <div class="pill-set">
+                <span class="pill">Barulho</span>
+                <span class="pill">Iluminação</span>
+                <span class="pill">Portaria</span>
+                <span class="pill">Limpeza</span>
+                <span class="pill">Manutenção</span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Regras do Módulo</h2>
+              </div>
+              <div class="record-row"><span>Abertura por morador e administração</span><span class="soft-tag">Sim</span></div>
+              <div class="record-row"><span>Ocorrência interna</span><span class="soft-tag">Sim</span></div>
+              <div class="record-row"><span>Prazo formal de resposta</span><span class="soft-tag">Não</span></div>
+              <div class="record-row"><span>Atualização por morador</span><span class="soft-tag">Acompanhamento apenas</span></div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Contas, categorias, lançamentos, cobrança e inadimplência</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Abril 2026</span>
+          <a class="button-alt" href="fechamentos.html">Ir para fechamentos</a>
+          <button class="button js-demo" data-message="Novo lançamento aberto no mockup.">Novo lançamento</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill active" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Fluxo financeiro</p>
+        <h1 class="section-heading">Um espaço único para contas, receitas, despesas, cobrança por perfil de responsável e tratamento de inadimplência.</h1>
+        <div class="tag-row">
+          <span class="state info">Conta principal ativa</span>
+          <span class="state ok">112 baixas registradas</span>
+          <span class="state alert">14 unidades inadimplentes</span>
+        </div>
+      </section>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Saldo</span>
+          <h3>Conta principal</h3>
+          <span class="big-number">R$ 218,4 mil</span>
+          <p>Resumo da posição atual com extrato por conta.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Fechamento</span>
+          <h3>Despesas do mês</h3>
+          <span class="big-number">R$ 97,2 mil</span>
+          <p>Base para compor o valor devido por apartamento.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Cobrança</span>
+          <h3>Débitos gerados</h3>
+          <span class="big-number">144</span>
+          <p>Com separação entre morador e proprietário quando necessário.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Ajustes</span>
+          <h3>Estornos e créditos</h3>
+          <span class="big-number">6</span>
+          <p>Tratamento de pagamento em duplicidade e correções com log.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Lançamentos</p>
+              <h2>Entradas e saídas</h2>
+            </div>
+            <span class="tag">Conta principal</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Data</th><th>Categoria</th><th>Tipo</th><th>Valor</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>03/04</td><td>Energia</td><td>Despesa</td><td>R$ 12.440</td></tr>
+                <tr><td>05/04</td><td>Cota condominial</td><td>Receita</td><td>R$ 37.280</td></tr>
+                <tr><td>09/04</td><td>Manutenção</td><td>Despesa</td><td>R$ 8.970</td></tr>
+                <tr><td>11/04</td><td>Água</td><td>Despesa</td><td>R$ 6.680</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Contas e categorias</p>
+              <h2>Configuração aberta</h2>
+            </div>
+            <span class="tag">PDF e Excel</span>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Contas bancárias</span><strong>Principal e reserva</strong></div>
+            <div class="summary-line"><span>Categorias de entrada</span><strong>Cota, taxas, acordos</strong></div>
+            <div class="summary-line"><span>Categorias de saída</span><strong>Água, energia, folha, manutenção</strong></div>
+            <div class="summary-line"><span>Valores fixos mensais</span><strong>7 itens ativos</strong></div>
+            <div class="summary-line"><span>Gastos variáveis</span><strong>3 itens no mês</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Composição da cobrança</p>
+              <h2>Morador, proprietário e isenções</h2>
+            </div>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Total do período</span><strong>R$ 97.200</strong></div>
+            <div class="summary-line"><span>Direcionado ao morador</span><strong>R$ 76.510</strong></div>
+            <div class="summary-line"><span>Direcionado ao proprietário</span><strong>R$ 20.690</strong></div>
+            <div class="summary-line"><span>Unidades isentas</span><strong>3</strong></div>
+            <div class="summary-line"><span>Redistribuição aplicada</span><strong>Automática</strong></div>
+          </div>
+          <div class="action-row" style="margin-top: 16px;">
+            <button class="button-alt js-demo" data-message="Recebimento manual registrado no mockup.">Registrar recebimento</button>
+            <button class="button js-demo" data-message="Pré-cobrança gerada no mockup.">Gerar cobrança</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Inadimplência</p>
+              <h2>Consulta e acompanhamento</h2>
+            </div>
+            <a class="button-alt" href="dashboard-morador.html">Ver visão da unidade</a>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Unidade</th><th>Responsável</th><th>Em aberto</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>D-104</td><td>Morador</td><td>R$ 1.784</td><td><span class="state alert">Atrasado</span></td></tr>
+                <tr><td>F-203</td><td>Proprietário</td><td>R$ 2.940</td><td><span class="state warn">Negociação</span></td></tr>
+                <tr><td>B-302</td><td>Morador</td><td>R$ 0</td><td><span class="state ok">Em dia</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Ajustes e exceções</p>
+              <h2>Tratamento administrativo</h2>
+            </div>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Estorno com log</strong><div class="muted">Correção de lançamento com rastreio de usuário, data e motivo.</div></div><span class="state info">Auditável</span></div>
+            <div class="queue-item"><div><strong>Pagamento em duplicidade</strong><div class="muted">Registrar crédito futuro ou devolução conforme decisão administrativa.</div></div><span class="state warn">Em análise</span></div>
+            <div class="queue-item"><div><strong>Pagamento parcial</strong><div class="muted">Permitido apenas quando houver acordo registrado na cobrança.</div></div><span class="state alert">Controlado</span></div>
+            <div class="queue-item"><div><strong>Aviso de atraso</strong><div class="muted">Disparo administrativo para cobrança da unidade vinculada.</div></div><span class="state ok">Ativo</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Documentos e anexos</p>
+              <h2>Arquivos financeiros</h2>
+            </div>
+            <a class="button-alt" href="detalhes-anexos.html">Abrir detalhes</a>
+          </div>
+          <div class="file-grid">
+            <article class="file-card">
+              <strong>Nota de manutenção</strong>
+              <div class="muted">PDF anexado ao lançamento de 09/04.</div>
+            </article>
+            <article class="file-card">
+              <strong>Comprovante manual</strong>
+              <div class="muted">Imagem vinculada à baixa manual da unidade F-203.</div>
+            </article>
+            <article class="file-card">
+              <strong>CNAB e retorno</strong>
+              <div class="muted">Recursos desejáveis, sem obrigatoriedade para o MVP.</div>
+            </article>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

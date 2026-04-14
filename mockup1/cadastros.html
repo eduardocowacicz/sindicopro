@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Cadastros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Cadastros e permissões</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link" href="dashboard-admin.html"><span>Dashboard administrativo</span><span class="nav-tag">Hoje</span></a>
+        <a class="nav-link" href="dashboard-morador.html"><span>Dashboard do morador</span><span class="nav-tag">Perfil</span></a>
+        <a class="nav-link active" href="cadastros.html"><span>Cadastros e permissões</span><span class="nav-tag">Base</span></a>
+        <a class="nav-link" href="financeiro.html"><span>Financeiro e fechamento</span><span class="nav-tag">Core</span></a>
+        <a class="nav-link" href="reservas.html"><span>Reservas de ambientes</span><span class="nav-tag">2 salões</span></a>
+        <a class="nav-link" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Fluxo</span></a>
+      </nav>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Administração básica</p>
+          <h1 class="section-title">Estrutura do condomínio, vínculos da unidade e regras de acesso.</h1>
+        </div>
+        <div class="toolbar">
+          <button class="ghost-button js-demo" data-message="Novo prédio iniciado no mockup.">Novo prédio</button>
+          <button class="ghost-button js-demo" data-message="Novo morador iniciado no mockup.">Novo morador</button>
+          <button class="button js-demo" data-message="Tela de permissões aberta no mockup.">Editar permissões</button>
+        </div>
+      </div>
+
+      <section class="columns-3">
+        <article class="card">
+          <p class="eyebrow">Prédios e blocos</p>
+          <h3>9 estruturas cadastradas</h3>
+          <div class="list">
+            <div class="list-item"><span>Bloco A · 16 unidades</span><span class="status-pill status-success">Ativo</span></div>
+            <div class="list-item"><span>Bloco B · 16 unidades</span><span class="status-pill status-success">Ativo</span></div>
+            <div class="list-item"><span>Bloco C · 16 unidades</span><span class="status-pill status-success">Ativo</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Apartamentos</p>
+          <h3>Unidade em destaque</h3>
+          <div class="list">
+            <div class="record-row"><span>302 · Bloco B</span><span class="status-pill status-info">Morador + proprietário</span></div>
+            <div class="record-row"><span>Observações</span><span class="muted">Pet porte médio, vaga dupla.</span></div>
+            <div class="record-row"><span>Veículos</span><span class="muted">2 cadastrados</span></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Perfis e acesso</p>
+          <h3>Permissões configuráveis</h3>
+          <div class="chips">
+            <span class="status-pill status-info">Síndico total</span>
+            <span class="status-pill status-warn">Conselho consulta</span>
+            <span class="status-pill status-success">Morador operacional</span>
+          </div>
+          <p>Mockup orientado para uma tela simples, com regras por perfil e ajustes finos por usuário.</p>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Lista de pessoas</p>
+              <h3>Moradores e proprietários vinculados</h3>
+            </div>
+            <div class="chips">
+              <span class="chip">Todos</span>
+              <span class="chip">Moradores</span>
+              <span class="chip">Proprietários</span>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Nome</th><th>Unidade</th><th>Perfil</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Mariana Costa</td><td>B-302</td><td>Morador</td><td><span class="status-pill status-success">Ativo</span></td></tr>
+              <tr><td>Ricardo Lemos</td><td>B-302</td><td>Proprietário</td><td><span class="status-pill status-info">Acesso remoto</span></td></tr>
+              <tr><td>Patrícia Nunes</td><td>D-104</td><td>Conselho</td><td><span class="status-pill status-warn">Consulta</span></td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Painel lateral de edição</p>
+          <h3>Cadastro da unidade 302</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label>Bloco</label>
+              <input value="Bloco B">
+            </div>
+            <div class="field">
+              <label>Apartamento</label>
+              <input value="302">
+            </div>
+            <div class="field">
+              <label>Observações</label>
+              <textarea>Unidade com duas vagas, pet de porte médio e proprietário não residente com acesso ativo.</textarea>
+            </div>
+            <div class="split-actions">
+              <button class="ghost-button js-demo" data-message="Rascunho salvo no mockup.">Salvar rascunho</button>
+              <button class="button js-demo" data-message="Cadastro atualizado no mockup.">Atualizar cadastro</button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

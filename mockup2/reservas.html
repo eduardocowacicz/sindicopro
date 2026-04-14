@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Reservas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Agenda dos salões, taxas e bloqueios operacionais</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Antecedência mínima: 48h</span>
+          <button class="button js-demo" data-message="Reserva criada no mockup.">Criar reserva</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill active" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Reserva de ambientes</p>
+        <h1 class="section-heading">Reserva por faixa de horário com regras claras para morador, administração e bloqueios do condomínio.</h1>
+        <div class="tag-row">
+          <span class="state ok">2 salões independentes</span>
+          <span class="state info">Aprovação automática</span>
+          <span class="state warn">Cancelamento até 24h</span>
+        </div>
+      </section>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Ambientes</span>
+          <h3>Salões do MVP</h3>
+          <span class="big-number">2</span>
+          <p>Salão 1 e Salão 2 podem ser reservados no mesmo dia.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Agenda</span>
+          <h3>Reservas da semana</h3>
+          <span class="big-number">7</span>
+          <p>Leitura rápida das faixas manhã e noite.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Bloqueios</span>
+          <h3>Datas restritas</h3>
+          <span class="big-number">3</span>
+          <p>Intervenções administrativas visíveis na agenda.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Taxas</span>
+          <h3>Configuração ativa</h3>
+          <span class="big-number">R$ 180</span>
+          <p>Valor editável por ambiente e refletido no pedido.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Ambientes e regras</p>
+              <h2>Cadastro de reserva</h2>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Ambiente</th><th>Faixas</th><th>Taxa</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Salão 1</td><td>Manhã e noite</td><td>R$ 180</td><td><span class="state ok">Disponível</span></td></tr>
+                <tr><td>Salão 2</td><td>Manhã e noite</td><td>R$ 140</td><td><span class="state warn">Bloqueio no feriado</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="summary-stack" style="margin-top: 16px;">
+            <div class="summary-line"><span>Morador inadimplente</span><strong>Bloqueio configurável</strong></div>
+            <div class="summary-line"><span>Proprietário não residente</span><strong>Sem reserva por padrão</strong></div>
+            <div class="summary-line"><span>Reserva com menos de 48h</span><strong>Apenas administração</strong></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Agenda por faixa</p>
+              <h2>Disponibilidade da semana</h2>
+            </div>
+          </div>
+          <div class="schedule-list">
+            <div class="schedule-item"><div><strong>Sex 18/04 - Noite</strong><div class="muted">Salão 1 reservado pela unidade B-302.</div></div><span class="state ok">Confirmado</span></div>
+            <div class="schedule-item"><div><strong>Sáb 19/04 - Manhã</strong><div class="muted">Salão 2 liberado para novas reservas.</div></div><span class="state info">Livre</span></div>
+            <div class="schedule-item"><div><strong>Dom 20/04 - Noite</strong><div class="muted">Salão 2 reservado pela unidade G-201.</div></div><span class="state ok">Confirmado</span></div>
+            <div class="schedule-item"><div><strong>Seg 21/04 - Noite</strong><div class="muted">Bloqueio por manutenção cadastrado pela administração.</div></div><span class="state warn">Bloqueado</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Solicitação do morador</p>
+              <h2>Leitura do formulário</h2>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Ambiente</label>
+              <select><option>Salão 1</option></select>
+            </div>
+            <div class="field">
+              <label>Faixa de horário</label>
+              <select><option>Noite</option></select>
+            </div>
+            <div class="field">
+              <label>Data desejada</label>
+              <input value="18/05/2026">
+            </div>
+            <div class="field">
+              <label>Responsável pela reserva</label>
+              <input value="Mariana Costa">
+            </div>
+          </div>
+          <div class="action-row" style="margin-top: 16px;">
+            <span class="state ok">Dentro da antecedência</span>
+            <button class="button js-demo" data-message="Reserva validada no mockup.">Confirmar pedido</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Intervenções da gestão</p>
+              <h2>Exceções e cancelamentos</h2>
+            </div>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Bloqueio de 01/05</strong><div class="muted">Ambos os salões reservados para evento interno do condomínio.</div></div><span class="state info">Gestão</span></div>
+            <div class="queue-item"><div><strong>E-108 - tentativa fora do prazo</strong><div class="muted">Reserva feita com menos de 48h e sem permissão especial.</div></div><span class="state alert">Negada</span></div>
+            <div class="queue-item"><div><strong>B-302 - cancelamento</strong><div class="muted">Solicitação feita com mais de 24h de antecedência.</div></div><span class="state ok">Permitido</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

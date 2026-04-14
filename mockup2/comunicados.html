@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Comunicados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Publicações por e-mail com segmentação, anexos e histórico permanente</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Sem WhatsApp no escopo</span>
+          <button class="button js-demo" data-message="Comunicado publicado no mockup.">Publicar comunicado</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill active" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Comunicação oficial</p>
+        <h1 class="section-heading">Uma tela para escrever, segmentar, anexar arquivos e manter um histórico claro das publicações do condomínio.</h1>
+        <div class="tag-row">
+          <span class="state info">Envio por e-mail</span>
+          <span class="state ok">Histórico permanente</span>
+          <span class="state warn">Segmentação por bloco</span>
+        </div>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Novo comunicado</p>
+              <h2>Editor de publicação</h2>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom: 14px;">
+            <label>Título</label>
+            <input value="Inspeção preventiva dos elevadores">
+          </div>
+          <div class="field" style="margin-bottom: 14px;">
+            <label>Mensagem</label>
+            <textarea>Prezados moradores, a inspeção será realizada no dia 22/04, entre 9h e 15h, com acesso alternado por prédio. O PDF anexo traz a programação completa.</textarea>
+          </div>
+          <div class="chip-cloud" style="margin-bottom: 16px;">
+            <span class="tag">Todos os prédios</span>
+            <span class="tag">Blocos A e B</span>
+            <span class="tag">Anexo PDF</span>
+            <span class="tag">Envio por e-mail</span>
+          </div>
+          <div class="action-row">
+            <button class="button-alt js-demo" data-message="Rascunho salvo no mockup.">Salvar rascunho</button>
+            <button class="button js-demo" data-message="Comunicado enviado por e-mail no mockup.">Publicar</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Fila de envio</p>
+              <h2>Distribuição por segmento</h2>
+            </div>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Todos os moradores</strong><div class="muted">Inspeção preventiva dos elevadores.</div></div><span class="state ok">Agendado</span></div>
+            <div class="queue-item"><div><strong>Blocos F a I</strong><div class="muted">Aviso sobre pintura externa e circulação.</div></div><span class="state info">Segmentado</span></div>
+            <div class="queue-item"><div><strong>Bloco B</strong><div class="muted">Regra temporária para vagas de visitante.</div></div><span class="state warn">Revisão</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Histórico permanente</p>
+              <h2>Publicações recentes</h2>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr><th>Data</th><th>Título</th><th>Segmento</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>10/04</td><td>Limpeza das caixas d'água</td><td>Todos</td><td><span class="state ok">Publicado</span></td></tr>
+                <tr><td>08/04</td><td>Nova regra de estacionamento</td><td>Blocos A a D</td><td><span class="state ok">Publicado</span></td></tr>
+                <tr><td>05/04</td><td>Assembleia ordinária</td><td>Todos</td><td><span class="state info">Arquivado</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Anexos e apoio</p>
+              <h2>Materiais da publicação</h2>
+            </div>
+            <a class="button-alt" href="detalhes-anexos.html">Ver anexos</a>
+          </div>
+          <div class="file-grid">
+            <article class="file-card">
+              <strong>PDF da inspeção</strong>
+              <div class="muted">Programação detalhada por prédio.</div>
+            </article>
+            <article class="file-card">
+              <strong>Mapa de vagas</strong>
+              <div class="muted">Imagem para o comunicado de estacionamento.</div>
+            </article>
+            <article class="file-card">
+              <strong>Registro histórico</strong>
+              <div class="muted">Consulta futura disponível para síndico, moradores e proprietários.</div>
+            </article>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

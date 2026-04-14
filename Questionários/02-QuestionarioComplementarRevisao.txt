@@ -1,0 +1,133 @@
+QUESTIONÁRIO 02 - REVISÃO COMPLEMENTAR DO PROJETO
+
+Objetivo:
+Este questionário complementa a validação inicial e foi preparado para fechar os pontos que ainda geravam dúvida antes da implementação.
+As perguntas foram reescritas para ficar mais claras e humanas, enquanto as respostas foram mantidas como registradas.
+
+=====================================================================
+1) COMUNICADOS E WHATSAPP
+=====================================================================
+1.1 Dentro do MVP, como o WhatsApp deve ser tratado?
+R: Whast vai ficar em segundo plano.
+
+=====================================================================
+2) COTA CONDOMINIAL E RATEIO
+=====================================================================
+2.1 Como a cota condominial é calculada hoje?
+R: Os valores lançados são divididos entre os apartamentos, mas com regras específicas de cobrança e isenção.
+
+2.2 Quais despesas devem ser cobradas do morador?
+R: Gastos mensais e manutenção. ideal é ter como cadastrar isso no tipo de cobrança
+
+2.3 Quais despesas devem ser cobradas do proprietário?
+R: chmada de capital para melhorias. ideal é ter como cadastrar isso no tipo de cobrança
+
+2.4 O rateio segue uma regra igual para todos ou depende de regras específicas?
+R: Depende de regra específica. Alguns valores são cobrados do proprietário, outros do morador, alguns apartamentos podem ser isentos e o restante é dividido entre os moradores.
+
+2.5 Existe algum exemplo real de cálculo mensal que possa servir de modelo?
+R: _______________________________________________
+
+=====================================================================
+3) MORADORES, USUÁRIOS E ACESSO
+=====================================================================
+3.1 Todo morador cadastrado deve ter login no sistema?
+R: Sim.
+
+3.2 Quando houver vários moradores no mesmo apartamento, cada um poderá ter seu próprio login?
+R: Sim.
+
+3.3 O proprietário que não mora no apartamento também terá acesso ao sistema?
+R: Ele vai ter acesso, pois pode ter boletos de chamada capital e avisos, pois ele ainda é responsável.
+
+3.4 O morador poderá editar os próprios dados cadastrais?
+R: Não.
+
+3.5 Qual deve ser o nível de acesso do conselho?
+R: Acesso apenas para consultas, sem poder lançar nada. O ideal é que isso seja controlado por permissões por perfil.
+
+=====================================================================
+4) FINANCEIRO
+=====================================================================
+4.1 O sistema deve controlar inadimplência já no MVP?
+R: Sim, com registro, controle e relatórios completos sobre inadimplência.
+
+4.2 O pagamento da cota será registrado manualmente?
+R: Importando arquivo de retorno do banco se possível ou manual.
+
+4.3 O sistema precisa permitir estorno ou correção de lançamento?
+R: Sim, com logs
+
+4.4 Lançamentos financeiros poderão ter anexos, como comprovantes?
+R: Sim.
+
+4.5 O sistema precisa emitir aviso de pagamento em atraso?
+R: Sim.
+
+=====================================================================
+5) FECHAMENTO MENSAL
+=====================================================================
+5.1 Depois do fechamento, será possível reabrir o período?
+R: Sim.
+
+5.2 Quem poderá reabrir um fechamento?
+R: Sincico e subsíndico - Configurável no perfil também.
+
+5.3 O relatório fechado deve ficar congelado como versão oficial?
+R: Sim.
+
+5.4 Se houver erro depois do fechamento, qual deve ser o procedimento?
+R: Reabrir ele, gerar logs com registro do motivo da reabertura, gravar o fechamendo antes da reabertura e permitir ajustes para novo fechamento.
+
+=====================================================================
+6) RESERVA DE AMBIENTES
+=====================================================================
+6.1 A reserva será feita por dia inteiro ou por faixa de horário?
+R: Por faixa de horário.
+
+6.2 Haverá limite de reservas por apartamento ao longo do mês?
+R: Não
+
+6.3 Haverá taxa, caução ou termo de responsabilidade?
+R: Haverá taxa configurável.
+
+6.4 Um morador inadimplente poderá fazer reserva?
+R: Não, mas pode ser alterado. Então deve ter configuração.
+
+6.5 Síndico e subsíndico poderão bloquear datas para manutenção ou evento interno?
+R: Sim, com configuração administrativa de horários e taxas.
+
+=====================================================================
+7) OCORRÊNCIAS
+=====================================================================
+7.1 Quais tipos de ocorrência devem existir no cadastro?
+R: Isso deve ser cadastrado, exemplos com barulho fora de horário.
+
+7.2 O registro de ocorrência poderá receber anexos?
+R: Sim.
+
+7.3 Haverá prioridade para a ocorrência, como baixa, média e alta?
+R: Não.
+
+7.4 A administração poderá registrar uma ocorrência interna sem exibir isso ao morador?
+R: Sim
+
+7.5 Deve existir um prazo esperado para resposta?
+R: Não
+
+=====================================================================
+8) DADOS, SEGURANÇA E OPERAÇÃO
+=====================================================================
+8.1 Qual é a frequência mínima esperada para backup?
+R: uma vez por semana.
+
+8.2 Por quanto tempo os logs de acesso e de ações sensíveis devem ser mantidos?
+R: 5 anos.
+
+8.3 Há necessidade de adequação formal à LGPD já no MVP?
+R: não
+
+8.4 Existe um limite esperado para a quantidade de anexos no sistema?
+R: 100 mil.
+
+Data: ____/____/______

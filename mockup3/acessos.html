@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Usuários e Permissões</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/acessos</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Usuários e Permissões</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link active" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Usuários e Permissões</h1>
+            <div class="page-subtitle">Perfis cumulativos, regras por usuário e histórico de acessos sensíveis</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Novo usuário iniciado no mockup.">Novo usuário</button>
+            <button class="primary-button js-demo" data-message="Permissões salvas no mockup.">Salvar permissões</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-3">
+            <article class="metric-card">
+              <div>
+                <h3>Usuários ativos</h3>
+                <span class="metric-value">312</span>
+                <div class="metric-note">Moradores e proprietários com acesso</div>
+              </div>
+              <div class="metric-icon metric-primary">👤</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Perfis cumulativos</h3>
+                <span class="metric-value">28</span>
+                <div class="metric-note">Usuários com mais de um perfil</div>
+              </div>
+              <div class="metric-icon metric-success">⊕</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Ações sensíveis</h3>
+                <span class="metric-value">84</span>
+                <div class="metric-note">Logs recentes registrados</div>
+              </div>
+              <div class="metric-icon metric-warning">◷</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Matriz de Permissões</h2>
+                <span class="soft-tag">Tela simples para o síndico</span>
+              </div>
+              <div class="table-wrap">
+                <table class="permission-table">
+                  <thead>
+                    <tr><th>Perfil</th><th>Cadastros</th><th>Financeiro</th><th>Reservas</th><th>Comunicados</th><th>Ocorrências</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Síndico</td><td>Total</td><td>Total</td><td>Total</td><td>Total</td><td>Total</td></tr>
+                    <tr><td>Subsíndico</td><td>Amplo</td><td>Amplo</td><td>Amplo</td><td>Amplo</td><td>Amplo</td></tr>
+                    <tr><td>Conselho</td><td>Consulta</td><td>Consulta</td><td>Consulta</td><td>Consulta</td><td>Consulta</td></tr>
+                    <tr><td>Morador</td><td>Não</td><td>Própria cota</td><td>Operacional</td><td>Leitura</td><td>Abertura e acompanhamento</td></tr>
+                    <tr><td>Proprietário</td><td>Não</td><td>Suas cobranças</td><td>Config. por usuário</td><td>Leitura</td><td>Leitura da unidade</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Regra por Usuário</h2>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Usuário</label>
+                <input value="Ricardo Lemos · Proprietário · Unidade B-302">
+              </div>
+              <div class="pill-set" style="margin-bottom: 12px;">
+                <span class="pill">Pode visualizar cobranças</span>
+                <span class="pill">Pode visualizar comunicados</span>
+                <span class="pill">Reserva bloqueada por padrão</span>
+              </div>
+              <div class="notice-box">
+                <strong>Exemplo de regra especial</strong>
+                <div class="small">Mesmo sendo proprietário não residente, o acesso à reserva pode ser liberado individualmente pelo síndico.</div>
+              </div>
+              <div class="action-row" style="margin-top: 14px;">
+                <button class="secondary-button js-demo" data-message="Regra individual ajustada no mockup.">Alterar regra</button>
+              </div>
+            </article>
+          </section>
+
+          <section class="panel" style="margin-top: 16px;">
+            <div class="panel-title-row">
+              <h2 class="card-title">Logs de Acesso e Ações Sensíveis</h2>
+              <a class="secondary-button" href="detalhes-anexos.html#logs">Abrir detalhe</a>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Data/Hora</th><th>Usuário</th><th>Ação</th><th>Origem</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>14/04 09:20</td><td>Carlos Silva</td><td>Reabriu fechamento mensal</td><td>Financeiro</td></tr>
+                  <tr><td>14/04 08:54</td><td>Patrícia Nunes</td><td>Acessou relatório anual</td><td>Conselho</td></tr>
+                  <tr><td>13/04 21:11</td><td>Ricardo Lemos</td><td>Login realizado</td><td>Portal do proprietário</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

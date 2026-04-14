@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Acesso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-shell">
+    <section class="auth-copy">
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Gestão condominial com leitura clara e operação diária simplificada</span>
+        </div>
+      </div>
+
+      <p class="eyebrow">Mockup de acesso</p>
+      <h1>Entrada única para administração, moradores e proprietários.</h1>
+      <p>
+        O acesso foi pensado para funcionar bem em celular e desktop, com recuperação de acesso logo na primeira dobra
+        e atalhos visuais para os perfis mais usados.
+      </p>
+
+      <div class="stats-grid" style="margin-top: 30px;">
+        <article class="metric">
+          <span class="eyebrow">Cobertura</span>
+          <h3>Perfis atendidos</h3>
+          <span class="metric-value">5</span>
+          <p>Síndico, subsíndico, conselho, morador e proprietário não residente.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Contexto</span>
+          <h3>Estrutura do condomínio</h3>
+          <span class="metric-value">9 / 144</span>
+          <p>Nove prédios e cento e quarenta e quatro apartamentos no cenário do MVP.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Destaque</span>
+          <h3>Uso móvel</h3>
+          <span class="metric-value">Prioritário</span>
+          <p>Fluxo direto para quem acessa pelo celular e precisa resolver rápido.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-card">
+        <p class="eyebrow">Entrar no sistema</p>
+        <h2 class="section-title">Bem-vindo de volta</h2>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" value="sindico@condominioatlas.com.br">
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" value="123456">
+        </div>
+        <div class="split-actions">
+          <a class="button" href="dashboard-admin.html">Entrar como administração</a>
+          <a class="ghost-button" href="dashboard-morador.html">Ver área do morador</a>
+        </div>
+
+        <div class="card" style="margin-top: 22px;">
+          <p class="eyebrow">Recuperação de acesso</p>
+          <h3>Esqueceu a senha?</h3>
+          <p>O mockup considera um caminho simples com envio de link por e-mail.</p>
+          <div class="mini-grid">
+            <div class="field" style="margin-bottom: 0;">
+              <label for="recuperacao">Seu e-mail</label>
+              <input id="recuperacao" type="email" placeholder="voce@exemplo.com">
+            </div>
+            <div class="field" style="align-content: end; margin-bottom: 0;">
+              <button class="button js-demo" data-message="Link de recuperação enviado no mockup.">Enviar link</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="list" style="margin-top: 20px;">
+          <div class="list-item">
+            <div>
+              <strong>Acesso administrativo</strong>
+              <span class="muted">Dashboard, financeiro, reservas, cadastros e operação.</span>
+            </div>
+            <span class="status-pill status-info">Síndico</span>
+          </div>
+          <div class="list-item">
+            <div>
+              <strong>Acesso do morador</strong>
+              <span class="muted">Cota, reservas, comunicados e ocorrências da unidade.</span>
+            </div>
+            <span class="status-pill status-success">Morador</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+PROMPT PARA PLANEJAMENTO DE MOCKUP DO FRONT-END
+
+Atue como um UX/UI Designer sênior e especialista em arquitetura de informação para produtos web. Com base no contexto abaixo, crie um planejamento completo para a criação de mockups do front-end de um sistema de gestão condominial.
+
+Importante:
+- O objetivo é planejar as telas e a experiência do usuário.
+- Não quero foco em implementação técnica, banco de dados, API, arquitetura de software ou cronograma de desenvolvimento real.
+- Quero um planejamento independente, voltado apenas para o front-end que será transformado em mockup.
+- Considere apenas as telas do MVP que realmente fazem sentido para o sistema planejado.
+
+CONTEXTO DO PRODUTO
+- Sistema web de gestão condominial.
+- Cenário: 9 prédios, 144 apartamentos e 2 salões de festas.
+- Perfis principais: síndico, subsíndico, conselho, morador e proprietário não residente.
+- O sistema deve ser responsivo, com boa experiência tanto em desktop quanto em celular.
+
+ESCOPO FUNCIONAL QUE DEVE GUIAR AS TELAS
+- Administração básica com cadastro de prédios/blocos, apartamentos, moradores, proprietários, observações e veículos.
+- Controle de usuários, perfis e permissões.
+- Financeiro com contas, categorias, receitas, despesas, inadimplência, composição da cota condominial e visualização de cobranças.
+- Fechamento mensal e anual com consulta de relatórios, bloqueio de período e histórico de reabertura.
+- Reserva de ambientes com controle por faixa de horário, taxas e bloqueios administrativos.
+- Comunicados com publicação, segmentação por bloco/prédio, histórico e anexos.
+- Ocorrências com cadastro, acompanhamento, anexos e tratamento administrativo.
+
+REGRAS IMPORTANTES PARA ORIENTAR O MOCKUP
+- Todo morador cadastrado pode ter login.
+- Um apartamento pode ter mais de um usuário com acesso.
+- O proprietário não residente também pode acessar o sistema.
+- O síndico possui acesso total.
+- O conselho possui acesso apenas para consulta.
+- O morador visualiza sua própria cota e os fechamentos publicados.
+- O fechamento mensal gera visão consolidada do período e depois o valor por apartamento.
+- A reserva é feita por faixa de horário.
+- O morador deve respeitar antecedência mínima de 48 horas para reservar.
+- O morador pode cancelar reserva até 24 horas antes.
+- A administração pode bloquear datas, horários e intervir nas reservas.
+- Ocorrências devem permitir anexos e acompanhamento de status.
+
+TELAS E ÁREAS QUE DEVEM SER CONSIDERADAS NO PLANEJAMENTO
+- Tela de login.
+- Tela de recuperação de acesso.
+- Dashboard administrativo.
+- Dashboard do morador/proprietário.
+- Gestão de prédios e blocos.
+- Gestão de apartamentos.
+- Gestão de moradores e proprietários.
+- Gestão de veículos.
+- Gestão de usuários, perfis e permissões.
+- Financeiro: contas, categorias, lançamentos, inadimplência e cobranças.
+- Fechamento mensal.
+- Fechamento anual.
+- Reservas de ambientes.
+- Comunicados.
+- Ocorrências.
+- Visualização de anexos e detalhes de registros.
+
+O QUE EU PRECISO NA SUA RESPOSTA
+1. Uma visão geral da experiência do sistema e da lógica de navegação.
+2. Um mapa de telas do MVP, agrupado por módulo.
+3. A separação das telas por perfil de usuário, deixando claro o que cada perfil deve visualizar.
+4. A lista de telas prioritárias para o mockup inicial.
+5. Para cada tela principal, descreva:
+   - objetivo da tela;
+   - público/perfil;
+   - blocos de informação;
+   - ações principais;
+   - filtros, tabelas, cards, formulários ou widgets sugeridos;
+   - estados importantes da interface, como vazio, carregando, erro, sucesso e sem permissão.
+6. Uma proposta de fluxo de navegação para os principais cenários:
+   - login e acesso ao sistema;
+   - administração condominial;
+   - lançamento financeiro e consulta de cobrança;
+   - fechamento mensal;
+   - reserva de salão;
+   - publicação de comunicado;
+   - abertura e acompanhamento de ocorrência.
+7. Uma proposta de componentes reutilizáveis para manter consistência visual entre as telas.
+8. Diretrizes de responsividade para desktop e mobile.
+9. Sugestões de organização visual para que o mockup pareça um sistema real, moderno e funcional.
+10. Uma ordem recomendada para criar os mockups, começando pelas telas mais estratégicas.
+
+FORMATO ESPERADO DA RESPOSTA
+- Organize a resposta em seções claras.
+- Seja prático e focado em design de telas.
+- Quando necessário, proponha agrupamento de funcionalidades em uma mesma tela para evitar excesso de páginas.
+- Priorize clareza, usabilidade e coerência entre perfis.
+- Se fizer suposições, deixe isso explícito.
+
+SE QUISER IR ALÉM
+- Sugira uma estrutura de menu lateral e navegação superior.
+- Sugira quais telas merecem versão desktop detalhada e quais precisam também de variação mobile.
+- Sugira uma hierarquia visual para dashboards, listagens, formulários e telas de detalhe.

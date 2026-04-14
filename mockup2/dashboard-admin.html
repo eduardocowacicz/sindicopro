@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Dashboard Administrativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Painel administrativo com leitura consolidada do condomínio</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Abril 2026</span>
+          <a class="button-alt" href="operacao.html">Ir para o hub</a>
+          <button class="button js-demo" data-message="Pré-fechamento iniciado no mockup.">Iniciar fechamento</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill active" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Dashboard do síndico e da gestão</p>
+        <h1 class="section-heading">Uma leitura ampla do condomínio, com foco em caixa, atendimento, comunicação e rotinas que não podem atrasar.</h1>
+        <div class="tag-row">
+          <span class="state ok">112 recebimentos processados</span>
+          <span class="state warn">14 unidades em atraso</span>
+          <span class="state info">7 reservas ativas</span>
+          <span class="state alert">3 reaberturas no histórico</span>
+        </div>
+      </section>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Financeiro</span>
+          <h3>Saldo principal</h3>
+          <span class="big-number">R$ 218,4 mil</span>
+          <p>Fluxo de caixa do condomínio com leitura rápida da conta principal.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Cadastros</span>
+          <h3>Unidades com acesso</h3>
+          <span class="big-number">144</span>
+          <p>Apartamentos vinculados a moradores, proprietários e usuários de acesso.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Operação</span>
+          <h3>Ocorrências abertas</h3>
+          <span class="big-number">11</span>
+          <p>Casos em andamento com anexos e atualização de status pela administração.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Comunicação</span>
+          <h3>Comunicados ativos</h3>
+          <span class="big-number">4</span>
+          <p>Dois gerais e dois segmentados por bloco, todos com histórico permanente.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Fila do dia</p>
+              <h2>O que precisa de ação agora</h2>
+            </div>
+            <a class="button-alt" href="operacao.html">Ver fluxo completo</a>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Publicar fechamento mensal</strong><div class="muted">Período já consolidado e bloqueado para edição retroativa.</div></div><span class="state warn">Pendente</span></div>
+            <div class="queue-item"><div><strong>Cancelar reserva fora da regra</strong><div class="muted">Solicitação feita com menos de 48h e sem permissão especial.</div></div><span class="state alert">Intervenção</span></div>
+            <div class="queue-item"><div><strong>Responder ocorrência do Bloco D</strong><div class="muted">Administração deve atualizar o status e anexar retorno.</div></div><span class="state info">Hoje</span></div>
+            <div class="queue-item"><div><strong>Revisar comunicado segmentado</strong><div class="muted">Envio programado por e-mail para os blocos F a I.</div></div><span class="state ok">Rascunho pronto</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Saúde do sistema</p>
+              <h2>Resumo por área</h2>
+            </div>
+            <span class="tag">MVP revisado</span>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Prédios ativos</span><strong>9 blocos</strong></div>
+            <div class="summary-line"><span>Logins com perfis combinados</span><strong>28 usuários</strong></div>
+            <div class="summary-line"><span>Último fechamento anual</span><strong>2025 publicado</strong></div>
+            <div class="summary-line"><span>Salões disponíveis no sistema</span><strong>2 ambientes</strong></div>
+            <div class="summary-line"><span>Anexos no mês</span><strong>63 arquivos</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Mapa funcional</p>
+              <h2>Atalhos estratégicos</h2>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="soft-panel">
+              <strong>Cadastros</strong>
+              <p>Prédios, apartamentos, pessoas, vínculos, observações e veículos.</p>
+              <a class="button-alt" href="cadastros.html">Abrir módulo</a>
+            </article>
+            <article class="soft-panel">
+              <strong>Acessos</strong>
+              <p>Usuários, perfis cumulativos, permissões simples e logs sensíveis.</p>
+              <a class="button-alt" href="acessos.html">Abrir módulo</a>
+            </article>
+            <article class="soft-panel">
+              <strong>Financeiro</strong>
+              <p>Contas, categorias, cobranças, inadimplência e ajustes com log.</p>
+              <a class="button-alt" href="financeiro.html">Abrir módulo</a>
+            </article>
+            <article class="soft-panel">
+              <strong>Fechamentos</strong>
+              <p>Mensal, anual, exportação, reabertura e arquivamento de versões.</p>
+              <a class="button-alt" href="fechamentos.html">Abrir módulo</a>
+            </article>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Leitura consolidada</p>
+              <h2>Publicações e cobrança</h2>
+            </div>
+          </div>
+          <div class="list">
+            <div class="row-item"><span>Receitas do mês</span><strong>R$ 53.000,00</strong></div>
+            <div class="row-item"><span>Despesas do mês</span><strong>R$ 44.000,00</strong></div>
+            <div class="row-item"><span>Saldo após fechamento</span><strong>R$ 9.000,00</strong></div>
+            <div class="row-item"><span>Comunicados publicados</span><strong>18 históricos</strong></div>
+            <div class="row-item"><span>Ocorrências concluídas</span><strong>29 atendimentos</strong></div>
+          </div>
+          <div class="action-row" style="margin-top: 16px;">
+            <a class="button-alt" href="comunicados.html">Ir para comunicados</a>
+            <a class="button" href="ocorrencias.html">Ir para ocorrências</a>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

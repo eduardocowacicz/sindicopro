@@ -1,0 +1,126 @@
+LEVANTAMENTO SIMPLIFICADO DE ROI E CUSTO DE INFRAESTRUTURA
+Projeto: Sistema de Gestao Condominial
+Data: 14/04/2026
+
+=====================================================================
+1. OBJETIVO
+=====================================================================
+
+Este documento apresenta uma estimativa simples de custo para manter o
+sistema em funcionamento.
+
+Importante:
+- Este projeto esta sendo tratado como projeto de faculdade.
+- Nao ha cobranca de horas de desenvolvimento.
+- O foco do custo fica apenas na infraestrutura e servicos basicos.
+
+=====================================================================
+2. CENARIO CONSIDERADO
+=====================================================================
+
+O sistema foi pensado para um condominio com:
+
+- 9 predios
+- 144 apartamentos
+- 2 saloes de festas
+
+Como esse volume de uso nao e alto, a estimativa e que um servidor basico
+ja consiga atender bem o sistema no MVP.
+
+Inferencia:
+- para esse tipo de sistema, sem processamento pesado e com uso comum de
+  painel administrativo, consultas, reservas e comunicados, um servidor
+  pequeno com 2 GB de memoria ja tende a ser suficiente para um primeiro uso.
+
+=====================================================================
+3. ESTIMATIVA DE CUSTO MENSAL DO SERVIDOR
+=====================================================================
+
+Exemplos de servidores basicos encontrados em provedores cloud:
+
+- plano pequeno:
+  - 1 GB de memoria
+  - custo aproximado: US$ 6 a US$ 7 por mes
+  - valor aproximado em real: R$ 30 a R$ 35 por mes
+
+- plano recomendado para o projeto:
+  - 2 GB de memoria
+  - custo aproximado: US$ 12 por mes
+  - valor aproximado em real: R$ 60 por mes
+
+- plano com mais folga:
+  - 4 GB de memoria
+  - custo aproximado: US$ 24 por mes
+  - valor aproximado em real: R$ 120 por mes
+
+Para este projeto, o plano mais coerente e:
+
+- SERVIDOR RECOMENDADO: cerca de R$ 60 a R$ 70 por mes
+
+=====================================================================
+4. OUTROS CUSTOS BASICOS POSSIVEIS
+=====================================================================
+
+Além do servidor, pode ser considerado:
+
+- backup automatico:
+  - aproximadamente R$ 10 a R$ 15 por mes
+
+- envio de e-mails do sistema:
+  - custo baixo para pouco volume
+  - estimativa simples: R$ 5 a R$ 15 por mes
+
+Estimativa mensal total de infraestrutura:
+
+- servidor: R$ 60 a R$ 70
+- backup: R$ 10 a R$ 15
+- e-mail: R$ 5 a R$ 15
+
+TOTAL MENSAL ESTIMADO:
+- aproximadamente R$ 75 a R$ 100 por mes
+
+=====================================================================
+5. LEITURA SIMPLIFICADA DE ROI
+=====================================================================
+
+Como nao existe cobranca de desenvolvimento neste trabalho, o principal custo
+financeiro do projeto seria a manutencao mensal da infraestrutura.
+
+Assim, o ROI pode ser apresentado de forma simples:
+
+- o custo mensal para manter o sistema e relativamente baixo
+- o sistema pode ajudar a organizar cadastros, cobrancas, reservas,
+  comunicados e ocorrencias
+- isso reduz retrabalho e melhora a organizacao da gestao do condominio
+
+Em resumo:
+
+- para um projeto academico, o investimento financeiro direto e baixo
+- o maior custo previsto e apenas a infraestrutura mensal
+- o valor estimado para manter o sistema no ar fica em torno de
+  R$ 75 a R$ 100 por mes
+
+=====================================================================
+6. CONCLUSAO
+=====================================================================
+
+De forma simplificada, o projeto apresenta um custo de manutencao acessivel
+para o tipo de sistema proposto.
+
+Se fosse implantado em um cenario real, um servidor basico ja seria
+suficiente para comecar, com possibilidade de aumento futuro apenas se o
+numero de acessos crescesse.
+
+=====================================================================
+7. REFERENCIA DOS VALORES
+=====================================================================
+
+Valores consultados em 14/04/2026:
+
+- DigitalOcean Droplets Pricing
+- Amazon Lightsail Pricing
+- Amazon SES Pricing
+- Conversao aproximada USD para BRL usando cotacao em torno de 1 USD = 5,00 BRL
+
+Observacao:
+- os valores sao aproximados e servem apenas como exemplo academico.

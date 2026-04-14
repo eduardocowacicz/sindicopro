@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Reservas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/reservas</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Reservas</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link active" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Reservas</h1>
+            <div class="page-subtitle">Agenda dos salões, bloqueios administrativos e confirmação por horário</div>
+          </div>
+          <div class="toolbar">
+            <span class="soft-tag">Antecedência mínima: 48h</span>
+            <span class="soft-tag">Cancelamento até 24h</span>
+            <button class="primary-button js-demo" data-message="Nova reserva criada no mockup.">Nova reserva</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-3">
+            <article class="metric-card">
+              <div>
+                <h3>Salão 1</h3>
+                <span class="metric-value">R$ 180</span>
+                <div class="metric-note">Taxa configurada</div>
+              </div>
+              <div class="metric-icon metric-primary">1</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Salão 2</h3>
+                <span class="metric-value">R$ 140</span>
+                <div class="metric-note">Taxa configurada</div>
+              </div>
+              <div class="metric-icon metric-success">2</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Reservas Hoje</h3>
+                <span class="metric-value">3</span>
+                <div class="metric-note">1 bloqueio ativo</div>
+              </div>
+              <div class="metric-icon metric-warning">🗓</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Agenda da Semana</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Sex · 18/04 · Noite</strong>
+                    <div class="small">Salão 1 reservado pela unidade B-302</div>
+                  </div>
+                  <span class="status-pill status-success">Confirmado</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Sáb · 19/04 · Manhã</strong>
+                    <div class="small">Salão 2 disponível para reserva</div>
+                  </div>
+                  <span class="status-pill status-primary">Livre</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Dom · 20/04 · Noite</strong>
+                    <div class="small">Salão 2 reservado pela unidade G-201</div>
+                  </div>
+                  <span class="status-pill status-success">Confirmado</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Bloqueios e Exceções</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>21/04 · Salão 2</strong>
+                    <div class="small">Bloqueio para manutenção</div>
+                  </div>
+                  <span class="status-pill status-warning">Bloqueado</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>01/05 · Ambos os salões</strong>
+                    <div class="small">Evento interno do condomínio</div>
+                  </div>
+                  <span class="status-pill status-primary">Uso da gestão</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Unidade E-108</strong>
+                    <div class="small">Tentativa com menos de 48 horas</div>
+                  </div>
+                  <span class="status-pill status-danger">Não permitido</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Configurações da Reserva</h2>
+              </div>
+              <div class="record-row"><span>Faixas padrão</span><span class="soft-tag">Manhã e noite</span></div>
+              <div class="record-row"><span>Aprovação</span><span class="soft-tag">Automática</span></div>
+              <div class="record-row"><span>Limite mensal por apartamento</span><span class="soft-tag">Não existe</span></div>
+              <div class="record-row"><span>Administração pode reservar abaixo de 48h</span><span class="soft-tag">Sim</span></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Regras por Usuário</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Morador adimplente</strong>
+                    <div class="small">Reserva liberada com antecedência mínima.</div>
+                  </div>
+                  <span class="status-pill status-success">Padrão</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Morador inadimplente</strong>
+                    <div class="small">Bloqueio configurável pela administração.</div>
+                  </div>
+                  <span class="status-pill status-danger">Config.</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Proprietário não residente</strong>
+                    <div class="small">Reserva desabilitada por padrão, mas ajustável por usuário.</div>
+                  </div>
+                  <span class="status-pill status-warning">Especial</span>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

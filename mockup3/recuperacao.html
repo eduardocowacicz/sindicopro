@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Recuperação de Acesso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-visual">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <h1>Recuperação de acesso pensada para ser rápida e segura.</h1>
+      <p>
+        Esta tela representa o fluxo separado de recuperação por e-mail, com mensagens de sucesso,
+        orientação ao usuário e reforço visual de segurança.
+      </p>
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <strong>Fluxo por e-mail</strong>
+          <p>Envio de link de redefinição para o endereço cadastrado do usuário.</p>
+        </article>
+        <article class="highlight-card">
+          <strong>Feedback de status</strong>
+          <p>Mensagens claras para sucesso, e-mail não encontrado e link expirado.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="section-label">Recuperação de senha</div>
+        <h2 class="page-title" style="margin: 8px 0 6px;">Redefinir acesso</h2>
+        <p class="page-subtitle" style="margin-bottom: 18px;">Informe o e-mail usado no sistema para receber o link de recuperação.</p>
+
+        <div class="field" style="margin-bottom: 14px;">
+          <label>E-mail cadastrado</label>
+          <input type="email" value="usuario@condominio.com.br">
+        </div>
+
+        <div class="info-banner" style="margin-bottom: 14px;">
+          <div>
+            <strong>Mensagem de sucesso</strong>
+            <div class="small">Se o e-mail existir na base, um link será enviado em instantes.</div>
+          </div>
+          <span class="status-pill status-success">Simulação</span>
+        </div>
+
+        <div class="action-row">
+          <button class="primary-button js-demo" data-message="Link de redefinição enviado no mockup.">Enviar link</button>
+          <a class="secondary-button" href="index.html">Voltar ao login</a>
+        </div>
+
+        <div class="panel" style="margin-top: 20px;">
+          <div class="card-title">Estados desta tela</div>
+          <div class="stack-list" style="margin-top: 10px;">
+            <div class="stack-item">
+              <div>
+                <strong>E-mail enviado</strong>
+                <div class="small">Confirmação discreta para não expor dados sensíveis.</div>
+              </div>
+              <span class="status-pill status-success">Sucesso</span>
+            </div>
+            <div class="stack-item">
+              <div>
+                <strong>Link expirado</strong>
+                <div class="small">Reenvio rápido sem sair do fluxo.</div>
+              </div>
+              <span class="status-pill status-warning">Reenviar</span>
+            </div>
+            <div class="stack-item">
+              <div>
+                <strong>Sessão expirada</strong>
+                <div class="small">Orientação para novo login e recuperação, se necessário.</div>
+              </div>
+              <span class="status-pill status-primary">Segurança</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

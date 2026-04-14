@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 1 - Dashboard Administrativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <button class="ghost-button mobile-toggle">Abrir menu</button>
+      <div class="brand">
+        <span class="brand-mark">CA</span>
+        <div>
+          <strong>Condomínio Atlas</strong>
+          <span>Painel administrativo</span>
+        </div>
+      </div>
+      <nav class="nav-group">
+        <a class="nav-link active" href="dashboard-admin.html"><span>Dashboard administrativo</span><span class="nav-tag">Hoje</span></a>
+        <a class="nav-link" href="dashboard-morador.html"><span>Dashboard do morador</span><span class="nav-tag">Perfil</span></a>
+        <a class="nav-link" href="cadastros.html"><span>Cadastros e permissões</span><span class="nav-tag">Base</span></a>
+        <a class="nav-link" href="financeiro.html"><span>Financeiro e fechamento</span><span class="nav-tag">Core</span></a>
+        <a class="nav-link" href="reservas.html"><span>Reservas de ambientes</span><span class="nav-tag">2 salões</span></a>
+        <a class="nav-link" href="operacao.html"><span>Comunicados e ocorrências</span><span class="nav-tag">Fluxo</span></a>
+      </nav>
+      <div class="sidebar-card">
+        <p class="eyebrow">Leitura rápida</p>
+        <strong>Fechamento de abril</strong>
+        <p class="muted">78% das despesas já lançadas e 14 apartamentos inadimplentes.</p>
+      </div>
+    </aside>
+
+    <main class="main-panel">
+      <div class="topbar">
+        <div>
+          <p class="eyebrow">Visão geral</p>
+          <h1 class="section-title">Bom dia, síndico Emerson</h1>
+          <p class="muted">Painel pensado para leitura de operação, pendências e atalhos de decisão.</p>
+        </div>
+        <div class="top-actions">
+          <div class="search-pill">Buscar apartamento, morador, ocorrência ou lançamento</div>
+          <button class="ghost-button js-demo" data-message="Novo comunicado aberto no mockup.">Novo comunicado</button>
+          <a class="button" href="financeiro.html">Fechar mês</a>
+        </div>
+      </div>
+
+      <section class="hero-grid">
+        <article class="hero-card">
+          <p class="eyebrow">Resumo do período</p>
+          <h2 class="section-title">Abril com operação concentrada em fechamento, inadimplência e reservas.</h2>
+          <div class="chips">
+            <span class="status-pill status-success">112 pagamentos conciliados</span>
+            <span class="status-pill status-warn">14 apartamentos em atraso</span>
+            <span class="status-pill status-info">7 reservas confirmadas</span>
+          </div>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Próxima ação</p>
+          <h3>Checklist do síndico</h3>
+          <div class="list">
+            <div class="list-item"><span>Revisar bloqueio do salão 2 no feriado</span><span class="status-pill status-info">Hoje</span></div>
+            <div class="list-item"><span>Publicar fechamento preliminar</span><span class="status-pill status-warn">Pendente</span></div>
+            <div class="list-item"><span>Responder ocorrência do bloco D</span><span class="status-pill status-danger">Prioridade interna</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="stats-grid" style="margin-top: 18px;">
+        <article class="metric">
+          <span class="eyebrow">Receitas</span>
+          <h3>Recebido no mês</h3>
+          <span class="metric-value">R$ 124,8 mil</span>
+          <p>Comparativo de +6% em relação ao fechamento anterior.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Despesas</span>
+          <h3>Lançado até agora</h3>
+          <span class="metric-value">R$ 97,2 mil</span>
+          <p>Inclui manutenção, consumo e custos administrativos.</p>
+        </article>
+        <article class="metric">
+          <span class="eyebrow">Atendimento</span>
+          <h3>Ocorrências abertas</h3>
+          <span class="metric-value">11</span>
+          <p>4 aguardando retorno e 2 com anexo pendente de análise.</p>
+        </article>
+      </section>
+
+      <section class="columns-2" style="margin-top: 18px;">
+        <article class="table-card">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Pendências financeiras</p>
+              <h3>Inadimplência por prédio</h3>
+            </div>
+            <a class="ghost-button" href="financeiro.html">Abrir financeiro</a>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Bloco</th><th>Em aberto</th><th>Unidades</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bloco A</td><td>R$ 8.420</td><td>4</td><td><span class="status-pill status-warn">Acompanhar</span></td></tr>
+              <tr><td>Bloco D</td><td>R$ 12.150</td><td>5</td><td><span class="status-pill status-danger">Crítico</span></td></tr>
+              <tr><td>Bloco F</td><td>R$ 3.870</td><td>2</td><td><span class="status-pill status-info">Controlado</span></td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="card">
+          <p class="eyebrow">Fluxo operacional</p>
+          <h3>Agenda da administração</h3>
+          <div class="list">
+            <div class="timeline-item"><span>09:00 · Revisão de lançamentos do fechamento</span><span>Financeiro</span></div>
+            <div class="timeline-item"><span>11:30 · Validação de cadastro do bloco H</span><span>Cadastros</span></div>
+            <div class="timeline-item"><span>15:00 · Publicar comunicado de manutenção</span><span>Comunicados</span></div>
+            <div class="timeline-item"><span>18:00 · Encerrar reserva do salão 1</span><span>Reservas</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

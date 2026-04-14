@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/financeiro</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+          <button class="mini-button">Preview</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Financeiro</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link active" href="#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Financeiro</h1>
+            <div class="page-subtitle">Lançamentos, contas, categorias, cobrança, recebimento, inadimplência e fechamento</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Novo lançamento iniciado no mockup.">Novo lançamento</button>
+            <button class="secondary-button js-demo" data-message="Histórico de reabertura exibido no mockup.">Ver histórico</button>
+            <button class="primary-button js-demo" data-message="Pré-fechamento gerado no mockup.">Gerar pré-fechamento</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-4">
+            <article class="metric-card">
+              <div>
+                <h3>Saldo Atual</h3>
+                <span class="metric-value">R$ 218.400</span>
+                <div class="metric-note">Conta principal</div>
+              </div>
+              <div class="metric-icon metric-primary">$</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Lançamentos</h3>
+                <span class="metric-value">84</span>
+                <div class="metric-note">Abril/2026</div>
+              </div>
+              <div class="metric-icon metric-success">▤</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Débitos Gerados</h3>
+                <span class="metric-value">144</span>
+                <div class="metric-note">Morador + proprietário</div>
+              </div>
+              <div class="metric-icon metric-warning">☰</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Inadimplência</h3>
+                <span class="metric-value">14</span>
+                <div class="metric-note">Unidades em atraso</div>
+              </div>
+              <div class="metric-icon metric-danger">△</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel" id="lancamentos">
+              <div class="panel-title-row">
+                <h2 class="card-title">Lançamentos Recentes</h2>
+                <span class="soft-tag">Conta principal · Abril/2026</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Data</th><th>Categoria</th><th>Tipo</th><th>Valor</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>03/04</td><td>Energia</td><td>Despesa</td><td>R$ 12.440</td></tr>
+                    <tr><td>05/04</td><td>Condomínio</td><td>Receita</td><td>R$ 37.280</td></tr>
+                    <tr><td>09/04</td><td>Manutenção</td><td>Despesa</td><td>R$ 8.970</td></tr>
+                    <tr><td>11/04</td><td>Água</td><td>Despesa</td><td>R$ 6.680</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel" id="cota">
+              <div class="panel-title-row">
+                <h2 class="card-title">Composição da Cota</h2>
+              </div>
+              <div class="summary-row"><span>Total de despesas do mês</span><strong>R$ 97.200</strong></div>
+              <div class="summary-row"><span>Direcionado ao morador</span><strong>R$ 76.510</strong></div>
+              <div class="summary-row"><span>Direcionado ao proprietário</span><strong>R$ 20.690</strong></div>
+              <div class="summary-row"><span>Unidades isentas</span><strong>3</strong></div>
+              <div class="action-row" style="margin-top: 12px;">
+                <button class="secondary-button js-demo" data-message="Fechamento reaberto no mockup com registro de motivo.">Reabrir fechamento</button>
+                <button class="primary-button js-demo" data-message="Fechamento publicado no mockup.">Publicar fechamento</button>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel section-anchor" id="contas">
+              <div class="panel-title-row">
+                <h2 class="card-title">Contas e Categorias</h2>
+              </div>
+              <div class="record-row"><span>Conta principal</span><span class="soft-tag">Ativa</span></div>
+              <div class="record-row"><span>Conta reserva</span><span class="soft-tag">Inativa</span></div>
+              <div class="record-row"><span>Categorias abertas</span><span class="soft-tag">Água, energia, salários, manutenção, fundo</span></div>
+              <div class="record-row"><span>Extrato por conta</span><span class="soft-tag">PDF + Excel</span></div>
+            </article>
+
+            <article class="panel section-anchor" id="valores">
+              <div class="panel-title-row">
+                <h2 class="card-title">Valores Fixos e Gastos Variáveis</h2>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Item</th><th>Tipo</th><th>Responsável</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Fundo interno</td><td>Fixo mensal</td><td>Morador</td><td><span class="status-pill status-success">Ativo</span></td></tr>
+                    <tr><td>Chamada de capital</td><td>Eventual</td><td>Proprietário</td><td><span class="status-pill status-primary">Configurado</span></td></tr>
+                    <tr><td>Manutenção emergencial</td><td>Variável</td><td>Rateio do período</td><td><span class="status-pill status-warning">Aberto</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel" id="inadimplencia">
+              <div class="panel-title-row">
+                <h2 class="card-title">Inadimplência</h2>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Unidade</th><th>Responsável</th><th>Em aberto</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>D-104</td><td>Morador</td><td>R$ 1.784</td><td><span class="status-pill status-danger">Atrasado</span></td></tr>
+                    <tr><td>F-203</td><td>Proprietário</td><td>R$ 2.940</td><td><span class="status-pill status-warning">Negociação</span></td></tr>
+                    <tr><td>B-302</td><td>Morador</td><td>R$ 0</td><td><span class="status-pill status-success">Em dia</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel" id="mensal">
+              <div class="panel-title-row">
+                <h2 class="card-title">Resumo Financeiro — Mar/2026</h2>
+              </div>
+              <div class="summary-row"><span>Total Receitas</span><span class="summary-value-positive">R$ 53.000,00</span></div>
+              <div class="summary-row"><span>Total Despesas</span><span class="summary-value-negative">R$ 44.000,00</span></div>
+              <div class="summary-row"><span>Saldo</span><span class="summary-value-neutral">R$ 9.000,00</span></div>
+              <div class="chip-row" id="anual" style="margin-top: 12px;">
+                <span class="soft-tag">Exportar PDF</span>
+                <span class="soft-tag">Exportar Excel</span>
+                <span class="soft-tag">Versão anterior arquivada</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Recebimentos e Ajustes</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Recebimento manual</strong>
+                    <div class="small">Baixa manual permitida quando não houver retorno bancário.</div>
+                  </div>
+                  <span class="status-pill status-success">Disponível</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Estorno ou correção</strong>
+                    <div class="small">Sempre com trilha de log e usuário responsável.</div>
+                  </div>
+                  <span class="status-pill status-primary">Auditável</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Pagamento em duplicidade</strong>
+                    <div class="small">Registrar crédito ou devolução conforme decisão administrativa.</div>
+                  </div>
+                  <span class="status-pill status-warning">Tratável</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Acordos e Alertas</h2>
+              </div>
+              <div class="record-row"><span>Pagamento parcial</span><span class="soft-tag">Somente com acordo registrado</span></div>
+              <div class="record-row"><span>Aviso de atraso</span><span class="soft-tag">Ativo por unidade</span></div>
+              <div class="record-row"><span>Anexos em lançamentos</span><span class="soft-tag">Imagem ou PDF</span></div>
+              <div class="record-row"><span>CNAB / retorno bancário</span><span class="soft-tag">Desejável, não obrigatório</span></div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Cadastros</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin/cadastros</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+          <button class="icon-button">↻</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Gestão Condominial</div>
+          </div>
+        </div>
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link active" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Cadastros</h1>
+            <div class="page-subtitle">Prédios, apartamentos, moradores, veículos e permissões</div>
+          </div>
+          <div class="toolbar">
+            <button class="secondary-button js-demo" data-message="Novo prédio iniciado no mockup.">Novo prédio</button>
+            <button class="secondary-button js-demo" data-message="Novo morador iniciado no mockup.">Novo morador</button>
+            <button class="primary-button js-demo" data-message="Permissões atualizadas no mockup.">Salvar alterações</button>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-3">
+            <article class="metric-card">
+              <div>
+                <h3>Prédios</h3>
+                <span class="metric-value">9</span>
+                <div class="metric-note">Todos ativos</div>
+              </div>
+              <div class="metric-icon metric-primary">▣</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Apartamentos</h3>
+                <span class="metric-value">144</span>
+                <div class="metric-note">Com observações por unidade</div>
+              </div>
+              <div class="metric-icon metric-success">⌂</div>
+            </article>
+            <article class="metric-card">
+              <div>
+                <h3>Usuários com acesso</h3>
+                <span class="metric-value">312</span>
+                <div class="metric-note">Perfis e permissões configuráveis</div>
+              </div>
+              <div class="metric-icon metric-warning">⚿</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel" id="apartamentos">
+              <div class="panel-title-row">
+                <h2 class="card-title">Estrutura do Condomínio</h2>
+                <span class="soft-tag">Blocos, unidades e observações</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Bloco</th><th>Unidades</th><th>Observação</th><th>Status</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Bloco A</td><td>16</td><td>Acesso principal reformado</td><td><span class="status-pill status-success">Ativo</span></td></tr>
+                    <tr><td>Bloco B</td><td>16</td><td>Unidade 302 com proprietário remoto</td><td><span class="status-pill status-success">Ativo</span></td></tr>
+                    <tr><td>Bloco D</td><td>16</td><td>1 unidade em manutenção interna</td><td><span class="status-pill status-warning">Acompanhar</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel" id="moradores">
+              <div class="panel-title-row">
+                <h2 class="card-title">Cadastro da Unidade B-302</h2>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Observações</label>
+                <textarea>Unidade com duas vagas, pet cadastrado e proprietário não residente com acesso liberado para consulta de cobranças e avisos.</textarea>
+              </div>
+              <div class="field" style="margin-bottom: 12px;">
+                <label>Responsável principal</label>
+                <input value="Marina Costa">
+              </div>
+              <div class="field" id="veiculos" style="margin-bottom: 12px;">
+                <label>Veículos vinculados</label>
+                <input value="ABC-1234 · DEF-5678">
+              </div>
+              <div class="chip-row">
+                <span class="soft-tag">Morador</span>
+                <span class="soft-tag">Proprietário</span>
+                <span class="soft-tag">2 veículos</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="panel" id="permissoes" style="margin-top: 16px;">
+            <div class="panel-title-row">
+              <h2 class="card-title">Usuários e Permissões</h2>
+              <span class="soft-tag">Tela simples e rápida para configuração</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Perfil</th><th>Dashboard</th><th>Financeiro</th><th>Reservas</th><th>Comunicados</th><th>Ocorrências</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Síndico</td><td>Total</td><td>Total</td><td>Total</td><td>Total</td><td>Total</td></tr>
+                  <tr><td>Subsíndico</td><td>Total</td><td>Amplo</td><td>Amplo</td><td>Amplo</td><td>Amplo</td></tr>
+                  <tr><td>Conselho</td><td>Consulta</td><td>Consulta</td><td>Consulta</td><td>Consulta</td><td>Consulta</td></tr>
+                  <tr><td>Morador</td><td>Unidade</td><td>Própria cota</td><td>Operacional</td><td>Leitura</td><td>Operacional</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel section-anchor" id="vinculos">
+              <div class="panel-title-row">
+                <h2 class="card-title">Pessoa, Vínculo e Usuário</h2>
+              </div>
+              <div class="record-row"><span>Pessoa</span><span class="soft-tag">Marina Costa</span></div>
+              <div class="record-row"><span>Vínculo com unidade</span><span class="soft-tag">Moradora · B-302</span></div>
+              <div class="record-row"><span>Usuário de acesso</span><span class="soft-tag">Login ativo por e-mail</span></div>
+              <div class="record-row"><span>Outro vínculo</span><span class="soft-tag">Pode acumular perfis</span></div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Inativação com Histórico</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>João Ferraz</strong>
+                    <div class="small">Morador anterior da unidade A-201 · histórico preservado.</div>
+                  </div>
+                  <span class="status-pill status-warning">Inativado</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Luciana Reis</strong>
+                    <div class="small">Proprietária mantém acesso às cobranças da unidade.</div>
+                  </div>
+                  <span class="status-pill status-primary">Acesso remoto</span>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

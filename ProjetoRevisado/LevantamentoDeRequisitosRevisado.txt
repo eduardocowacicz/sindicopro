@@ -1,0 +1,206 @@
+LEVANTAMENTO DE REQUISITOS REVISADO - SISTEMA DE GESTÃO CONDOMINIAL
+Projeto: Condomínio
+Data: 14/04/2026
+
+=====================================================================
+REQUISITOS FUNCIONAIS
+=====================================================================
+
+---------------------------------------------------------------------
+RF01 - CADASTROS CONDOMINIAIS
+---------------------------------------------------------------------
+RF01.1 O sistema deve permitir cadastrar, editar e inativar prédios/blocos.
+RF01.2 O sistema deve permitir cadastrar, editar e inativar apartamentos vinculados a um prédio/bloco.
+RF01.3 O sistema deve permitir cadastrar pessoas vinculadas a uma unidade, incluindo moradores e proprietários.
+RF01.4 Um apartamento pode possuir mais de um morador vinculado.
+RF01.5 Ao se mudar, o morador deve ser inativado para preservação de histórico.
+RF01.6 O sistema deve separar os conceitos de pessoa, vínculo com apartamento e usuário de acesso.
+RF01.7 O sistema deve permitir observações em texto livre por bloco e por apartamento.
+RF01.8 O sistema deve permitir cadastrar múltiplos veículos por apartamento.
+
+---------------------------------------------------------------------
+RF02 - USUÁRIOS, PERFIS E PERMISSÕES
+---------------------------------------------------------------------
+RF02.1 O sistema deve registrar usuários com autenticação por e-mail e senha.
+RF02.2 Todo morador cadastrado pode ter login no sistema.
+RF02.3 O sistema deve permitir acesso ao proprietário não residente.
+RF02.4 Um mesmo usuário pode acumular múltiplos perfis.
+RF02.5 As permissões devem ser cumulativas quando o usuário possuir mais de um perfil.
+RF02.6 O síndico deve possuir acesso total ao sistema.
+RF02.7 O subsíndico deve possuir acesso administrativo compatível com as rotinas de gestão do condomínio.
+RF02.8 O conselho deve ter acesso apenas para consulta.
+RF02.9 O sistema deve permitir configurar permissões por perfil e por usuário em tela simples.
+RF02.10 O morador não deve editar os próprios dados cadastrais.
+RF02.11 O sistema deve permitir regras específicas por usuário, como liberação ou bloqueio de reserva.
+RF02.12 O sistema deve registrar log de acessos e ações sensíveis.
+RF02.13 O sistema deve oferecer recuperação de senha por e-mail.
+
+---------------------------------------------------------------------
+RF03 - FINANCEIRO
+---------------------------------------------------------------------
+RF03.1 O sistema deve permitir cadastrar, editar e inativar contas bancárias do condomínio.
+RF03.2 O sistema deve permitir cadastrar categorias financeiras de entrada e saída.
+RF03.3 O cadastro de categorias deve ser aberto, permitindo criar novas categorias conforme a necessidade.
+RF03.4 O sistema deve registrar movimentações financeiras vinculadas a conta e categoria.
+RF03.5 O sistema deve controlar receitas, despesas, saldos e extratos por conta.
+RF03.6 O sistema deve permitir cadastrar valores fixos mensais e gastos variáveis.
+RF03.7 O sistema deve suportar tipos de cobrança distintos para morador e proprietário.
+RF03.8 O sistema deve permitir que determinados apartamentos sejam isentos em um tipo de cobrança.
+RF03.9 Quando houver isenção, o valor correspondente deve ser redistribuído entre os demais responsáveis pela cobrança.
+RF03.10 O fechamento financeiro deve gerar o valor total do período e depois compor o valor devido por apartamento.
+RF03.11 O sistema deve gerar débito para morador ou proprietário conforme o tipo de documento a ser pago.
+RF03.12 O sistema deve permitir registro manual de recebimento.
+RF03.13 O sistema deve controlar inadimplência com consultas e relatórios.
+RF03.14 O sistema deve permitir anexos em lançamentos financeiros.
+RF03.15 O sistema deve permitir estorno ou correção de lançamento com logs.
+RF03.16 Em caso de pagamento em duplicidade, o sistema deve permitir registrar crédito ou devolução.
+RF03.17 Pagamento parcial só deve ser registrado mediante acordo.
+RF03.18 O sistema deve emitir aviso de atraso de pagamento.
+RF03.19 Se houver viabilidade técnica, o sistema pode gerar arquivo CNAB/remessa para registro de boletos.
+RF03.20 Se houver viabilidade técnica, o sistema pode importar arquivo de retorno bancário para baixa.
+RF03.21 O morador deve visualizar apenas sua cota e os fechamentos publicados.
+RF03.22 O proprietário não residente deve visualizar suas cobranças e avisos vinculados à unidade.
+
+---------------------------------------------------------------------
+RF04 - FECHAMENTO MENSAL E ANUAL
+---------------------------------------------------------------------
+RF04.1 O fechamento mensal deve ser acionado manualmente.
+RF04.2 Após o fechamento, o período deve ser bloqueado contra alterações retroativas.
+RF04.3 O sistema deve gerar relatório de fechamento mensal com receitas, despesas, saldos e valores por apartamento.
+RF04.4 O sistema deve gerar relatório de fechamento anual consolidado.
+RF04.5 Os relatórios de fechamento devem ser exportáveis em PDF e Excel.
+RF04.6 O sistema deve permitir reabertura de fechamento por usuário autorizado.
+RF04.7 A reabertura deve registrar motivo, data, hora e usuário responsável.
+RF04.8 Antes da reabertura, a versão anterior do fechamento deve ser arquivada.
+RF04.9 Não deve existir limite de reabertura por período.
+RF04.10 O histórico de reaberturas deve ficar disponível para usuários autorizados.
+
+---------------------------------------------------------------------
+RF05 - RESERVA DE AMBIENTES
+---------------------------------------------------------------------
+RF05.1 O sistema deve permitir cadastrar ambientes para reserva.
+RF05.2 O MVP deve contemplar 2 salões de festas.
+RF05.3 Os 2 salões são independentes e podem ser reservados no mesmo dia por apartamentos diferentes.
+RF05.4 A reserva deve ser feita por faixa de horário.
+RF05.5 As faixas de horário devem ser configuráveis pela administração.
+RF05.6 Para o morador, a reserva deve exigir antecedência mínima de 48 horas.
+RF05.7 Reservas com menos de 48 horas devem ser feitas apenas pela administração.
+RF05.8 A aprovação da reserva deve ser automática.
+RF05.9 O síndico ou o subsíndico podem validar ou cancelar reservas.
+RF05.10 O morador pode cancelar a reserva até 24 horas antes.
+RF05.11 Não deve existir limite mensal de reservas por apartamento.
+RF05.12 O sistema deve permitir configurar taxa de reserva.
+RF05.13 A regra de bloqueio para morador inadimplente deve existir e ser configurável.
+RF05.14 A administração deve poder bloquear datas e horários.
+RF05.15 O proprietário não residente não pode reservar por padrão, mas essa regra deve ser configurável no usuário.
+
+---------------------------------------------------------------------
+RF06 - COMUNICADOS
+---------------------------------------------------------------------
+RF06.1 O síndico e o subsíndico devem poder publicar comunicados.
+RF06.2 O comunicado pode ser direcionado a todos os moradores ou segmentado por bloco/prédio.
+RF06.3 O envio do comunicado deve ocorrer por e-mail.
+RF06.4 O sistema deve manter histórico permanente dos comunicados publicados.
+RF06.5 O comunicado pode possuir anexos.
+RF06.6 O sistema não deve depender de WhatsApp para o escopo atual do projeto.
+
+---------------------------------------------------------------------
+RF07 - OCORRÊNCIAS
+---------------------------------------------------------------------
+RF07.1 O sistema deve permitir cadastro configurável de tipos de ocorrência.
+RF07.2 Moradores e administração devem poder registrar ocorrências.
+RF07.3 A administração deve poder registrar ocorrência interna.
+RF07.4 O cadastro de ocorrência deve exigir, no mínimo, motivo e observação.
+RF07.5 O vínculo com apartamento não é obrigatório no registro inicial.
+RF07.6 A administração pode vincular outro apartamento e adicionar comentário visível ao outro morador.
+RF07.7 O registro de ocorrência deve permitir anexos.
+RF07.8 Não deve haver classificação por prioridade no MVP.
+RF07.9 Não deve haver prazo formal de resposta no MVP.
+RF07.10 Apenas síndico e subsíndico podem responder e atualizar o status das ocorrências.
+
+=====================================================================
+REGRAS DE NEGÓCIO
+=====================================================================
+
+---------------------------------------------------------------------
+RN01 - ACESSO E HISTÓRICO
+---------------------------------------------------------------------
+RN01.1 Registros históricos não devem ser excluídos fisicamente; devem ser inativados ou arquivados.
+RN01.2 Um apartamento pode possuir vários logins, desde que vinculados a pessoas cadastradas.
+RN01.3 O proprietário não residente acessa o sistema para acompanhar cobranças e avisos.
+
+---------------------------------------------------------------------
+RN02 - FINANCEIRO
+---------------------------------------------------------------------
+RN02.1 O valor total do fechamento deve ser calculado antes da composição individual por apartamento.
+RN02.2 O tipo de cobrança deve definir se o valor será direcionado ao morador ou ao proprietário.
+RN02.3 Apartamentos isentos não participam da cobrança daquele item, e o valor remanescente deve ser redistribuído entre os demais responsáveis.
+RN02.4 Pagamento em duplicidade deve gerar crédito ou devolução, conforme decisão administrativa.
+RN02.5 Pagamento parcial só deve ser aceito quando houver acordo registrado.
+
+---------------------------------------------------------------------
+RN03 - FECHAMENTO
+---------------------------------------------------------------------
+RN03.1 O fechamento reaberto deve preservar a versão anterior para consulta histórica.
+RN03.2 O histórico de reabertura deve permanecer disponível a usuários com permissão.
+
+---------------------------------------------------------------------
+RN04 - RESERVAS
+---------------------------------------------------------------------
+RN04.1 As faixas de horário inicialmente previstas são manhã e noite.
+RN04.2 O síndico e o subsíndico podem intervir em reservas quando necessário.
+
+---------------------------------------------------------------------
+RN05 - COMUNICADOS E OCORRÊNCIAS
+---------------------------------------------------------------------
+RN05.1 O WhatsApp foi removido do escopo do projeto.
+RN05.2 Ocorrências internas seguem o mesmo fluxo operacional das demais ocorrências.
+
+=====================================================================
+REQUISITOS NÃO FUNCIONAIS
+=====================================================================
+
+---------------------------------------------------------------------
+RNF01 - USABILIDADE
+---------------------------------------------------------------------
+RNF01.1 O sistema deve ser responsivo e funcionar bem em celular, tablet e computador.
+RNF01.2 A interface deve ser simples e objetiva para usuários administrativos e moradores.
+RNF01.3 A tela de permissões deve ser otimizada para cadastro simples e rápido.
+
+---------------------------------------------------------------------
+RNF02 - SEGURANÇA
+---------------------------------------------------------------------
+RNF02.1 As senhas devem ser armazenadas com hash seguro.
+RNF02.2 O sistema deve usar HTTPS em produção.
+RNF02.3 Sessões inativas devem expirar automaticamente.
+RNF02.4 O acesso a anexos, logs e dados financeiros históricos deve ser restrito ao síndico e a usuários com permissão marcada.
+
+---------------------------------------------------------------------
+RNF03 - CONFIABILIDADE E AUDITORIA
+---------------------------------------------------------------------
+RNF03.1 O sistema deve manter logs de acesso e ações sensíveis por 5 anos.
+RNF03.2 O backup dos dados deve ocorrer ao menos uma vez por semana.
+RNF03.3 Fechamentos e movimentações relevantes devem manter trilha de auditoria.
+
+---------------------------------------------------------------------
+RNF04 - DOCUMENTOS E ANEXOS
+---------------------------------------------------------------------
+RNF04.1 O sistema deve aceitar imagens e PDF como anexos.
+RNF04.2 O tamanho máximo por arquivo deve ser de 5 MB.
+RNF04.3 A capacidade esperada de anexos no sistema é de 100 mil registros.
+
+---------------------------------------------------------------------
+RNF05 - RELATÓRIOS E COMPATIBILIDADE
+---------------------------------------------------------------------
+RNF05.1 Relatórios de fechamento e consultas financeiras devem permitir exportação em PDF e Excel.
+RNF05.2 O sistema deve funcionar nos principais navegadores modernos.
+
+=====================================================================
+FORA DO ESCOPO OU OPCIONAL
+=====================================================================
+
+- WhatsApp integrado ao sistema.
+- Aplicativo mobile nativo.
+- Contabilidade avançada.
+- Geração obrigatória de remessa CNAB.
+- Importação obrigatória de retorno bancário.

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 3 - Dashboard Administrativo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="global-topbar">
+      <div class="topbar-left">
+        <span class="brand-badge"></span>
+        <span class="project-name">Condo Connect</span>
+      </div>
+      <div class="topbar-center">
+        <div class="route-pill">/admin</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-actions">
+          <button class="icon-button sidebar-toggle">☰</button>
+          <button class="icon-button">⌂</button>
+          <button class="mini-button">Preview</button>
+          <button class="icon-button">↻</button>
+          <button class="icon-button">⋯</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <div class="logo-square">GC</div>
+          <div>
+            <strong>CondoGest</strong>
+            <div class="small">Gestão Condominial</div>
+          </div>
+        </div>
+
+        <div class="sidebar-body">
+          <div class="nav-group">
+            <div class="nav-group-title">Principal</div>
+            <a class="sidebar-link active" href="dashboard-admin.html"><span class="link-icon">◫</span><span>Dashboard</span></a>
+            <a class="sidebar-link" href="dashboard-morador.html"><span class="link-icon">⌂</span><span>Minha Unidade</span></a>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-title">Cadastros</div>
+            <a class="sidebar-link" href="cadastros.html"><span class="link-icon">▣</span><span>Prédios/Blocos</span></a>
+            <a class="sidebar-link" href="cadastros.html#apartamentos"><span class="link-icon">⌂</span><span>Apartamentos</span></a>
+            <a class="sidebar-link" href="cadastros.html#moradores"><span class="link-icon">☺</span><span>Moradores</span></a>
+            <a class="sidebar-link" href="cadastros.html#veiculos"><span class="link-icon">⟷</span><span>Veículos</span></a>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-title">Administração</div>
+            <a class="sidebar-link" href="acessos.html"><span class="link-icon">⚿</span><span>Usuários e Permissões</span></a>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-title">Financeiro</div>
+            <a class="sidebar-link" href="financeiro.html#lancamentos"><span class="link-icon">$</span><span>Lançamentos</span></a>
+            <a class="sidebar-link" href="financeiro.html#contas"><span class="link-icon">▤</span><span>Contas e Categorias</span></a>
+            <a class="sidebar-link" href="financeiro.html#inadimplencia"><span class="link-icon">△</span><span>Inadimplência</span></a>
+            <a class="sidebar-link" href="financeiro.html#cota"><span class="link-icon">☰</span><span>Composição da Cota</span></a>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-title">Fechamento</div>
+            <a class="sidebar-link" href="fechamentos.html#mensal"><span class="link-icon">◷</span><span>Mensal</span></a>
+            <a class="sidebar-link" href="fechamentos.html#anual"><span class="link-icon">◫</span><span>Anual</span></a>
+          </div>
+
+          <div class="nav-group">
+            <div class="nav-group-title">Operacional</div>
+            <a class="sidebar-link" href="operacao.html"><span class="link-icon">◩</span><span>Hub Operacional</span></a>
+            <a class="sidebar-link" href="reservas.html"><span class="link-icon">⌚</span><span>Reservas</span></a>
+            <a class="sidebar-link" href="comunicados.html"><span class="link-icon">✉</span><span>Comunicados</span></a>
+            <a class="sidebar-link" href="ocorrencias.html"><span class="link-icon">!</span><span>Ocorrências</span></a>
+            <a class="sidebar-link" href="detalhes-anexos.html"><span class="link-icon">◫</span><span>Anexos e Detalhes</span></a>
+          </div>
+        </div>
+      </aside>
+
+      <main class="content-area">
+        <div class="content-topbar">
+          <div>
+            <h1>Dashboard</h1>
+            <div class="page-subtitle">Visão geral da gestão condominial</div>
+          </div>
+          <div class="user-chip">
+            <div class="alert-dot">3</div>
+            <div class="avatar">C</div>
+            <div>
+              <strong>Carlos Silva</strong>
+              <div class="small">Síndico</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-body">
+          <section class="grid-4">
+            <article class="metric-card">
+              <div>
+                <h3>Inadimplência</h3>
+                <span class="metric-value">R$ 12.450</span>
+                <div class="metric-note">5 unidades em atraso</div>
+                <div class="metric-note negative">-8% vs mês anterior</div>
+              </div>
+              <div class="metric-icon metric-danger">⚠</div>
+            </article>
+
+            <article class="metric-card">
+              <div>
+                <h3>Reservas Hoje</h3>
+                <span class="metric-value">3</span>
+                <div class="metric-note">2 Salão 1 · 1 Salão 2</div>
+              </div>
+              <div class="metric-icon metric-primary">🗓</div>
+            </article>
+
+            <article class="metric-card">
+              <div>
+                <h3>Ocorrências Abertas</h3>
+                <span class="metric-value">7</span>
+                <div class="metric-note">2 novas hoje</div>
+              </div>
+              <div class="metric-icon metric-warning">!</div>
+            </article>
+
+            <article class="metric-card">
+              <div>
+                <h3>Moradores Ativos</h3>
+                <span class="metric-value">312</span>
+                <div class="metric-note">144 apartamentos</div>
+              </div>
+              <div class="metric-icon metric-success">👥</div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <div>
+                  <h2 class="card-title">Receitas vs Despesas</h2>
+                </div>
+              </div>
+
+              <div class="chart-wrap">
+                <div class="bar-group">
+                  <div class="bar green" style="height: 76%;"><span class="bar-label">Out</span></div>
+                  <div class="bar red" style="height: 64%;"></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar green" style="height: 81%;"><span class="bar-label">Nov</span></div>
+                  <div class="bar red" style="height: 59%;"></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar green" style="height: 79%;"><span class="bar-label">Dez</span></div>
+                  <div class="bar red" style="height: 70%;"></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar green" style="height: 83%;"><span class="bar-label">Jan</span></div>
+                  <div class="bar red" style="height: 62%;"></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar green" style="height: 80%;"><span class="bar-label">Fev</span></div>
+                  <div class="bar red" style="height: 67%;"></div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar green" style="height: 84%;"><span class="bar-label">Mar</span></div>
+                  <div class="bar red" style="height: 68%;"></div>
+                </div>
+              </div>
+              <div class="legend">
+                <span class="receitas">Receitas</span>
+                <span class="despesas">Despesas</span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Pendências</h2>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <div class="small">Ocorrência</div>
+                    <strong>Vazamento no Bloco B, Apt 302</strong>
+                  </div>
+                  <span class="status-pill status-danger">Aberta</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <div class="small">Reserva</div>
+                    <strong>Salão 1 — 20/04/2026, conflito de horário</strong>
+                  </div>
+                  <span class="status-pill status-warning">Pendente</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <div class="small">Comunicado</div>
+                    <strong>Manutenção elevador Bloco A — rascunho</strong>
+                  </div>
+                  <span class="status-pill status-primary">Rascunho</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <div class="small">Financeiro</div>
+                    <strong>5 unidades com cota em atraso (Mar/2026)</strong>
+                  </div>
+                  <span class="status-pill status-danger">Inadimplente</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="bottom-grid" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Comunicados Recentes</h2>
+                <button class="secondary-button js-demo" data-message="Painel de comunicados aberto no mockup.">Ver todos</button>
+              </div>
+              <div class="feed-list">
+                <div class="feed-item">
+                  <div>
+                    <strong>Limpeza das caixas d'água</strong>
+                    <div class="small">10/04/2026 · Todos</div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div>
+                    <strong>Nova regra de estacionamento</strong>
+                    <div class="small">08/04/2026 · Blocos A-D</div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div>
+                    <strong>Assembleia Ordinária</strong>
+                    <div class="small">05/04/2026 · Todos</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Resumo Financeiro — Mar/2026</h2>
+                <span class="small">$</span>
+              </div>
+              <div class="summary-row">
+                <span>Total Receitas</span>
+                <span class="summary-value-positive">R$ 53.000,00</span>
+              </div>
+              <div class="summary-row">
+                <span>Total Despesas</span>
+                <span class="summary-value-negative">R$ 44.000,00</span>
+              </div>
+              <div class="summary-row">
+                <span>Saldo</span>
+                <span class="summary-value-neutral">R$ 9.000,00</span>
+              </div>
+            </article>
+          </section>
+
+          <section class="grid-2" style="margin-top: 16px;">
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Acessos, Logs e Segurança</h2>
+                <a class="secondary-button" href="acessos.html">Abrir módulo</a>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Usuários com múltiplos perfis</strong>
+                    <div class="small">Perfis cumulativos e regras por usuário.</div>
+                  </div>
+                  <span class="status-pill status-primary">28</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Logs de ações sensíveis</strong>
+                    <div class="small">Retenção visual de histórico para auditoria.</div>
+                  </div>
+                  <span class="status-pill status-warning">84 registros</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-title-row">
+                <h2 class="card-title">Fechamentos e Arquivos</h2>
+                <a class="secondary-button" href="fechamentos.html">Abrir módulo</a>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <div>
+                    <strong>Fechamento mensal e anual</strong>
+                    <div class="small">Com exportação PDF/Excel e visão consolidada.</div>
+                  </div>
+                  <span class="status-pill status-success">Ativo</span>
+                </div>
+                <div class="stack-item">
+                  <div>
+                    <strong>Versões arquivadas e anexos</strong>
+                    <div class="small">Histórico de reabertura e acesso controlado.</div>
+                  </div>
+                  <span class="status-pill status-primary">Disponível</span>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

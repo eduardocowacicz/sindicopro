@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Dashboard do Morador</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Visão da unidade B-302 para morador ou proprietário não residente</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Próximo vencimento: 10/05</span>
+          <a class="button" href="reservas.html">Reservar salão</a>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill active" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Área da unidade</p>
+        <h1 class="section-heading">Cobranças, fechamentos publicados, reservas e ocorrências sem excesso de informação administrativa.</h1>
+        <div class="tag-row">
+          <span class="state ok">Cota visível</span>
+          <span class="state info">Fechamento de março publicado</span>
+          <span class="state warn">Reserva agendada para 18/05</span>
+        </div>
+      </section>
+
+      <div class="note-box" style="margin-top: 18px;">
+        Este painel representa a regra de acesso mais restrita do sistema:
+        o usuário vê apenas a própria unidade, suas cobranças, seus avisos, suas reservas e suas ocorrências.
+      </div>
+
+      <section class="cards-grid" style="margin-top: 18px;">
+        <article class="metric-card">
+          <span class="eyebrow">Cobrança</span>
+          <h3>Valor do mês</h3>
+          <span class="big-number">R$ 892,40</span>
+          <p>Valor gerado após o fechamento consolidado do período.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Reserva</span>
+          <h3>Próxima agenda</h3>
+          <span class="big-number">18 maio</span>
+          <p>Salão 1, faixa noite, com taxa vinculada à reserva.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Ocorrências</span>
+          <h3>Minhas solicitações</h3>
+          <span class="big-number">2</span>
+          <p>Uma em andamento e uma finalizada com retorno da administração.</p>
+        </article>
+        <article class="metric-card">
+          <span class="eyebrow">Avisos</span>
+          <h3>Comunicados recentes</h3>
+          <span class="big-number">3</span>
+          <p>Publicações gerais e segmentadas vinculadas à unidade.</p>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Cobrança individual</p>
+              <h2>Composição da cota</h2>
+            </div>
+            <span class="tag">Março 2026</span>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Despesas ordinárias</span><strong>R$ 672,10</strong></div>
+            <div class="summary-line"><span>Rateio de manutenção</span><strong>R$ 146,30</strong></div>
+            <div class="summary-line"><span>Fundo interno</span><strong>R$ 74,00</strong></div>
+            <div class="summary-line"><span>Responsável pela cobrança</span><strong>Morador</strong></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Fechamentos publicados</p>
+              <h2>Histórico visível para a unidade</h2>
+            </div>
+            <a class="button-alt" href="fechamentos.html">Abrir módulo</a>
+          </div>
+          <div class="notice-list">
+            <div class="notice-item"><div><strong>Março 2026</strong><div class="muted">Resumo do período com PDF e planilha publicados.</div></div><span class="state ok">Disponível</span></div>
+            <div class="notice-item"><div><strong>Fevereiro 2026</strong><div class="muted">Versão mantida após histórico de reabertura.</div></div><span class="state info">Arquivado</span></div>
+            <div class="notice-item"><div><strong>Janeiro 2026</strong><div class="muted">Consulta liberada para moradores e proprietários.</div></div><span class="state ok">Publicado</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Mural da unidade</p>
+              <h2>Comunicados recebidos</h2>
+            </div>
+            <a class="button-alt" href="comunicados.html">Ver todos</a>
+          </div>
+          <div class="notice-list">
+            <div class="notice-item"><div><strong>Limpeza da caixa d'água</strong><div class="muted">Aviso geral com documento anexo.</div></div><span class="state info">Hoje</span></div>
+            <div class="notice-item"><div><strong>Bloqueio temporário do salão 2</strong><div class="muted">Publicação ligada ao módulo de reservas.</div></div><span class="state warn">Atenção</span></div>
+            <div class="notice-item"><div><strong>Assembleia ordinária</strong><div class="muted">Comunicado segmentado para o bloco B.</div></div><span class="state ok">Lido</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Atendimento</p>
+              <h2>Minhas ocorrências</h2>
+            </div>
+            <a class="button" href="ocorrencias.html">Abrir ocorrência</a>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Garagem com luz intermitente</strong><div class="muted">Registro com foto e comentário da administração.</div></div><span class="state warn">Em andamento</span></div>
+            <div class="queue-item"><div><strong>Ruído após as 23h</strong><div class="muted">Caso concluído com devolutiva no histórico.</div></div><span class="state ok">Concluída</span></div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>

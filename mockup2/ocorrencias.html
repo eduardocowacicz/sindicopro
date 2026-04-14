@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup 2 - Ocorrências</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="top-frame">
+      <div class="header-row">
+        <div class="brand-line">
+          <span class="brand-dot">CP</span>
+          <div>
+            <strong class="display">Condomínio Pátio</strong>
+            <span>Registro, acompanhamento e tratamento administrativo das ocorrências</span>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button-alt nav-toggle">Abrir menu</button>
+          <span class="tag">Sem prioridade no MVP</span>
+          <button class="button js-demo" data-message="Ocorrência aberta no mockup.">Abrir ocorrência</button>
+        </div>
+      </div>
+      <nav class="module-nav">
+        <a class="nav-pill" href="dashboard-admin.html">Dashboard admin</a>
+        <a class="nav-pill" href="dashboard-morador.html">Minha unidade</a>
+        <a class="nav-pill" href="cadastros.html">Cadastros</a>
+        <a class="nav-pill" href="acessos.html">Acessos</a>
+        <a class="nav-pill" href="financeiro.html">Financeiro</a>
+        <a class="nav-pill" href="fechamentos.html">Fechamentos</a>
+        <a class="nav-pill" href="reservas.html">Reservas</a>
+        <a class="nav-pill" href="comunicados.html">Comunicados</a>
+        <a class="nav-pill active" href="ocorrencias.html">Ocorrências</a>
+        <a class="nav-pill" href="detalhes-anexos.html">Anexos</a>
+        <a class="nav-pill" href="operacao.html">Hub</a>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      <section class="hero-banner">
+        <p class="eyebrow">Atendimento condominial</p>
+        <h1 class="section-heading">Uma tela para abrir ocorrências, anexar evidências e acompanhar respostas da gestão com fluxo simples.</h1>
+        <div class="tag-row">
+          <span class="state info">Abertura por morador ou gestão</span>
+          <span class="state warn">Sem prazo formal no MVP</span>
+          <span class="state ok">Anexos permitidos</span>
+        </div>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Novo registro</p>
+              <h2>Campos mínimos</h2>
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>Tipo de ocorrência</label>
+              <select><option>Barulho</option></select>
+            </div>
+            <div class="field">
+              <label>Unidade vinculada</label>
+              <input value="Opcional no registro inicial">
+            </div>
+          </div>
+          <div class="field" style="margin-top: 14px;">
+            <label>Motivo</label>
+            <input value="Barulho recorrente após as 23h">
+          </div>
+          <div class="field" style="margin-top: 14px;">
+            <label>Observação</label>
+            <textarea>Morador relata som alto vindo da área comum próxima ao bloco B nas últimas duas noites. Há imagem anexa do local e horário.</textarea>
+          </div>
+          <div class="chip-cloud" style="margin-top: 16px;">
+            <span class="tag">Imagem</span>
+            <span class="tag">PDF</span>
+            <span class="tag">Ocorrência interna</span>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Fila da administração</p>
+              <h2>Atendimento em andamento</h2>
+            </div>
+          </div>
+          <div class="queue-list">
+            <div class="queue-item"><div><strong>Garagem com luz intermitente</strong><div class="muted">B-302, com foto e comentário já anexados.</div></div><span class="state warn">Em andamento</span></div>
+            <div class="queue-item"><div><strong>Barulho após as 23h</strong><div class="muted">Registro interno com unidade vinculada depois da análise inicial.</div></div><span class="state alert">Aguardando resposta</span></div>
+            <div class="queue-item"><div><strong>Vazamento na área comum</strong><div class="muted">Chamado finalizado pela administração.</div></div><span class="state ok">Concluída</span></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="split-grid" style="margin-top: 18px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Configuração</p>
+              <h2>Tipos e regras do MVP</h2>
+            </div>
+          </div>
+          <div class="chip-cloud">
+            <span class="tag">Barulho</span>
+            <span class="tag">Manutenção</span>
+            <span class="tag">Segurança</span>
+            <span class="tag">Área comum</span>
+            <span class="tag">Interna</span>
+          </div>
+          <div class="note-box" style="margin-top: 16px;">
+            Apenas síndico e subsíndico respondem e atualizam o status das ocorrências.
+            Não há classificação por prioridade nem SLA formal no MVP.
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Tratamento administrativo</p>
+              <h2>O que a gestão pode fazer</h2>
+            </div>
+          </div>
+          <div class="summary-stack">
+            <div class="summary-line"><span>Vincular outra unidade</span><strong>Permitido</strong></div>
+            <div class="summary-line"><span>Adicionar comentário visível</span><strong>Permitido</strong></div>
+            <div class="summary-line"><span>Registrar ocorrência interna</span><strong>Permitido</strong></div>
+            <div class="summary-line"><span>Atualizar status</span><strong>Síndico e subsíndico</strong></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel" style="margin-top: 18px;">
+        <div class="panel-header">
+          <div>
+            <p class="eyebrow">Linha do caso</p>
+            <h2>Exemplo de histórico de uma ocorrência</h2>
+          </div>
+          <a class="button-alt" href="detalhes-anexos.html">Abrir anexos</a>
+        </div>
+        <div class="timeline-list">
+          <div class="timeline-item"><strong>09/04 21:14</strong><p>Morador registra a ocorrência com motivo, observação e foto.</p></div>
+          <div class="timeline-item"><strong>10/04 08:03</strong><p>Administração vincula a unidade correta e adiciona comentário visível ao morador.</p></div>
+          <div class="timeline-item"><strong>10/04 18:42</strong><p>Subsíndico atualiza o status para concluída após vistoria no local.</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="notification"></div>
+  <script src="app.js"></script>
+</body>
+</html>
