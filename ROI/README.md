@@ -1,21 +1,21 @@
 # ROI
 
-Esta pasta traz uma leitura simplificada de viabilidade para o projeto, com foco no custo mensal de infraestrutura necessario para manter o sistema no ar em um cenario academico.
+Esta pasta traz uma leitura simplificada de viabilidade para o projeto, com foco no custo mensal de infraestrutura necessário para manter o sistema no ar em um cenário acadêmico.
 
 ## Arquivo desta pasta
 
 | Arquivo | Finalidade |
 | --- | --- |
-| [LevantamentoROIProjeto.txt](LevantamentoROIProjeto.txt) | Estimativa de custo mensal do servidor, servicos basicos e leitura simplificada de ROI |
+| [LevantamentoROIProjeto.txt](LevantamentoROIProjeto.txt) | Estimativa de custo mensal do servidor, serviços básicos e leitura simplificada de ROI |
 
-## Resumo do conteudo
+## Resumo do conteúdo
 
 O documento considera que:
 
-- o projeto e academico
-- nao ha cobranca de horas de desenvolvimento
-- o custo principal esta na infraestrutura
-- um servidor pequeno ou intermediario tende a atender o MVP
+- o projeto é acadêmico
+- não há cobrança de horas de desenvolvimento
+- o custo principal está na infraestrutura
+- um servidor pequeno ou intermediário tende a atender o MVP
 
 ## Estimativa consolidada
 
@@ -27,13 +27,13 @@ Faixa mensal considerada no documento:
 
 Total estimado:
 
-- `R$ 75 a R$ 100` por mes
+- `R$ 75 a R$ 100` por mês
 
-## Observacao
+## Observação
 
-Os valores sao apresentados como referencia academica e servem para apoiar a justificativa de viabilidade inicial do projeto.
+Os valores são apresentados como referência acadêmica e servem para apoiar a justificativa de viabilidade inicial do projeto.
 
-## Relacao com o restante do repositorio
+## Relação com o restante do repositório
 
 - Para o escopo funcional consolidado, veja [ProjetoRevisado](../ProjetoRevisado/README.md)
-- Para a visao geral do repositorio, volte para o [README principal](../README.md)
+- Para a visão geral do repositório, volte para o [README principal](../README.md)

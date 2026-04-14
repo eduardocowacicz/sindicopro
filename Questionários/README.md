@@ -1,35 +1,35 @@
-# Questionarios
+# Questionários
 
-Esta pasta reune as respostas usadas para validar e refinar o escopo do sistema. Os tres arquivos mostram a evolucao das decisoes do projeto, desde a primeira coleta ate o fechamento das pendencias finais.
+Esta pasta reúne as respostas usadas para validar e refinar o escopo do sistema. Os três arquivos mostram a evolução das decisões do projeto, desde a primeira coleta até o fechamento das pendências finais.
 
 ## Arquivos desta pasta
 
 | Arquivo | Finalidade |
 | --- | --- |
-| [01-QuestionarioInicialSolicitante.txt](01-QuestionarioInicialSolicitante.txt) | Primeira rodada de validacao com foco nas definicoes iniciais do MVP |
-| [02-QuestionarioComplementarRevisao.txt](02-QuestionarioComplementarRevisao.txt) | Revisao complementar para fechar duvidas sobre financeiro, acesso, reservas e operacao |
-| [03-QuestionarioPendenciasFinais.txt](03-QuestionarioPendenciasFinais.txt) | Decisoes finais sobre escopo, regras de negocio, anexos e seguranca |
+| [01-QuestionarioInicialSolicitante.txt](01-QuestionarioInicialSolicitante.txt) | Primeira rodada de validação com foco nas definições iniciais do MVP |
+| [02-QuestionarioComplementarRevisao.txt](02-QuestionarioComplementarRevisao.txt) | Revisão complementar para fechar dúvidas sobre financeiro, acesso, reservas e operação |
+| [03-QuestionarioPendenciasFinais.txt](03-QuestionarioPendenciasFinais.txt) | Decisões finais sobre escopo, regras de negócio, anexos e segurança |
 
 ## Como usar esta pasta
 
-Se voce quiser entender como o escopo foi fechado, a leitura ideal e:
+Se você quiser entender como o escopo foi fechado, a leitura ideal é:
 
-1. [Questionario inicial](01-QuestionarioInicialSolicitante.txt)
-2. [Revisao complementar](02-QuestionarioComplementarRevisao.txt)
-3. [Pendencias finais](03-QuestionarioPendenciasFinais.txt)
+1. [Questionário inicial](01-QuestionarioInicialSolicitante.txt)
+2. [Revisão complementar](02-QuestionarioComplementarRevisao.txt)
+3. [Pendências finais](03-QuestionarioPendenciasFinais.txt)
 
 ## Temas validados aqui
 
-- administracao basica
-- usuarios, perfis e permissoes
+- administração básica
+- usuários, perfis e permissões
 - financeiro e rateio
 - fechamento mensal
 - reserva de ambientes
 - comunicados
-- ocorrencias
-- anexos, seguranca e operacao
+- ocorrências
+- anexos, segurança e operação
 
-## Relacao com o restante do repositorio
+## Relação com o restante do repositório
 
-- O consolidado final dessas definicoes esta em [ProjetoRevisado](../ProjetoRevisado/README.md)
-- A traducao visual do escopo pode ser vista nos [mockups](../README.md#navegacao-rapida)
+- O consolidado final dessas definições está em [ProjetoRevisado](../ProjetoRevisado/README.md)
+- A tradução visual do escopo pode ser vista no [README principal](../README.md)

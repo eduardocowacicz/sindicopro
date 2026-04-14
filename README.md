@@ -1,35 +1,35 @@
-# Sistema de Gestao Condominial
+# Sistema de Gestão Condominial
 
-Repositorio de documentacao academica para um sistema web de gestao condominial. Aqui estao reunidos o escopo revisado do produto, os questionarios de validacao, a estimativa simplificada de ROI e tres propostas de mockup em HTML, CSS e JavaScript.
+Repositório de documentação acadêmica para um sistema web de gestão condominial. Aqui estão reunidos o escopo revisado do produto, os questionários de validação, a estimativa simplificada de ROI e três propostas de mockup em HTML, CSS e JavaScript.
 
 ## Resumo
 
-Este projeto foi pensado para um condominio com:
+Este projeto foi pensado para um condomínio com:
 
-- 9 predios
+- 9 prédios
 - 144 apartamentos
-- 2 saloes de festas
+- 2 salões de festas
 
-O MVP foi definido para cobrir os seguintes modulos:
+O MVP foi definido para cobrir os seguintes módulos:
 
 - cadastros condominiais
-- usuarios, perfis e permissoes
+- usuários, perfis e permissões
 - financeiro
 - fechamento mensal e anual
 - reservas de ambientes
 - comunicados
-- ocorrencias
+- ocorrências
 
-## O que voce encontra aqui
+## O que você encontra aqui
 
-| Area | Conteudo | Acesso rapido |
+| Área | Conteúdo | Acesso rápido |
 | --- | --- | --- |
-| Documentacao principal | Escopo consolidado, requisitos e planejamento visual | [ProjetoRevisado](ProjetoRevisado/README.md) |
-| Validacao do escopo | Questionarios respondidos ao longo do levantamento | [Questionarios](Questionários/README.md) |
+| Documentação principal | Escopo consolidado, requisitos e planejamento visual | [ProjetoRevisado](ProjetoRevisado/README.md) |
+| Validação do escopo | Questionários respondidos ao longo do levantamento | [Questionários](Questionários/README.md) |
 | Viabilidade inicial | Estimativa de custo mensal e leitura simplificada de ROI | [ROI](ROI/README.md) |
-| Prototipos visuais | Tres versoes de mockup navegavel | [Mockup 1](mockup1/README.md), [Mockup 2](mockup2/README.md), [Mockup 3](mockup3/README.md) |
+| Protótipos visuais | Três versões de mockup navegável | [Mockup 1](mockup1/README.md), [Mockup 2](mockup2/README.md), [Mockup 3](mockup3/README.md) |
 
-## Estrutura do repositorio
+## Estrutura do repositório
 
 ```text
 .
@@ -38,7 +38,7 @@ O MVP foi definido para cobrir os seguintes modulos:
 |   |-- ResumoDeFuncoesRevisado.txt
 |   |-- LevantamentoDeRequisitosRevisado.txt
 |   `-- PromptPlanejamentoDesenvolvimento.txt
-|-- Questionarios/
+|-- Questionários/
 |   |-- README.md
 |   |-- 01-QuestionarioInicialSolicitante.txt
 |   |-- 02-QuestionarioComplementarRevisao.txt
@@ -63,33 +63,31 @@ O MVP foi definido para cobrir os seguintes modulos:
     `-- app.js
 ```
 
-Observacao: a pasta real no repositorio se chama `Questionários`. No bloco acima, o nome foi simplificado para facilitar a leitura.
-
 ## Fluxo sugerido de leitura
 
 Se a ideia for entender o projeto rapidamente no GitHub, este caminho funciona bem:
 
 1. Leia o [resumo executivo](ProjetoRevisado/ResumoDeFuncoesRevisado.txt)
 2. Aprofunde nos [requisitos revisados](ProjetoRevisado/LevantamentoDeRequisitosRevisado.txt)
-3. Consulte os [questionarios de validacao](Questionários/README.md)
+3. Consulte os [questionários de validação](Questionários/README.md)
 4. Veja a [estimativa simplificada de ROI](ROI/README.md)
-5. Explore os [mockups navegaveis](mockup3/README.md)
+5. Explore os [mockups navegáveis](mockup3/README.md)
 
-## Modulos principais do sistema
+## Módulos principais do sistema
 
-| Modulo | O que cobre no MVP |
+| Módulo | O que cobre no MVP |
 | --- | --- |
-| Cadastros | Predios, apartamentos, pessoas, vinculos, observacoes e veiculos |
-| Acesso | Login, perfis, permissoes e regras por usuario |
-| Financeiro | Contas, categorias, lancamentos, cobrancas, inadimplencia e ajustes |
-| Fechamentos | Fechamento mensal e anual, bloqueio de periodo e historico de reabertura |
-| Reservas | Ambientes, horarios, taxas, bloqueios e validacoes administrativas |
-| Comunicados | Publicacao segmentada, historico e anexos |
-| Ocorrencias | Registro, acompanhamento, tratamento administrativo e anexos |
+| Cadastros | Prédios, apartamentos, pessoas, vínculos, observações e veículos |
+| Acesso | Login, perfis, permissões e regras por usuário |
+| Financeiro | Contas, categorias, lançamentos, cobranças, inadimplência e ajustes |
+| Fechamentos | Fechamento mensal e anual, bloqueio de período e histórico de reabertura |
+| Reservas | Ambientes, horários, taxas, bloqueios e validações administrativas |
+| Comunicados | Publicação segmentada, histórico e anexos |
+| Ocorrências | Registro, acompanhamento, tratamento administrativo e anexos |
 
 ## Como visualizar os mockups
 
-Os mockups sao estaticos e nao exigem instalacao.
+Os mockups são estáticos e não exigem instalação.
 
 1. Abra uma das pastas `mockup1`, `mockup2` ou `mockup3`
 2. Execute o arquivo `index.html` no navegador
@@ -101,24 +99,24 @@ Entradas recomendadas:
 - [mockup2/index.html](mockup2/index.html)
 - [mockup3/index.html](mockup3/index.html)
 
-## Decisoes importantes de escopo
+## Decisões importantes de escopo
 
-- O sistema preserva historico e evita exclusao fisica de registros relevantes
-- O sindico possui acesso total
+- O sistema preserva histórico e evita exclusão física de registros relevantes
+- O síndico possui acesso total
 - O conselho possui acesso somente para consulta
-- O morador visualiza sua propria cota e os fechamentos publicados
-- O proprietario nao residente pode acessar o sistema com regras especificas configuraveis
+- O morador visualiza sua própria cota e os fechamentos publicados
+- O proprietário não residente pode acessar o sistema com regras específicas configuráveis
 - WhatsApp foi removido do escopo atual
-- Integracao bancaria automatica e app mobile nativo ficaram fora do escopo obrigatorio do MVP
+- Integração bancária automática e app mobile nativo ficaram fora do escopo obrigatório do MVP
 
-## Contexto do repositorio
+## Contexto do repositório
 
-Este material foi organizado para apresentacao academica e apoio ao planejamento do produto. O foco atual esta em documentacao, definicao do escopo e exploracao visual da interface, e nao em uma aplicacao final implementada em backend e banco de dados.
+Este material foi organizado para apresentação acadêmica e apoio ao planejamento do produto. O foco atual está em documentação, definição do escopo e exploração visual da interface, e não em uma aplicação final implementada com backend e banco de dados.
 
-## Navegacao rapida
+## Navegação rápida
 
-- [Documentacao revisada](ProjetoRevisado/README.md)
-- [Questionarios](Questionários/README.md)
+- [Documentação revisada](ProjetoRevisado/README.md)
+- [Questionários](Questionários/README.md)
 - [ROI](ROI/README.md)
 - [Mockup 1](mockup1/README.md)
 - [Mockup 2](mockup2/README.md)

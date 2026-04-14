@@ -1,38 +1,38 @@
 # Mockup 1
 
-Primeira direcao visual do sistema, com linguagem mais institucional e foco em leitura simples do painel administrativo.
+Primeira direção visual do sistema, com linguagem mais institucional e foco em leitura simples do painel administrativo.
 
-## Caracteristicas
+## Características
 
-- visual mais sobrio
-- hierarquia clara para dashboard e formularios
-- navegacao objetiva para demonstracao do MVP
+- visual mais sóbrio
+- hierarquia clara para dashboard e formulários
+- navegação objetiva para demonstração do MVP
 
-## Telas disponiveis
+## Telas disponíveis
 
-| Arquivo | Descricao |
+| Arquivo | Descrição |
 | --- | --- |
 | [index.html](index.html) | Entrada do mockup com acesso inicial |
-| [dashboard-admin.html](dashboard-admin.html) | Visao principal da administracao |
-| [dashboard-morador.html](dashboard-morador.html) | Area do morador ou proprietario |
-| [cadastros.html](cadastros.html) | Predios, apartamentos, pessoas e permissoes |
-| [financeiro.html](financeiro.html) | Contas, lancamentos, inadimplencia e fechamento |
-| [reservas.html](reservas.html) | Reservas de salao e bloqueios |
-| [operacao.html](operacao.html) | Comunicados e ocorrencias |
+| [dashboard-admin.html](dashboard-admin.html) | Visão principal da administração |
+| [dashboard-morador.html](dashboard-morador.html) | Área do morador ou proprietário |
+| [cadastros.html](cadastros.html) | Prédios, apartamentos, pessoas e permissões |
+| [financeiro.html](financeiro.html) | Contas, lançamentos, inadimplência e fechamento |
+| [reservas.html](reservas.html) | Reservas de salão e bloqueios |
+| [operacao.html](operacao.html) | Comunicados e ocorrências |
 
 ## Como visualizar
 
 1. Abra o arquivo [index.html](index.html) no navegador
-2. Navegue pelas telas usando os links do proprio mockup
+2. Navegue pelas telas usando os links do próprio mockup
 
 ## Arquivos de apoio
 
 - [style.css](style.css)
 - [app.js](app.js)
 
-## Papel desta versao
+## Papel desta versão
 
-Esta versao funciona bem como ponto de partida para apresentar a ideia geral do sistema de forma limpa e direta.
+Esta versão funciona bem como ponto de partida para apresentar a ideia geral do sistema de forma limpa e direta.
 
 ## Voltar
 

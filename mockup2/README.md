@@ -1,44 +1,44 @@
 # Mockup 2
 
-Segunda proposta visual do projeto, com escopo mais amplo e representacao mais completa das telas definidas na revisao funcional.
+Segunda proposta visual do projeto, com escopo mais amplo e representação mais completa das telas definidas na revisão funcional.
 
-## Caracteristicas
+## Características
 
-- navegacao superior modular
+- navegação superior modular
 - cobertura maior do escopo revisado
 - foco em demonstrar fluxos administrativos e operacionais
 
-## Telas disponiveis
+## Telas disponíveis
 
-| Arquivo | Descricao |
+| Arquivo | Descrição |
 | --- | --- |
 | [index.html](index.html) | Entrada do mockup e acesso por perfil |
-| [recuperacao.html](recuperacao.html) | Recuperacao de acesso por e-mail |
-| [dashboard-admin.html](dashboard-admin.html) | Visao consolidada da gestao |
-| [dashboard-morador.html](dashboard-morador.html) | Area da unidade para morador ou proprietario |
-| [cadastros.html](cadastros.html) | Predios, apartamentos, pessoas, vinculos, observacoes e veiculos |
-| [acessos.html](acessos.html) | Usuarios, perfis, permissoes e logs |
-| [financeiro.html](financeiro.html) | Contas, categorias, lancamentos, cobranca, inadimplencia e ajustes |
-| [fechamentos.html](fechamentos.html) | Fechamento mensal, anual, reaberturas e versoes arquivadas |
-| [reservas.html](reservas.html) | Ambientes, agenda, regras, taxas e intervencoes |
-| [comunicados.html](comunicados.html) | Publicacao segmentada, envio por e-mail, historico e anexos |
+| [recuperacao.html](recuperacao.html) | Recuperação de acesso por e-mail |
+| [dashboard-admin.html](dashboard-admin.html) | Visão consolidada da gestão |
+| [dashboard-morador.html](dashboard-morador.html) | Área da unidade para morador ou proprietário |
+| [cadastros.html](cadastros.html) | Prédios, apartamentos, pessoas, vínculos, observações e veículos |
+| [acessos.html](acessos.html) | Usuários, perfis, permissões e logs |
+| [financeiro.html](financeiro.html) | Contas, categorias, lançamentos, cobrança, inadimplência e ajustes |
+| [fechamentos.html](fechamentos.html) | Fechamento mensal, anual, reaberturas e versões arquivadas |
+| [reservas.html](reservas.html) | Ambientes, agenda, regras, taxas e intervenções |
+| [comunicados.html](comunicados.html) | Publicação segmentada, envio por e-mail, histórico e anexos |
 | [ocorrencias.html](ocorrencias.html) | Abertura, tratamento administrativo, status e linha do caso |
-| [detalhes-anexos.html](detalhes-anexos.html) | Visualizacao detalhada de registros e arquivos |
+| [detalhes-anexos.html](detalhes-anexos.html) | Visualização detalhada de registros e arquivos |
 | [operacao.html](operacao.html) | Hub dos fluxos operacionais mais usados |
 
 ## Como visualizar
 
 1. Abra o arquivo [index.html](index.html) no navegador
-2. Explore a navegacao interna entre os modulos
+2. Explore a navegação interna entre os módulos
 
 ## Arquivos de apoio
 
 - [style.css](style.css)
 - [app.js](app.js)
 
-## Papel desta versao
+## Papel desta versão
 
-Entre os tres mockups, esta e a versao mais completa para demonstrar a amplitude funcional do MVP.
+Entre os três mockups, esta é a versão mais completa para demonstrar a amplitude funcional do MVP.
 
 ## Voltar
 
