@@ -1,4 +1,4 @@
-QUESTIONÁRIO 02 - REVISÃO COMPLEMENTAR DO PROJETO
+QUESTIONÝRIO 02 - REVISÃO COMPLEMENTAR DO PROJETO
 
 Objetivo:
 Este questionário complementa a validação inicial e foi preparado para fechar os pontos que ainda geravam dúvida antes da implementação.
@@ -29,7 +29,7 @@ R: Depende de regra específica. Alguns valores são cobrados do proprietário, 
 R: _______________________________________________
 
 =====================================================================
-3) MORADORES, USUÁRIOS E ACESSO
+3) MORADORES, USUÝRIOS E ACESSO
 =====================================================================
 3.1 Todo morador cadastrado deve ter login no sistema?
 R: Sim.
@@ -130,4 +130,4 @@ R: não
 8.4 Existe um limite esperado para a quantidade de anexos no sistema?
 R: 100 mil.
 
-Data: ____/____/______
+Data: 20/03/2026

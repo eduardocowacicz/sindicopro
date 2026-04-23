@@ -110,4 +110,4 @@ R: Só dados pessoais, como foto, cpf e ocorrencia deve ser considerado como dad
 10.2 Quem poderá acessar anexos, logs e dados financeiros históricos?
 R: Só o Sindido e usuário com permissão marcada.
 
-Data: ____/____/______
+Data: 06/04/2026
