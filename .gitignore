@@ -1,0 +1,25 @@
+# Configuracao local
+Devops/.env
+
+# Backend
+Back-end/.env
+Back-end/.phpunit.cache
+Back-end/auth.json
+Back-end/bootstrap/cache/*.php
+Back-end/storage/*.key
+Back-end/storage/logs/*
+Back-end/vendor/
+
+# Frontend
+Front-end/.env
+Front-end/coverage/
+Front-end/dist/
+Front-end/node_modules/
+Front-end/playwright-report/
+Front-end/test-results/
+
+# Editores e sistema
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

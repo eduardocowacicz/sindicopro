@@ -1,0 +1,163 @@
+openapi: 3.1.0
+info:
+  title: API SindicoPro
+  version: 0.1.0
+  description: Contrato HTTP da SPA SindicoPro, sem versionamento na URL.
+servers:
+  - url: http://localhost:8000
+    description: Desenvolvimento local
+tags:
+  - name: Sistema
+  - name: Autenticação
+paths:
+  /api/status:
+    get:
+      tags: [Sistema]
+      summary: Consultar disponibilidade da API
+      operationId: consultarStatus
+      responses:
+        '200':
+          description: API disponível
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [data]
+                properties:
+                  data:
+                    type: object
+                    required: [application, status]
+                    properties:
+                      application: { type: string, example: SindicoPro }
+                      status: { type: string, const: ok }
+  /sanctum/csrf-cookie:
+    get:
+      tags: [Autenticação]
+      summary: Preparar o cookie CSRF da SPA
+      operationId: prepararCsrf
+      responses:
+        '204': { description: Cookie CSRF preparado }
+  /login:
+    post:
+      tags: [Autenticação]
+      summary: Iniciar uma sessão por e-mail e senha
+      operationId: entrar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required: [email, senha]
+              properties:
+                email: { type: string, format: email, maxLength: 254 }
+                senha: { type: string, maxLength: 255, writeOnly: true }
+      responses:
+        '200':
+          description: Sessão iniciada
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [dados]
+                properties:
+                  dados:
+                    type: object
+                    required: [autenticado]
+                    properties:
+                      autenticado: { type: boolean, const: true }
+        '422': { $ref: '#/components/responses/ValidacaoInvalida' }
+        '429': { description: Limite de tentativas atingido }
+  /logout:
+    post:
+      tags: [Autenticação]
+      summary: Encerrar a sessão atual
+      operationId: sair
+      security:
+        - sessao: []
+      responses:
+        '204': { description: Sessão encerrada }
+        '401': { $ref: '#/components/responses/NaoAutenticado' }
+  /api/sessao:
+    get:
+      tags: [Autenticação]
+      summary: Obter identidade, perfis, permissões e unidades da sessão
+      operationId: consultarSessao
+      security:
+        - sessao: []
+      responses:
+        '200':
+          description: Contexto da sessão
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [dados]
+                properties:
+                  dados: { $ref: '#/components/schemas/Sessao' }
+        '401': { $ref: '#/components/responses/NaoAutenticado' }
+components:
+  securitySchemes:
+    sessao:
+      type: apiKey
+      in: cookie
+      name: sindicopro-session
+      description: Cookie HttpOnly emitido pelo Laravel Sanctum.
+  responses:
+    NaoAutenticado:
+      description: Sessão ausente ou expirada
+    ValidacaoInvalida:
+      description: Dados ou credenciais inválidos
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message: { type: string }
+              errors:
+                type: object
+                additionalProperties:
+                  type: array
+                  items: { type: string }
+  schemas:
+    Sessao:
+      type: object
+      required: [usuario, pessoa, perfis, permissoes, acesso_integral, unidades]
+      properties:
+        usuario:
+          type: object
+          required: [id_publico, email, deve_alterar_senha]
+          properties:
+            id_publico: { type: string, format: uuid }
+            email: { type: string, format: email }
+            deve_alterar_senha: { type: boolean }
+        pessoa:
+          type: object
+          required: [id_publico, nome_completo]
+          properties:
+            id_publico: { type: string, format: uuid }
+            nome_completo: { type: string }
+        perfis:
+          type: array
+          items:
+            type: object
+            required: [codigo, nome]
+            properties:
+              codigo: { type: string }
+              nome: { type: string }
+        permissoes:
+          type: array
+          uniqueItems: true
+          items: { type: string }
+        acesso_integral: { type: boolean }
+        unidades:
+          type: array
+          items:
+            type: object
+            required: [id_publico, codigo, bloco, tipo_vinculo]
+            properties:
+              id_publico: { type: string, format: uuid }
+              codigo: { type: string }
+              bloco: { type: string }
+              tipo_vinculo: { type: string }

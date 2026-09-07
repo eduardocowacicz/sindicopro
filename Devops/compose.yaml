@@ -1,0 +1,159 @@
+name: sindicopro
+
+x-backend-common: &backend-common
+  build:
+    context: ../Back-end
+    dockerfile: Dockerfile
+    target: development
+    args:
+      PHP_VERSION: ${PHP_VERSION:-8.4}
+  environment: &backend-environment
+    APP_NAME: SindicoPro
+    APP_ENV: local
+    APP_DEBUG: "true"
+    APP_KEY: ${APP_KEY:-}
+    APP_URL: http://localhost:${BACKEND_PORT:-8000}
+    FRONTEND_URL: http://localhost:${FRONTEND_PORT:-5173}
+    APP_LOCALE: pt_BR
+    APP_FALLBACK_LOCALE: pt_BR
+    APP_TIMEZONE: America/Sao_Paulo
+    LOG_CHANNEL: stderr
+    LOG_LEVEL: ${LOG_LEVEL:-debug}
+    DB_CONNECTION: pgsql
+    DB_HOST: database
+    DB_PORT: 5432
+    DB_DATABASE: ${POSTGRES_DB:-sindicopro}
+    DB_USERNAME: ${POSTGRES_USER:-sindicopro}
+    DB_PASSWORD: ${POSTGRES_PASSWORD:-sindicopro_local}
+    TEST_DB_DATABASE: ${POSTGRES_DB:-sindicopro}_test
+    SESSION_DRIVER: sindicopro_database
+    SESSION_DOMAIN: localhost
+    SESSION_SECURE_COOKIE: "false"
+    SANCTUM_STATEFUL_DOMAINS: localhost:${FRONTEND_PORT:-5173}
+    QUEUE_CONNECTION: database
+    CACHE_STORE: file
+    FILESYSTEM_DISK: local
+    MAIL_MAILER: smtp
+    MAIL_HOST: mailpit
+    MAIL_PORT: 1025
+    MAIL_ENCRYPTION: "null"
+    MAIL_FROM_ADDRESS: no-reply@sindicopro.local
+    MAIL_FROM_NAME: SindicoPro
+  volumes:
+    - ../Back-end:/app:z
+    - backend_vendor:/app/vendor
+  networks:
+    - sindicopro
+
+services:
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sindicopro}
+      POSTGRES_USER: ${POSTGRES_USER:-sindicopro}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-sindicopro_local}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sindicopro} -d ${POSTGRES_DB:-sindicopro}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+    networks:
+      - sindicopro
+
+  backend:
+    <<: *backend-common
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:8000/up"]
+      interval: 10s
+      timeout: 5s
+      start_period: 30s
+      retries: 10
+    restart: unless-stopped
+
+  worker:
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      SINDICOPRO_INSTALL_DEPENDENCIES: "false"
+    command:
+      - php
+      - artisan
+      - queue:work
+      - database
+      - --queue=arquivos,emails,exportacoes
+      - --sleep=3
+      - --tries=3
+      - --timeout=120
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+
+  scheduler:
+    <<: *backend-common
+    environment:
+      <<: *backend-environment
+      SINDICOPRO_INSTALL_DEPENDENCIES: "false"
+    command: ["php", "artisan", "schedule:work"]
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ../Front-end
+      dockerfile: Dockerfile
+      target: development
+      args:
+        NODE_VERSION: ${NODE_VERSION:-22}
+    environment:
+      NODE_ENV: development
+      VITE_API_URL: http://localhost:${BACKEND_PORT:-8000}
+      CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING:-false}
+    volumes:
+      - ../Front-end:/app:z
+      - frontend_node_modules:/app/node_modules
+    ports:
+      - "${FRONTEND_PORT:-5173}:5173"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:5173"]
+      interval: 10s
+      timeout: 5s
+      start_period: 20s
+      retries: 10
+    restart: unless-stopped
+    networks:
+      - sindicopro
+
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - "${MAILPIT_SMTP_PORT:-1025}:1025"
+      - "${MAILPIT_HTTP_PORT:-8025}:8025"
+    restart: unless-stopped
+    networks:
+      - sindicopro
+
+volumes:
+  backend_vendor:
+  frontend_node_modules:
+  postgres_data:
+
+networks:
+  sindicopro:
+    driver: bridge
