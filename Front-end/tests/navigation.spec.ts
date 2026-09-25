@@ -26,15 +26,14 @@ describe('filtrarNavegacao', () => {
     expect(navegacaoAtiva(item!, 'admin-bloco-detalhe')).toBe(true)
   })
 
-  it('mantém somente as cinco áreas do financeiro no menu', () => {
+  it('mantém somente as quatro áreas do financeiro no menu', () => {
     const financeiro = adminNavigationGroups.find((group) => group.label === 'Financeiro')
 
     expect(financeiro?.items.map((item) => item.label)).toEqual([
-      'Banco',
-      'Pagamentos',
-      'Recebimentos',
-      'Tipos de pagamentos',
-      'Relatórios',
+      'Contas bancárias',
+      'Plano de contas',
+      'Tipos de cobrança',
+      'Lançamentos',
     ])
   })
 })
