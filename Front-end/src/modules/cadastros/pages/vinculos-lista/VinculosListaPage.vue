@@ -195,7 +195,7 @@ function abrirHistorico(vinculo: Vinculo): void {
     </div>
 
     <Sheet v-model:open="sheetAberto">
-      <SheetContent class="w-full overflow-y-auto sm:max-w-md">
+      <SheetContent side="center" class="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>Novo vínculo</SheetTitle>
         </SheetHeader>

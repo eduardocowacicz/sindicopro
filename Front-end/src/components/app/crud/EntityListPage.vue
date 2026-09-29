@@ -242,7 +242,7 @@ const mutacaoSituacao = useMutation({
     </div>
 
     <Sheet v-model:open="sheetAberto">
-      <SheetContent class="w-full overflow-y-auto sm:max-w-md">
+      <SheetContent side="center" class="overflow-y-auto">
         <SheetHeader>
           <SheetTitle>{{ registroEmEdicao ? 'Editar' : 'Novo' }} — {{ titulo }}</SheetTitle>
         </SheetHeader>
