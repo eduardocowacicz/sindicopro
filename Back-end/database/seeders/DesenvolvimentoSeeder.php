@@ -26,6 +26,7 @@ final class DesenvolvimentoSeeder extends Seeder
         'cadastros.unidades' => ['consultar', 'cadastrar', 'editar', 'inativar'],
         'cadastros.pessoas' => ['consultar', 'cadastrar', 'editar', 'inativar'],
         'cadastros.veiculos' => ['consultar', 'cadastrar', 'editar', 'inativar'],
+        'cadastros.vinculos' => ['consultar', 'cadastrar', 'encerrar'],
         'acesso.usuarios' => ['consultar', 'cadastrar', 'editar', 'inativar', 'bloquear', 'desbloquear', 'redefinir_senha'],
         'acesso.perfis' => ['consultar', 'cadastrar', 'editar', 'inativar', 'gerenciar_permissoes'],
         'financeiro.movimentacoes' => ['consultar', 'cadastrar', 'editar', 'contabilizar', 'estornar'],

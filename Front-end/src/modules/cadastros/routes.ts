@@ -43,4 +43,10 @@ export const cadastrosRoutes: RouteRecordRaw[] = [
     component: () => import('./pages/veiculos-lista/VeiculosListaPage.vue'),
     meta: { permissao: 'cadastros.veiculos.consultar' },
   },
+  {
+    path: 'vinculos',
+    name: 'admin-vinculos',
+    component: () => import('./pages/vinculos-lista/VinculosListaPage.vue'),
+    meta: { permissao: 'cadastros.vinculos.consultar' },
+  },
 ]
