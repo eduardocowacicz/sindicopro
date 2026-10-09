@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input'
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import type { RegistroAuditoria, RespostaPaginada } from '@/lib/api-types'
 import type { CampoFormulario, ColunaTabela } from '@/lib/crud/types'
-import { mensagemDeErro } from '@/lib/http-error'
+import { errosDeCampos, mensagemDeErro } from '@/lib/http-error'
 import { useAutenticacaoStore } from '@/modules/auth/stores/autenticacao.store'
 
 const props = defineProps<{
@@ -63,9 +63,15 @@ const sheetAberto = ref(false)
 const registroEmEdicao = ref<T | null>(null)
 const valoresFormulario = reactive<Record<string, unknown>>({})
 const erroFormulario = ref('')
+const errosCampos = reactive<Record<string, string>>({})
 
 const historicoAberto = ref(false)
 const registroHistorico = ref<T | null>(null)
+
+function limparErros(): void {
+  erroFormulario.value = ''
+  Object.keys(errosCampos).forEach((chave) => delete errosCampos[chave])
+}
 
 function abrirCriacao(): void {
   registroEmEdicao.value = null
@@ -73,7 +79,7 @@ function abrirCriacao(): void {
   props.campos.forEach((campo) => {
     valoresFormulario[campo.chave] = campo.tipo === 'checkbox' ? false : ''
   })
-  erroFormulario.value = ''
+  limparErros()
   sheetAberto.value = true
 }
 
@@ -83,7 +89,7 @@ function abrirEdicao(item: T): void {
   props.campos.forEach((campo) => {
     valoresFormulario[campo.chave] = item[campo.chave] ?? (campo.tipo === 'checkbox' ? false : '')
   })
-  erroFormulario.value = ''
+  limparErros()
   sheetAberto.value = true
 }
 
@@ -101,12 +107,16 @@ const mutacaoSalvar = useMutation({
 
     return props.criar?.({ ...valoresFormulario })
   },
+  onMutate: () => {
+    limparErros()
+  },
   onSuccess: async () => {
     sheetAberto.value = false
     await filaCliente.invalidateQueries({ queryKey: [props.queryKey] })
   },
   onError: (erro: unknown) => {
     erroFormulario.value = mensagemDeErro(erro)
+    Object.assign(errosCampos, errosDeCampos(erro))
   },
 })
 
@@ -248,7 +258,12 @@ const mutacaoSituacao = useMutation({
         </SheetHeader>
 
         <div class="space-y-4 px-4 pb-4">
-          <EntityForm :campos="campos" :valores="valoresFormulario" :criando="!registroEmEdicao" />
+          <EntityForm
+            :campos="campos"
+            :valores="valoresFormulario"
+            :erros="errosCampos"
+            :criando="!registroEmEdicao"
+          />
           <p
             v-if="erroFormulario"
             class="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive"

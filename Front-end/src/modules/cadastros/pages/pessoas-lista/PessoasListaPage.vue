@@ -15,8 +15,8 @@ const campos: CampoFormulario[] = [
   {
     chave: 'cpf',
     rotulo: 'CPF',
-    tipo: 'texto',
-    placeholder: 'Somente números',
+    tipo: 'cpf',
+    placeholder: '000.000.000-00',
     somenteCriacao: true,
   },
   { chave: 'email', rotulo: 'E-mail', tipo: 'texto' },
