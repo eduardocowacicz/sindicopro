@@ -15,7 +15,14 @@ const colunas: ColunaTabela<Bloco>[] = [
 ]
 
 const campos: CampoFormulario[] = [
-  { chave: 'codigo', rotulo: 'Código', tipo: 'texto', obrigatorio: true },
+  {
+    chave: 'codigo',
+    rotulo: 'Código',
+    tipo: 'texto',
+    somenteEdicao: true,
+    desabilitado: true,
+    ajuda: 'Gerado automaticamente pelo sistema.',
+  },
   { chave: 'nome', rotulo: 'Nome', tipo: 'texto', obrigatorio: true },
   { chave: 'quantidade_andares', rotulo: 'Quantidade de andares', tipo: 'numero' },
   { chave: 'observacoes', rotulo: 'Observações', tipo: 'texto-longo' },
