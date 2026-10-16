@@ -25,12 +25,6 @@ final class VinculoUnidadePessoaService
 
     public function criar(array $dados, Usuario $usuario): VinculoUnidadePessoa
     {
-        if (($dados['responsavel_financeiro'] ?? false) && empty($dados['papel_cobranca'])) {
-            throw ValidationException::withMessages([
-                'papel_cobranca' => ['Informe o papel de cobrança para o responsável financeiro.'],
-            ]);
-        }
-
         $vinculo = VinculoUnidadePessoa::query()->create([
             ...$dados,
             'criado_por' => $usuario->getKey(),

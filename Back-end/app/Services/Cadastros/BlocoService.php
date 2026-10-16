@@ -31,6 +31,9 @@ final class BlocoService
             'atualizado_por' => $usuario->getKey(),
         ]);
 
+        // O código vem do DEFAULT da coluna (sequência do banco); recarrega para devolvê-lo.
+        $bloco->refresh();
+
         $this->auditarCriacao($usuario, 'Bloco', $bloco->getKey(), $dados);
 
         return $bloco;

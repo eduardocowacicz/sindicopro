@@ -1,5 +1,5 @@
 export type CampoTipo =
-  'texto' | 'numero' | 'selecao' | 'data' | 'checkbox' | 'texto-longo' | 'senha'
+  'texto' | 'numero' | 'selecao' | 'data' | 'checkbox' | 'texto-longo' | 'senha' | 'cpf'
 
 export interface OpcaoSelecao {
   valor: string | number
@@ -13,6 +13,8 @@ export interface CampoFormulario {
   obrigatorio?: boolean
   opcoes?: OpcaoSelecao[]
   somenteCriacao?: boolean
+  somenteEdicao?: boolean
+  desabilitado?: boolean
   placeholder?: string
   ajuda?: string
 }
