@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -35,6 +36,11 @@ final class Usuario extends Authenticatable
         return ['id_publico'];
     }
 
+    public function getRouteKeyName(): string
+    {
+        return 'id_publico';
+    }
+
     public function getAuthPasswordName(): string
     {
         return 'senha';
@@ -43,6 +49,23 @@ final class Usuario extends Authenticatable
     public function pessoa(): BelongsTo
     {
         return $this->belongsTo(Pessoa::class, 'pessoa_id');
+    }
+
+    public function perfis(): BelongsToMany
+    {
+        return $this->belongsToMany(Perfil::class, 'usuario_perfis', 'usuario_id', 'perfil_id')
+            ->withPivot(['inicia_em', 'termina_em', 'atribuido_por', 'criado_em']);
+    }
+
+    public function perfisVigentes(): BelongsToMany
+    {
+        return $this->perfis()
+            ->where(function ($query): void {
+                $query->whereNull('usuario_perfis.termina_em')
+                    ->orWhere('usuario_perfis.termina_em', '>', now());
+            })
+            ->where('usuario_perfis.inicia_em', '<=', now())
+            ->where('perfis.ativo', true);
     }
 
     protected function casts(): array

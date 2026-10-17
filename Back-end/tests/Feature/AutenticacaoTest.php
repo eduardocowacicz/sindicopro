@@ -62,10 +62,14 @@ final class AutenticacaoTest extends TestCase
     {
         $this->seed();
 
-        $this->assertDatabaseCount('usuarios', 1);
-        $this->assertDatabaseCount('pessoas', 1);
+        $this->assertDatabaseCount('usuarios', 2);
+        $this->assertDatabaseCount('pessoas', 15);
         $this->assertDatabaseHas('usuarios', [
             'email' => 'sindico@pro.com',
+            'ativo' => true,
+        ]);
+        $this->assertDatabaseHas('usuarios', [
+            'email' => 'morador@pro.com',
             'ativo' => true,
         ]);
     }

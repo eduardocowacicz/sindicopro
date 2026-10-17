@@ -26,7 +26,7 @@ describe('filtrarNavegacao', () => {
     expect(navegacaoAtiva(item!, 'admin-bloco-detalhe')).toBe(true)
   })
 
-  it('mantém somente as quatro áreas do financeiro no menu', () => {
+  it('mantém as áreas do financeiro no menu', () => {
     const financeiro = adminNavigationGroups.find((group) => group.label === 'Financeiro')
 
     expect(financeiro?.items.map((item) => item.label)).toEqual([
@@ -34,6 +34,29 @@ describe('filtrarNavegacao', () => {
       'Plano de contas',
       'Tipos de cobrança',
       'Lançamentos',
+      'Boletos e cobranças',
     ])
+  })
+
+  it('possui ícones configurados para todos os grupos administrativos', () => {
+    for (const group of adminNavigationGroups) {
+      expect(group.icon).toBeDefined()
+    }
+  })
+
+  it('identifica corretamente o grupo correspondente a uma rota ativa', () => {
+    function encontrarGrupo(nomeRota: string) {
+      return (
+        adminNavigationGroups
+          .filter((g) => g.label !== 'Painel')
+          .find((g) => g.items.some((item) => navegacaoAtiva(item, nomeRota)))?.label ?? null
+      )
+    }
+
+    expect(encontrarGrupo('admin-financeiro-lancamentos')).toBe('Financeiro')
+    expect(encontrarGrupo('admin-blocos')).toBe('Condomínio')
+    expect(encontrarGrupo('admin-bloco-detalhe')).toBe('Condomínio')
+    expect(encontrarGrupo('admin-fechamentos-mensais')).toBe('Fechamentos')
+    expect(encontrarGrupo('inicio')).toBeNull()
   })
 })

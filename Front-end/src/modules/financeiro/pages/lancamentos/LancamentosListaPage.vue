@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
-import { CirclePlus, LoaderCircle } from '@lucide/vue'
-import { computed, reactive, ref } from 'vue'
+import { ArrowDownLeft, ArrowUpRight, CirclePlus, LoaderCircle } from '@lucide/vue'
+import { reactive, ref } from 'vue'
 
 import PageHeader from '@/components/app/PageHeader.vue'
-import EntityForm from '@/components/app/crud/EntityForm.vue'
 import HistoricoSheet from '@/components/app/crud/HistoricoSheet.vue'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle } from '@/components/ui/sheet'
-import type { CampoFormulario } from '@/lib/crud/types'
-import { mensagemDeErro } from '@/lib/http-error'
+import { Input } from '@/components/ui/input'
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
+import { errosDeCampos, mensagemDeErro } from '@/lib/http-error'
+import * as pessoasApi from '@/modules/cadastros/api/pessoas.api'
 import * as categoriasApi from '@/modules/financeiro/api/categorias.api'
 import * as contasApi from '@/modules/financeiro/api/contas.api'
 import * as movimentacoesApi from '@/modules/financeiro/api/movimentacoes.api'
@@ -37,6 +37,15 @@ const { data: tiposCobranca } = useQuery({
   queryKey: ['financeiro-tipos-cobranca-selecao'],
   queryFn: tiposCobrancaApi.listarTiposCobrancaParaSelecao,
 })
+const { data: pessoas } = useQuery({
+  queryKey: ['pessoas-prestadores-fornecedores'],
+  queryFn: async () => {
+    const dados = await pessoasApi.listarPessoasParaSelecao({
+      tipos: ['PRESTADOR_SERVICO', 'FORNECEDOR'],
+    })
+    return (dados ?? []).filter((p) => p.tipo === 'PRESTADOR_SERVICO' || p.tipo === 'FORNECEDOR')
+  },
+})
 
 const situacaoRotulo: Record<string, string> = {
   RASCUNHO: 'Rascunho',
@@ -45,71 +54,102 @@ const situacaoRotulo: Record<string, string> = {
   ESTORNADO: 'Estornado',
 }
 
-const campos = computed<CampoFormulario[]>(() => [
-  {
-    chave: 'conta_financeira_id',
-    rotulo: 'Conta',
-    tipo: 'selecao',
-    obrigatorio: true,
-    opcoes: (contas.value ?? []).map((c) => ({ valor: c.id_publico, rotulo: c.nome })),
-  },
-  {
-    chave: 'categoria_financeira_id',
-    rotulo: 'Categoria',
-    tipo: 'selecao',
-    obrigatorio: true,
-    opcoes: (categorias.value ?? []).map((c) => ({
-      valor: c.id_publico,
-      rotulo: `${c.codigo} — ${c.nome}`,
-    })),
-  },
-  {
-    chave: 'tipo_cobranca_id',
-    rotulo: 'Tipo de cobrança',
-    tipo: 'selecao',
-    opcoes: (tiposCobranca.value ?? []).map((t) => ({ valor: t.id_publico, rotulo: t.nome })),
-  },
-  {
-    chave: 'direcao',
-    rotulo: 'Direção',
-    tipo: 'selecao',
-    obrigatorio: true,
-    opcoes: [
-      { valor: 'ENTRADA', rotulo: 'Entrada' },
-      { valor: 'SAIDA', rotulo: 'Saída' },
-    ],
-  },
-  { chave: 'descricao', rotulo: 'Descrição', tipo: 'texto', obrigatorio: true },
-  { chave: 'nome_contraparte', rotulo: 'Contraparte', tipo: 'texto' },
-  { chave: 'numero_documento', rotulo: 'Documento', tipo: 'texto' },
-  { chave: 'data_competencia', rotulo: 'Competência', tipo: 'data', obrigatorio: true },
-  { chave: 'data_efetiva', rotulo: 'Data efetiva', tipo: 'data', obrigatorio: true },
-  { chave: 'data_vencimento', rotulo: 'Vencimento', tipo: 'data' },
-  { chave: 'valor', rotulo: 'Valor', tipo: 'numero', obrigatorio: true },
-  { chave: 'observacoes', rotulo: 'Observações', tipo: 'texto-longo' },
-])
+const tipoRotuloPessoa: Record<string, string> = {
+  MORADOR: 'Morador',
+  PRESTADOR_SERVICO: 'Prestador de serviço',
+  FORNECEDOR: 'Fornecedor',
+}
+
+const classeSelect =
+  'border-input h-9 w-full min-w-0 rounded-md border bg-background px-3 py-1 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20'
+
+interface FormularioLancamento {
+  direcao: 'ENTRADA' | 'SAIDA'
+  descricao: string
+  valor: number | string
+  conta_financeira_id: string
+  categoria_financeira_id: string
+  data_competencia: string
+  data_vencimento: string
+  data_efetiva: string
+  pessoa_id: string
+  nome_contraparte: string
+  tipo_cobranca_id: string
+  numero_documento: string
+  observacoes: string
+  utiliza_fundo_reserva: boolean
+}
 
 const sheetAberto = ref(false)
-const valoresFormulario = reactive<Record<string, unknown>>({})
+const valoresFormulario = reactive<FormularioLancamento>({
+  direcao: 'SAIDA',
+  descricao: '',
+  valor: '',
+  conta_financeira_id: '',
+  categoria_financeira_id: '',
+  data_competencia: '',
+  data_vencimento: '',
+  data_efetiva: '',
+  pessoa_id: '',
+  nome_contraparte: '',
+  tipo_cobranca_id: '',
+  numero_documento: '',
+  observacoes: '',
+  utiliza_fundo_reserva: false,
+})
 const erroFormulario = ref('')
+const errosCampos = reactive<Record<string, string>>({})
+
+function limparErros(): void {
+  erroFormulario.value = ''
+  Object.keys(errosCampos).forEach((chave) => delete errosCampos[chave])
+}
 
 function abrirCriacao(): void {
-  Object.keys(valoresFormulario).forEach((chave) => delete valoresFormulario[chave])
-  campos.value.forEach((campo) => {
-    valoresFormulario[campo.chave] = ''
-  })
-  erroFormulario.value = ''
+  valoresFormulario.direcao = 'SAIDA'
+  valoresFormulario.descricao = ''
+  valoresFormulario.valor = ''
+  valoresFormulario.conta_financeira_id = ''
+  valoresFormulario.categoria_financeira_id = ''
+  valoresFormulario.data_competencia = ''
+  valoresFormulario.data_vencimento = ''
+  valoresFormulario.data_efetiva = ''
+  valoresFormulario.pessoa_id = ''
+  valoresFormulario.nome_contraparte = ''
+  valoresFormulario.tipo_cobranca_id = ''
+  valoresFormulario.numero_documento = ''
+  valoresFormulario.observacoes = ''
+  valoresFormulario.utiliza_fundo_reserva = false
+  limparErros()
   sheetAberto.value = true
 }
 
 const mutacaoCriar = useMutation({
-  mutationFn: () => movimentacoesApi.criarMovimentacao({ ...valoresFormulario }),
+  mutationFn: () => {
+    const payload: Record<string, unknown> = { ...valoresFormulario }
+    if (!payload.pessoa_id) delete payload.pessoa_id
+    if (!payload.tipo_cobranca_id) delete payload.tipo_cobranca_id
+    if (!payload.data_vencimento) delete payload.data_vencimento
+    if (valoresFormulario.direcao !== 'SAIDA') {
+      payload.utiliza_fundo_reserva = false
+      payload.origem_recurso = 'CAPITAL_GIRO'
+    } else {
+      payload.origem_recurso = valoresFormulario.utiliza_fundo_reserva
+        ? 'FUNDO_RESERVA'
+        : 'CAPITAL_GIRO'
+    }
+    return movimentacoesApi.criarMovimentacao(payload)
+  },
+  onMutate: () => {
+    limparErros()
+  },
   onSuccess: async () => {
     sheetAberto.value = false
     await filaCliente.invalidateQueries({ queryKey: ['financeiro-movimentacoes'] })
   },
   onError: (erro: unknown) => {
     erroFormulario.value = mensagemDeErro(erro)
+    Object.assign(errosCampos, errosDeCampos(erro))
   },
 })
 
@@ -179,7 +219,30 @@ function formatarValor(valor: string, direcao: string): string {
             :key="movimentacao.id_publico"
             class="border-t"
           >
-            <td class="px-4 py-2">{{ movimentacao.descricao }}</td>
+            <td class="px-4 py-2">
+              <div class="font-medium flex items-center gap-2">
+                <span>{{ movimentacao.descricao }}</span>
+                <Badge
+                  v-if="movimentacao.utiliza_fundo_reserva"
+                  variant="outline"
+                  class="border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300 text-[10px] px-1.5 py-0"
+                >
+                  Fundo de Reserva
+                </Badge>
+              </div>
+              <div
+                v-if="movimentacao.pessoa?.nome_completo || movimentacao.nome_contraparte"
+                class="text-xs text-muted-foreground"
+              >
+                <span v-if="movimentacao.pessoa?.nome_completo">
+                  {{ movimentacao.pessoa.nome_completo }}
+                  <span v-if="movimentacao.pessoa.tipo" class="text-[11px] opacity-75">
+                    ({{ tipoRotuloPessoa[movimentacao.pessoa.tipo] ?? movimentacao.pessoa.tipo }})
+                  </span>
+                </span>
+                <span v-else>{{ movimentacao.nome_contraparte }}</span>
+              </div>
+            </td>
             <td class="px-4 py-2">{{ movimentacao.conta?.nome ?? '—' }}</td>
             <td class="px-4 py-2">{{ movimentacao.categoria?.nome ?? '—' }}</td>
             <td class="px-4 py-2 text-xs text-muted-foreground">
@@ -212,29 +275,339 @@ function formatarValor(valor: string, direcao: string): string {
     </div>
 
     <Sheet v-model:open="sheetAberto">
-      <SheetContent class="w-full overflow-y-auto sm:max-w-md">
-        <SheetHeader>
-          <SheetTitle>Novo lançamento</SheetTitle>
+      <SheetContent
+        side="center"
+        class="max-h-[90vh] w-[calc(100vw-2rem)] max-w-[700px] overflow-y-auto rounded-[10px] p-5 sm:p-6"
+      >
+        <SheetHeader class="border-b border-border/60 pb-2">
+          <SheetTitle class="text-base font-semibold text-foreground sm:text-lg">
+            Novo lançamento
+          </SheetTitle>
         </SheetHeader>
-        <div class="space-y-4 px-4 pb-4">
-          <EntityForm :campos="campos" :valores="valoresFormulario" :criando="true" />
-          <p
-            v-if="erroFormulario"
-            class="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive"
-          >
-            {{ erroFormulario }}
-          </p>
-        </div>
-        <SheetFooter>
-          <Button :disabled="mutacaoCriar.isPending.value" @click="mutacaoCriar.mutate()">
-            <LoaderCircle
-              v-if="mutacaoCriar.isPending.value"
-              class="size-4 animate-spin"
-              aria-hidden="true"
+
+        <form
+          class="grid grid-cols-12 gap-x-4 gap-y-3 pt-2"
+          @submit.prevent="mutacaoCriar.mutate()"
+        >
+          <!-- Linha 1 - Direção (12 colunas) -->
+          <div class="col-span-12 space-y-1">
+            <label class="block text-xs font-semibold text-foreground">
+              Direção <span class="text-destructive">*</span>
+            </label>
+            <div class="grid grid-cols-2 gap-2 rounded-lg bg-muted p-1">
+              <button
+                type="button"
+                :class="[
+                  'flex cursor-pointer items-center justify-center gap-1.5 rounded-md py-1.5 text-xs font-semibold transition-all',
+                  valoresFormulario.direcao === 'ENTRADA'
+                    ? 'bg-background font-bold text-emerald-600 shadow-xs dark:text-emerald-400'
+                    : 'text-muted-foreground hover:text-foreground',
+                ]"
+                @click="valoresFormulario.direcao = 'ENTRADA'"
+              >
+                <ArrowDownLeft class="size-4 text-emerald-500" aria-hidden="true" />
+                Entrada
+              </button>
+              <button
+                type="button"
+                :class="[
+                  'flex cursor-pointer items-center justify-center gap-1.5 rounded-md py-1.5 text-xs font-semibold transition-all',
+                  valoresFormulario.direcao === 'SAIDA'
+                    ? 'bg-background font-bold text-rose-600 shadow-xs dark:text-rose-400'
+                    : 'text-muted-foreground hover:text-foreground',
+                ]"
+                @click="valoresFormulario.direcao = 'SAIDA'"
+              >
+                <ArrowUpRight class="size-4 text-rose-500" aria-hidden="true" />
+                Saída
+              </button>
+            </div>
+            <p v-if="errosCampos.direcao" class="text-xs text-destructive">
+              {{ errosCampos.direcao }}
+            </p>
+          </div>
+
+          <!-- Linha 2 - Dados Principais -->
+          <div class="col-span-12 space-y-1 sm:col-span-8">
+            <label for="campo-descricao" class="block text-xs font-semibold text-foreground">
+              Descrição <span class="text-destructive">*</span>
+            </label>
+            <Input
+              id="campo-descricao"
+              v-model="valoresFormulario.descricao"
+              placeholder="Descrição do lançamento"
+              :aria-invalid="Boolean(errosCampos.descricao)"
             />
-            Salvar
-          </Button>
-        </SheetFooter>
+            <p v-if="errosCampos.descricao" class="text-xs text-destructive">
+              {{ errosCampos.descricao }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-4">
+            <label for="campo-valor" class="block text-xs font-semibold text-foreground">
+              Valor <span class="text-destructive">*</span>
+            </label>
+            <Input
+              id="campo-valor"
+              v-model="valoresFormulario.valor"
+              type="number"
+              step="0.01"
+              placeholder="0,00"
+              :aria-invalid="Boolean(errosCampos.valor)"
+            />
+            <p v-if="errosCampos.valor" class="text-xs text-destructive">
+              {{ errosCampos.valor }}
+            </p>
+          </div>
+
+          <!-- Linha 3 - Classificação Financeira -->
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-conta" class="block text-xs font-semibold text-foreground">
+              Conta <span class="text-destructive">*</span>
+            </label>
+            <select
+              id="campo-conta"
+              v-model="valoresFormulario.conta_financeira_id"
+              :class="[
+                classeSelect,
+                errosCampos.conta_financeira_id && 'border-destructive ring-destructive/20',
+              ]"
+              :aria-invalid="Boolean(errosCampos.conta_financeira_id)"
+            >
+              <option value="" disabled>Selecione...</option>
+              <option v-for="c in contas ?? []" :key="c.id_publico" :value="c.id_publico">
+                {{ c.nome }}
+              </option>
+            </select>
+            <p v-if="errosCampos.conta_financeira_id" class="text-xs text-destructive">
+              {{ errosCampos.conta_financeira_id }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-categoria" class="block text-xs font-semibold text-foreground">
+              Categoria <span class="text-destructive">*</span>
+            </label>
+            <select
+              id="campo-categoria"
+              v-model="valoresFormulario.categoria_financeira_id"
+              :class="[
+                classeSelect,
+                errosCampos.categoria_financeira_id && 'border-destructive ring-destructive/20',
+              ]"
+              :aria-invalid="Boolean(errosCampos.categoria_financeira_id)"
+            >
+              <option value="" disabled>Selecione...</option>
+              <option v-for="cat in categorias ?? []" :key="cat.id_publico" :value="cat.id_publico">
+                {{ cat.codigo }} — {{ cat.nome }}
+              </option>
+            </select>
+            <p v-if="errosCampos.categoria_financeira_id" class="text-xs text-destructive">
+              {{ errosCampos.categoria_financeira_id }}
+            </p>
+          </div>
+
+          <!-- Linha 4 - Datas do Lançamento -->
+          <div class="col-span-12 space-y-1 sm:col-span-4">
+            <label for="campo-competencia" class="block text-xs font-semibold text-foreground">
+              Competência <span class="text-destructive">*</span>
+            </label>
+            <Input
+              id="campo-competencia"
+              v-model="valoresFormulario.data_competencia"
+              type="date"
+              :aria-invalid="Boolean(errosCampos.data_competencia)"
+            />
+            <p v-if="errosCampos.data_competencia" class="text-xs text-destructive">
+              {{ errosCampos.data_competencia }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-4">
+            <label for="campo-vencimento" class="block text-xs font-semibold text-foreground">
+              Vencimento
+            </label>
+            <Input
+              id="campo-vencimento"
+              v-model="valoresFormulario.data_vencimento"
+              type="date"
+              :aria-invalid="Boolean(errosCampos.data_vencimento)"
+            />
+            <p v-if="errosCampos.data_vencimento" class="text-xs text-destructive">
+              {{ errosCampos.data_vencimento }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-4">
+            <label for="campo-data-efetiva" class="block text-xs font-semibold text-foreground">
+              Data efetiva <span class="text-destructive">*</span>
+            </label>
+            <Input
+              id="campo-data-efetiva"
+              v-model="valoresFormulario.data_efetiva"
+              type="date"
+              :aria-invalid="Boolean(errosCampos.data_efetiva)"
+            />
+            <p v-if="errosCampos.data_efetiva" class="text-xs text-destructive">
+              {{ errosCampos.data_efetiva }}
+            </p>
+          </div>
+
+          <!-- Divisor Visual / Seção de Opcionais -->
+          <div class="col-span-12 border-t border-border/60 pt-2">
+            <span class="text-[11px] font-semibold tracking-wider text-muted-foreground uppercase">
+              Detalhes e Vínculos (Opcional)
+            </span>
+          </div>
+
+          <!-- Linha 5 - Envolvidos / Contraparte -->
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-pessoa" class="block text-xs font-semibold text-foreground">
+              Prestador de serviço / Fornecedor
+            </label>
+            <select
+              id="campo-pessoa"
+              v-model="valoresFormulario.pessoa_id"
+              :class="[
+                classeSelect,
+                errosCampos.pessoa_id && 'border-destructive ring-destructive/20',
+              ]"
+              :aria-invalid="Boolean(errosCampos.pessoa_id)"
+            >
+              <option value="">Selecione...</option>
+              <option v-for="p in pessoas ?? []" :key="p.id_publico" :value="p.id_publico">
+                {{ p.nome_completo }} ({{ tipoRotuloPessoa[p.tipo] ?? p.tipo }})
+              </option>
+            </select>
+            <p class="text-[11px] text-muted-foreground">
+              Opcional: selecione o prestador de serviço ou fornecedor vinculado.
+            </p>
+            <p v-if="errosCampos.pessoa_id" class="text-xs text-destructive">
+              {{ errosCampos.pessoa_id }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-contraparte" class="block text-xs font-semibold text-foreground">
+              Contraparte (texto livre)
+            </label>
+            <Input
+              id="campo-contraparte"
+              v-model="valoresFormulario.nome_contraparte"
+              placeholder="Nome da contraparte ou favorecido"
+              :aria-invalid="Boolean(errosCampos.nome_contraparte)"
+            />
+            <p v-if="errosCampos.nome_contraparte" class="text-xs text-destructive">
+              {{ errosCampos.nome_contraparte }}
+            </p>
+          </div>
+
+          <!-- Linha 6 - Cobrança e Documento -->
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-tipo-cobranca" class="block text-xs font-semibold text-foreground">
+              Tipo de cobrança
+            </label>
+            <select
+              id="campo-tipo-cobranca"
+              v-model="valoresFormulario.tipo_cobranca_id"
+              :class="[
+                classeSelect,
+                errosCampos.tipo_cobranca_id && 'border-destructive ring-destructive/20',
+              ]"
+              :aria-invalid="Boolean(errosCampos.tipo_cobranca_id)"
+            >
+              <option value="">Selecione...</option>
+              <option v-for="t in tiposCobranca ?? []" :key="t.id_publico" :value="t.id_publico">
+                {{ t.nome }}
+              </option>
+            </select>
+            <p v-if="errosCampos.tipo_cobranca_id" class="text-xs text-destructive">
+              {{ errosCampos.tipo_cobranca_id }}
+            </p>
+          </div>
+
+          <div class="col-span-12 space-y-1 sm:col-span-6">
+            <label for="campo-documento" class="block text-xs font-semibold text-foreground">
+              Documento
+            </label>
+            <Input
+              id="campo-documento"
+              v-model="valoresFormulario.numero_documento"
+              placeholder="Nº da NF, recibo ou boleto"
+              :aria-invalid="Boolean(errosCampos.numero_documento)"
+            />
+            <p v-if="errosCampos.numero_documento" class="text-xs text-destructive">
+              {{ errosCampos.numero_documento }}
+            </p>
+          </div>
+
+          <!-- Fundo de Reserva (somente para Saída) -->
+          <div
+            v-if="valoresFormulario.direcao === 'SAIDA'"
+            class="col-span-12 rounded-lg border border-amber-300/60 bg-amber-500/10 p-3"
+          >
+            <label class="flex cursor-pointer items-start gap-2.5">
+              <input
+                v-model="valoresFormulario.utiliza_fundo_reserva"
+                type="checkbox"
+                class="mt-0.5 size-4 rounded border-input text-amber-600 focus:ring-amber-500"
+              />
+              <div class="space-y-0.5">
+                <span class="block text-xs font-semibold text-foreground">
+                  Pago com recursos do Fundo de Reserva
+                </span>
+                <p class="text-[11px] text-muted-foreground">
+                  Esta despesa utilizará o saldo de Fundo de Reserva da conta bancária. Ela
+                  aparecerá discriminada na prestação de contas do fechamento, mas
+                  <strong>não será cobrada novamente</strong> dos moradores.
+                </p>
+              </div>
+            </label>
+          </div>
+
+          <!-- Linha 7 - Observações -->
+          <div class="col-span-12 space-y-1">
+            <label for="campo-observacoes" class="block text-xs font-semibold text-foreground">
+              Observações
+            </label>
+            <textarea
+              id="campo-observacoes"
+              v-model="valoresFormulario.observacoes"
+              rows="2"
+              :class="[
+                'border-input w-full min-w-0 resize-y rounded-md border bg-background px-3 py-1.5 text-sm shadow-xs outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-destructive/20',
+                errosCampos.observacoes && 'border-destructive ring-destructive/20',
+              ]"
+              placeholder="Observações complementares..."
+              :aria-invalid="Boolean(errosCampos.observacoes)"
+            />
+            <p v-if="errosCampos.observacoes" class="text-xs text-destructive">
+              {{ errosCampos.observacoes }}
+            </p>
+          </div>
+
+          <!-- Alerta de erro geral -->
+          <div v-if="erroFormulario" class="col-span-12">
+            <p class="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
+              {{ erroFormulario }}
+            </p>
+          </div>
+
+          <!-- Rodapé de ações -->
+          <div
+            class="col-span-12 mt-1 flex flex-row items-center justify-end gap-2 border-t border-border/60 pt-3"
+          >
+            <Button variant="outline" type="button" @click="sheetAberto = false"> Cancelar </Button>
+            <Button type="submit" :disabled="mutacaoCriar.isPending.value">
+              <LoaderCircle
+                v-if="mutacaoCriar.isPending.value"
+                class="size-4 animate-spin"
+                aria-hidden="true"
+              />
+              Salvar
+            </Button>
+          </div>
+        </form>
       </SheetContent>
     </Sheet>
 

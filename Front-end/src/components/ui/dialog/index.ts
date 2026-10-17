@@ -1,0 +1,8 @@
+export { default as Dialog } from '@/components/ui/sheet/Sheet.vue'
+export { default as DialogContent } from './DialogContent.vue'
+export { default as DialogHeader } from '@/components/ui/sheet/SheetHeader.vue'
+export { default as DialogTitle } from '@/components/ui/sheet/SheetTitle.vue'
+export { default as DialogDescription } from '@/components/ui/sheet/SheetDescription.vue'
+export { default as DialogFooter } from '@/components/ui/sheet/SheetFooter.vue'
+export { default as DialogClose } from '@/components/ui/sheet/SheetClose.vue'
+export { default as DialogTrigger } from '@/components/ui/sheet/SheetTrigger.vue'

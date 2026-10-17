@@ -60,6 +60,7 @@ return [
         'responsavel_financeiro' => 'responsável financeiro',
         'situacao_ocupacao' => 'situação de ocupação',
         'telefone' => 'telefone',
+        'tipo' => 'tipo',
         'tipo_vinculo' => 'tipo de vínculo',
         'unidade_id' => 'unidade',
         'vaga' => 'vaga',

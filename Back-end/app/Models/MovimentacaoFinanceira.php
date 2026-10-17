@@ -28,6 +28,11 @@ final class MovimentacaoFinanceira extends ModeloBase
         return $this->belongsTo(PeriodoFinanceiro::class, 'periodo_financeiro_id');
     }
 
+    public function pessoa(): BelongsTo
+    {
+        return $this->belongsTo(Pessoa::class, 'pessoa_id');
+    }
+
     protected function casts(): array
     {
         return [
@@ -36,6 +41,8 @@ final class MovimentacaoFinanceira extends ModeloBase
             'data_efetiva' => 'immutable_date',
             'data_vencimento' => 'immutable_date',
             'contabilizado_em' => 'immutable_datetime',
+            'utiliza_fundo_reserva' => 'boolean',
+            'origem_recurso' => 'string',
         ];
     }
 }

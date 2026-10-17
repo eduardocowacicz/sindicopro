@@ -22,14 +22,14 @@ final class Veiculo extends ModeloBase
     protected function unidadeId(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value) => $this->relationLoaded('unidade') ? $this->unidade?->id_publico : $value,
+            get: fn (mixed $value) => ($this->relationLoaded('unidade') && $this->getRelation('unidade')) ? $this->getRelation('unidade')->id_publico : $value,
         );
     }
 
     protected function pessoaId(): Attribute
     {
         return Attribute::make(
-            get: fn (mixed $value) => $this->relationLoaded('pessoa') ? $this->pessoa?->id_publico : $value,
+            get: fn (mixed $value) => ($this->relationLoaded('pessoa') && $this->getRelation('pessoa')) ? $this->getRelation('pessoa')->id_publico : $value,
         );
     }
 

@@ -40,6 +40,10 @@ if [ "${SINDICOPRO_INSTALL_DEPENDENCIES:-true}" != "true" ]; then
     done
 fi
 
+if [ -f /app/.env ] && grep -q '^APP_KEY=$' /app/.env && [ -n "${APP_KEY:-}" ]; then
+    sed -i "s|^APP_KEY=.*|APP_KEY=${APP_KEY}|" /app/.env
+fi
+
 if [ "${1:-}" = "php" ] && [ "${2:-}" = "artisan" ] && [ "${3:-}" = "serve" ]; then
     echo "SindicoPro: aplicando migrations pendentes..." >&2
     php artisan migrate --force

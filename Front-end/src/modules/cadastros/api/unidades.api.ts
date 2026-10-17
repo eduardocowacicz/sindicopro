@@ -45,6 +45,16 @@ export async function historicoUnidade(id: string): Promise<RegistroAuditoria[]>
   return resposta.data.dados
 }
 
+export async function atualizarObservacoesUnidade(
+  id: string,
+  observacoes: string | null,
+): Promise<Unidade> {
+  const resposta = await http.patch<RespostaItem<Unidade>>(`/api/unidades/${id}/observacoes`, {
+    observacoes,
+  })
+  return resposta.data.dados
+}
+
 export async function listarUnidadesParaSelecao(): Promise<Unidade[]> {
   const resposta = await http.get<RespostaPaginada<Unidade>>('/api/unidades', {
     params: { somente_ativos: true, por_pagina: 500 },
