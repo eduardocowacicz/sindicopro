@@ -17,10 +17,17 @@ final class PessoaController extends Controller
 
     public function index(Request $request): JsonResponse
     {
+        $tipos = $request->input('tipos');
+        if (is_string($tipos)) {
+            $tipos = array_filter(explode(',', $tipos));
+        }
+
         $paginador = $this->service->listar(
             $request->string('busca')->value() ?: null,
             $request->boolean('somente_ativos'),
             (int) $request->integer('por_pagina', 20),
+            $request->string('tipo')->value() ?: null,
+            $tipos ?: null,
         );
 
         return response()->json([

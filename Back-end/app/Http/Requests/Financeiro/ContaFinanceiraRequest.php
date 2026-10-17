@@ -22,6 +22,7 @@ final class ContaFinanceiraRequest extends FormRequest
             'agencia' => ['nullable', 'string', 'max:20'],
             'numero_conta' => ['nullable', 'string', 'max:30'],
             'saldo_inicial' => ['required', 'numeric'],
+            'saldo_fundo_reserva_inicial' => ['nullable', 'numeric', 'min:0'],
             'data_saldo_inicial' => ['required', 'date'],
         ];
     }

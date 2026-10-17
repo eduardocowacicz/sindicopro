@@ -24,14 +24,24 @@ onMounted(() => {
   void prepararCsrf().catch(() => undefined)
 })
 
+function preencherCredenciais(tipo: 'sindico' | 'morador'): void {
+  email.value = tipo === 'sindico' ? 'sindico@pro.com' : 'morador@pro.com'
+  senha.value = '123'
+  mensagem.value = ''
+}
+
 function destinoAposLogin(): string {
   const redirecionamento = route.query.redirecionar
 
-  return typeof redirecionamento === 'string' &&
+  if (
+    typeof redirecionamento === 'string' &&
     redirecionamento.startsWith('/') &&
     !redirecionamento.startsWith('//')
-    ? redirecionamento
-    : '/admin'
+  ) {
+    return redirecionamento
+  }
+
+  return autenticacao.temAcessoAdmin ? '/admin' : '/app'
 }
 
 async function enviar(): Promise<void> {
@@ -117,6 +127,33 @@ async function enviar(): Promise<void> {
           <LogIn v-else class="size-4" aria-hidden="true" />
           {{ enviando ? 'Entrando...' : 'Entrar' }}
         </Button>
+
+        <div
+          class="rounded-lg border border-dashed border-primary/30 bg-primary/5 p-3 text-xs text-muted-foreground"
+        >
+          <p class="font-medium text-foreground mb-1">Acesso de Demonstração / Teste:</p>
+          <p class="mb-2">A senha padrão local é <strong class="text-foreground">123</strong>.</p>
+          <div class="flex flex-col gap-1.5 sm:flex-row">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              class="h-7 text-xs flex-1"
+              @click="preencherCredenciais('sindico')"
+            >
+              Síndico (sindico@pro.com)
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              class="h-7 text-xs flex-1"
+              @click="preencherCredenciais('morador')"
+            >
+              Morador (morador@pro.com)
+            </Button>
+          </div>
+        </div>
 
         <RouterLink
           :to="{ name: 'recuperar-senha' }"

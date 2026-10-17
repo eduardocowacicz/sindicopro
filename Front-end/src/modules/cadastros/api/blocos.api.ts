@@ -17,6 +17,15 @@ export async function mostrarBloco(id: string): Promise<Bloco> {
   return resposta.data.dados
 }
 
+export async function obterApartamentosDoBloco(
+  id: string,
+): Promise<import('@/modules/cadastros/types/unidade.types').Unidade[]> {
+  const resposta = await http.get<
+    RespostaItem<import('@/modules/cadastros/types/unidade.types').Unidade[]>
+  >(`/api/blocos/${id}/apartamentos`)
+  return resposta.data.dados
+}
+
 export async function criarBloco(dados: Record<string, unknown>): Promise<Bloco> {
   const resposta = await http.post<RespostaItem<Bloco>>('/api/blocos', dados)
   return resposta.data.dados

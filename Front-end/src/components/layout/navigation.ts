@@ -1,5 +1,15 @@
 import type { Component } from 'vue'
-import { Building2, CalendarDays, CircleGauge, Megaphone, Users, WalletCards } from '@lucide/vue'
+import {
+  AlertCircle,
+  Building2,
+  CalendarDays,
+  CircleGauge,
+  History,
+  Megaphone,
+  Receipt,
+  Users,
+  WalletCards,
+} from '@lucide/vue'
 
 export interface NavigationItem {
   label: string
@@ -11,16 +21,19 @@ export interface NavigationItem {
 
 export interface NavigationGroup {
   label: string
+  icon?: Component
   items: NavigationItem[]
 }
 
 export const adminNavigationGroups: NavigationGroup[] = [
   {
     label: 'Painel',
+    icon: CircleGauge,
     items: [{ label: 'Visão geral', routeName: 'inicio', icon: CircleGauge }],
   },
   {
     label: 'Condomínio',
+    icon: Building2,
     items: [
       {
         label: 'Blocos',
@@ -59,6 +72,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Financeiro',
+    icon: WalletCards,
     items: [
       {
         label: 'Contas bancárias',
@@ -84,10 +98,17 @@ export const adminNavigationGroups: NavigationGroup[] = [
         icon: WalletCards,
         permission: 'financeiro.movimentacoes.consultar',
       },
+      {
+        label: 'Boletos e cobranças',
+        routeName: 'admin-financeiro-cobrancas',
+        icon: Receipt,
+        permission: 'financeiro.movimentacoes.consultar',
+      },
     ],
   },
   {
     label: 'Fechamentos',
+    icon: CalendarDays,
     items: [
       {
         label: 'Mensais',
@@ -100,6 +121,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Reservas',
+    icon: CalendarDays,
     items: [
       {
         label: 'Agenda',
@@ -124,6 +146,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Comunicados',
+    icon: Megaphone,
     items: [
       {
         label: 'Comunicados',
@@ -136,6 +159,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Ocorrências',
+    icon: AlertCircle,
     items: [
       {
         label: 'Ocorrências',
@@ -154,6 +178,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Acesso',
+    icon: Users,
     items: [
       {
         label: 'Usuários',
@@ -173,6 +198,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Auditoria',
+    icon: History,
     items: [
       {
         label: 'Acessos',
@@ -193,6 +219,7 @@ export const adminNavigationGroups: NavigationGroup[] = [
 export const userNavigationGroups: NavigationGroup[] = [
   {
     label: 'Minha área',
+    icon: Building2,
     items: [
       { label: 'Início', routeName: 'app-inicio', icon: CircleGauge },
       { label: 'Minha unidade', routeName: 'app-unidade', icon: Building2 },

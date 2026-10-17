@@ -38,12 +38,17 @@ final class BlocoController extends Controller
     {
         $bloco = $this->service->criar($request->validated(), $request->user());
 
-        return response()->json(['dados' => $bloco], 201);
+        return response()->json(['dados' => $this->service->carregarComApartamentos($bloco)], 201);
     }
 
     public function show(Bloco $bloco): JsonResponse
     {
-        return response()->json(['dados' => $bloco]);
+        return response()->json(['dados' => $this->service->carregarComApartamentos($bloco)]);
+    }
+
+    public function apartamentos(Bloco $bloco): JsonResponse
+    {
+        return response()->json(['dados' => $this->service->obterApartamentosDoBloco($bloco)]);
     }
 
     public function update(BlocoRequest $request, Bloco $bloco): JsonResponse

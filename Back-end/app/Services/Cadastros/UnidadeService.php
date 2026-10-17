@@ -47,6 +47,28 @@ final class UnidadeService
         return $unidade->load('bloco');
     }
 
+    public function atualizarObservacoes(Unidade $unidade, ?string $observacoes, Usuario $usuario): Unidade
+    {
+        $antes = ['observacoes' => $unidade->observacoes];
+        $unidade->forceFill([
+            'observacoes' => $observacoes,
+            'atualizado_por' => $usuario->getKey(),
+        ])->save();
+
+        $this->auditarAtualizacao($usuario, 'Unidade', $unidade->getKey(), $antes, ['observacoes' => $observacoes]);
+
+        return $unidade->load([
+            'bloco',
+            'vinculos' => function ($vQuery) {
+                $vQuery->whereNull('fim_vigencia')
+                    ->with(['pessoa:id,id_publico,nome_completo,email,telefone,tipo']);
+            },
+            'veiculos' => function ($veiQuery) {
+                $veiQuery->where('ativo', true);
+            },
+        ]);
+    }
+
     public function inativar(Unidade $unidade, Usuario $usuario, ?string $motivo): void
     {
         if ($unidade->vinculos()->whereNull('fim_vigencia')->exists()) {
