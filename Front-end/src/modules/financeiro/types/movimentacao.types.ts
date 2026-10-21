@@ -6,6 +6,8 @@ export interface MovimentacaoFinanceira {
   categoria?: { id_publico: string; nome: string }
   tipo_cobranca_id: string | null
   tipoCobranca?: { id_publico: string; nome: string } | null
+  pessoa_id?: string | null
+  pessoa?: { id_publico: string; nome_completo: string; tipo?: string } | null
   direcao: 'ENTRADA' | 'SAIDA'
   descricao: string
   numero_documento: string | null
@@ -15,5 +17,7 @@ export interface MovimentacaoFinanceira {
   data_vencimento: string | null
   valor: string
   situacao: 'RASCUNHO' | 'CONTABILIZADO' | 'CANCELADO' | 'ESTORNADO'
+  utiliza_fundo_reserva?: boolean
+  origem_recurso?: 'CAPITAL_GIRO' | 'FUNDO_RESERVA'
   observacoes: string | null
 }

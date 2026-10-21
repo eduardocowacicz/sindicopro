@@ -7,6 +7,7 @@ use App\Rules\CpfValido;
 use Closure;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 final class PessoaRequest extends FormRequest
 {
@@ -22,6 +23,7 @@ final class PessoaRequest extends FormRequest
 
         return [
             'nome_completo' => ['required', 'string', 'min:3', 'max:200'],
+            'tipo' => ['nullable', Rule::in(['MORADOR', 'PRESTADOR_SERVICO', 'FORNECEDOR'])],
             'cpf' => ['nullable', 'string', 'max:14', 'bail', new CpfValido, $this->cpfNaoDuplicado($ignoraId)],
             'email' => ['nullable', 'string', 'email:rfc', 'max:254'],
             'telefone' => ['nullable', 'string', 'max:20', $this->telefoneValido()],
