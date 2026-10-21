@@ -1,24 +1,29 @@
 # SíndicoPro — Relatório de Revisão Geral, Testes e Oportunidades de Melhoria
 
-> **Data da Revisão:** 17 de Outubro de 2026  
-> **Status da Plataforma:** 100% Operacional e Validada em Pipeline de Qualidade  
-> **Suíte de Testes:** 58 testes no Backend (Laravel PHPUnit) + 23 testes no Frontend (Vitest)  
+> **Data da Revisão:** 21 de Outubro de 2026
+>
+> **Escopo atualizado:** Dashboard financeiro administrativo na branch `feature-Ajustes-Dashboard`
+>
+> **Suíte de Testes:** 59 testes no Backend (Laravel PHPUnit) + 23 testes no Frontend (Vitest)
+>
 > **Cobertura de Rotas:** 47 telas (3 Auth, 30 Administrativas, 14 Área do Morador)
 
 ---
 
 ## 1. Resumo Executivo da Revisão
 
-Todas as telas e módulos do **SíndicoPro** foram revisados em conformidade com as regras de arquitetura em camadas (Laravel 12 / Vue 3 + Tailwind CSS + Reka UI + TanStack Query):
+Este documento consolida a revisão funcional registrada anteriormente e atualiza o escopo alterado nesta branch: o painel financeiro administrativo. A validação executada nesta atualização cobre a suíte de funcionalidades do backend e a qualidade automatizada do frontend; ela não representa uma nova revisão manual de todas as telas. A arquitetura documentada utiliza Laravel 13, Vue 3, Tailwind CSS, Reka UI e TanStack Query.
 
 1. **Separação de Contextos:**
    - **Administração (`/admin`):** Gestão cadastral, financeira, fechamentos, reservas, comunicados, ocorrências e auditoria com controle de políticas e permissões por perfil.
    - **Área do Morador (`/app`):** Experiência simplificada e responsiva para o condômino consultar sua unidade, boletos/Pix, solicitar reservas em ambientes, ler comunicados e registrar ocorrências.
 2. **Permissões Cumulativas:**
    - Um morador possui acesso natural à sua unidade e, caso seja eleito para cargo administrativo (Síndico, Subsíndico ou Conselho), acumula automaticamente as permissões administrativas correspondentes sem perder o vínculo com seu apartamento. Ao término do mandato, as permissões são revogadas mantendo seu perfil de morador intacto.
-3. **Pipeline de Qualidade Automatizada:**
-   - **Backend:** `Pint` (PSR-12 / Laravel Code Style) + `PHPUnit` (**58/58 testes aprovados**, 296 asserções).
-   - **Frontend:** `Prettier` + `ESLint` + `vue-tsc` (checagem de tipos sem erros) + `Vitest` (**23/23 testes aprovados**) + `vite build` de produção gerado com sucesso.
+3. **Validação executada nesta atualização:**
+   - **Backend:** `PHPUnit` (**59/59 testes aprovados**, 304 asserções), em container PHP 8.4.26 com banco PostgreSQL isolado.
+   - **Observação do Backend:** Como `phpunit.xml` referencia `tests/Unit`, diretório inexistente neste checkout, a suíte foi executada diretamente em `tests/Feature`.
+   - **Frontend:** `npm run quality` concluído com sucesso: `Prettier`, `ESLint`, `vue-tsc`, `Vitest` (**23/23 testes em 6 arquivos**) e `vite build`.
+   - **Ambiente Frontend:** Node.js 24.14.1. O `npm ci` apresentou avisos `EBADENGINE` para dependências que pedem Node.js 24.15.0 ou superior; ainda assim, todas as etapas de qualidade foram concluídas.
    - **Ambiente de Desenvolvimento & Autenticação:**
      - Usuários de teste configurados e validados: `sindico@pro.com` (senha: `123`, perfil Síndico com acesso integral) e `morador@pro.com` (senha: `123`, perfil Morador com vínculo à unidade 102).
      - Garantida sincronização automática de `APP_KEY` no `entrypoint.sh` caso exista arquivo `.env` residual em `Back-end/`.
@@ -59,11 +64,17 @@ Todas as telas e módulos do **SíndicoPro** foram revisados em conformidade com
 - **Dashboard do Condômino:** Indicadores de boletos a vencer, avisos pendentes de leitura, próximas reservas e chamados em aberto.
 - **Pagamento Fácil:** Modal com QR Code Pix, chave Copia e Cola e linha digitável para pagamento de taxas condominiais.
 
+### 2.8. Dashboard Financeiro Administrativo
+- **Indicadores do período:** Exibição das receitas, despesas e resultado líquido dos últimos 12 meses, com valores formatados em reais.
+- **Visualizações:** Gráficos de linhas e de barras com comparação mensal de entradas e saídas.
+- **Integração com a API:** Consulta a `/api/dashboard/financeiro` por query tipada, com atualização manual, carregamento, tratamento de erro e estado sem movimentações.
+- **Regra de consolidação:** O backend agrega movimentações contabilizadas pela data efetiva. O teste cobre os 12 meses, os limites do período e a exclusão de lançamentos em rascunho ou cancelados.
+
 ---
 
-## 3. Cobertura de Testes Automatizados Implementada
+## 3. Cobertura e Resultado dos Testes Automatizados
 
-### Backend (PHPUnit — 58 Testes)
+### Backend (PHPUnit — 59 Testes)
 | Arquivo de Teste | Quantidade | Escopo Coberto |
 | :--- | :--- | :--- |
 | `AutenticacaoTest.php` | 6 testes | Login local, políticas de acesso, sessão, rate limit e idempotência do seeder. |
@@ -71,6 +82,7 @@ Todas as telas e módulos do **SíndicoPro** foram revisados em conformidade com
 | `BlocoVisualizacaoTest.php` | 3 testes | Geração automática de apartamentos, visualização por andar e observações de unidade. |
 | `FinanceiroAjustesTest.php` | 7 testes | Categorias, tipos de cobrança, plano de contas e filtros de pessoa. |
 | `CobrancasEFundoReservaTest.php` | 4 testes | Parcelamento, fundo de reserva de 10%, despesas discriminadas e baixa de pagamentos. |
+| `DashboardFinanceiroTest.php` | 1 teste | Endpoint financeiro, período de 12 meses, data efetiva e situação contabilizada. |
 | `FechamentoMensalTest.php` | 5 testes | Prévia de rateio, competências anuais, fechamento e reabertura de períodos. |
 | `ReservasTest.php` | 4 testes | Criação de ambientes, faixas de horários, bloqueios e validação de reservas. |
 | `ComunicadosTest.php` | 3 testes | Ciclo de vida de comunicados (rascunho, publicação, cancelamento e segmentação). |
@@ -79,7 +91,7 @@ Todas as telas e módulos do **SíndicoPro** foram revisados em conformidade com
 | `UsuarioPermissaoCumulativaTest.php` | 3 testes | Atribuição de perfil Morador, promoção para Síndico e revogação sem perda de moradia. |
 | `StatusApiTest.php` | 1 teste | Health check de infraestrutura da API. |
 
-### Frontend (Vitest — 23 Testes)
+### Frontend (Vitest — 23 Testes, 6 arquivos)
 | Arquivo de Teste | Quantidade | Escopo Coberto |
 | :--- | :--- | :--- |
 | `navigation.spec.ts` | 5 testes | Filtragem dinâmica de rotas por permissão, grupos do menu e destaques de rota ativa. |
@@ -119,8 +131,8 @@ Abaixo estão estruturadas as recomendações prioritárias para as próximas it
      - Balancete Financeiro Mensal com demonstrativo de receitas, despesas e evolução do fundo de reserva.
      - Espelho do Fechamento com detalhamento do cálculo de rateio por unidade.
      - Relação de Inadimplência para prestação de contas com o conselho fiscal.
-2. **Gráficos e Indicadores Visuais no Painel:**
-   - Incorporar gráficos de linha e barras no dashboard administrativo demonstrando a evolução de receitas vs despesas nos últimos 12 meses.
+2. **Evolução dos Gráficos do Painel Financeiro:**
+   - Os gráficos de linhas e barras dos últimos 12 meses já estão disponíveis no painel administrativo. Como próximos passos, adicionar filtros por período, categoria e centro de custo, mantendo os valores sincronizados com os indicadores.
 
 ### 4.4. Segurança, Governança e LGPD
 1. **Autenticação em Duas Etapas (2FA / TOTP):**
@@ -139,12 +151,6 @@ Abaixo estão estruturadas as recomendações prioritárias para as próximas it
 
 ---
 
-## 5. Onde Encontrar Este Documento
+## 5. Atualização deste Documento
 
-Este relatório completo está registrado em dois locais:
-
-1. **No Artifact Oficial da Sessão:**
-   - Arquivo: `melhorias_e_proximos_passos.md` no diretório de artefatos da plataforma Antigravity:
-   - Caminho: `/home/Machado/.gemini/antigravity/brain/9811d032-c0e8-4302-b48f-8b14af6bdcb3/melhorias_e_proximos_passos.md`
-2. **Na Raiz do Repositório do Projeto:**
-   - Arquivo: [`MELHORIAS_E_PROXIMOS_PASSOS.md`](file:///home/Machado/Documentos/ProjetoCondominio/sindicopro/MELHORIAS_E_PROXIMOS_PASSOS.md)
+Este relatório é mantido na raiz do repositório. A revisão de 21 de outubro de 2026 registra o dashboard financeiro entregue na branch `feature-Ajustes-Dashboard` e os resultados de validação executados nesta atualização.
