@@ -17,6 +17,7 @@ use App\Http\Controllers\Financeiro\CobrancaController;
 use App\Http\Controllers\Financeiro\ContaFinanceiraController;
 use App\Http\Controllers\Financeiro\MovimentacaoFinanceiraController;
 use App\Http\Controllers\Financeiro\TipoCobrancaController;
+use App\Http\Controllers\Inicio\DashboardController;
 use App\Http\Controllers\Morador\MoradorAreaController;
 use App\Http\Controllers\Ocorrencias\OcorrenciaController;
 use App\Http\Controllers\Ocorrencias\TipoOcorrenciaController;
@@ -30,6 +31,8 @@ Route::get('/status', StatusController::class);
 
 Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('/sessao', SessaoController::class);
+    Route::get('/dashboard/financeiro', [DashboardController::class, 'financeiro'])
+        ->middleware('permissao:financeiro.movimentacoes.consultar');
 
     // Acesso
     Route::prefix('usuarios')->group(function (): void {
