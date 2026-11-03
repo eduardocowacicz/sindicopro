@@ -29,6 +29,8 @@ final class CategoriaFinanceiraService
             'atualizado_por' => $usuario->getKey(),
         ]);
 
+        $categoria->refresh();
+
         $this->auditarCriacao($usuario, 'CategoriaFinanceira', $categoria->getKey(), $dados);
 
         return $categoria;

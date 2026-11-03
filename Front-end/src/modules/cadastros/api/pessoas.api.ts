@@ -40,9 +40,20 @@ export async function historicoPessoa(id: string): Promise<RegistroAuditoria[]> 
   return resposta.data.dados
 }
 
-export async function listarPessoasParaSelecao(): Promise<Pessoa[]> {
+export async function listarPessoasParaSelecao(
+  filtro?: { tipo?: string; tipos?: string[] } | unknown,
+): Promise<Pessoa[]> {
+  const tipo =
+    typeof filtro === 'object' && filtro !== null && 'tipo' in filtro
+      ? (filtro as { tipo?: string }).tipo
+      : undefined
+  const tipos =
+    typeof filtro === 'object' && filtro !== null && 'tipos' in filtro
+      ? (filtro as { tipos?: string[] }).tipos?.join(',')
+      : undefined
+
   const resposta = await http.get<RespostaPaginada<Pessoa>>('/api/pessoas', {
-    params: { somente_ativos: true, por_pagina: 200 },
+    params: { somente_ativos: true, por_pagina: 200, tipo, tipos },
   })
   return resposta.data.dados
 }

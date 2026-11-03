@@ -28,6 +28,8 @@ final class TipoCobrancaService
             'atualizado_por' => $usuario->getKey(),
         ]);
 
+        $tipo->refresh();
+
         $this->auditarCriacao($usuario, 'TipoCobranca', $tipo->getKey(), $dados);
 
         return $tipo;

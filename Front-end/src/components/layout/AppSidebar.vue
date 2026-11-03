@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Building2, LogOut, Users } from '@lucide/vue'
-import { computed, ref } from 'vue'
+import { Building2, ChevronRight, LogOut, ShieldCheck, Users } from '@lucide/vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import {
   Sidebar,
   SidebarContent,
@@ -14,6 +15,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
   SidebarRail,
 } from '@/components/ui/sidebar'
 import { useAutenticacaoStore } from '@/modules/auth/stores/autenticacao.store'
@@ -22,6 +26,7 @@ import {
   adminNavigationGroups,
   filtrarNavegacao,
   navegacaoAtiva,
+  type NavigationGroup,
   userNavigationGroups,
 } from './navigation'
 
@@ -29,7 +34,14 @@ const route = useRoute()
 const router = useRouter()
 const autenticacao = useAutenticacaoStore()
 const saindo = ref(false)
+
 const areaUsuario = computed(() => route.path === '/app' || route.path.startsWith('/app/'))
+const podeAlternarArea = computed(() => {
+  if (areaUsuario.value) {
+    return autenticacao.temAcessoAdmin
+  }
+  return autenticacao.temAcessoMorador
+})
 const paginaInicial = computed(() => (areaUsuario.value ? 'app-inicio' : 'inicio'))
 const gruposDaArea = computed(() =>
   areaUsuario.value ? userNavigationGroups : adminNavigationGroups,
@@ -41,6 +53,49 @@ const gruposVisiveis = computed(() =>
   ),
 )
 const nomeRotaAtual = computed(() => (typeof route.name === 'string' ? route.name : undefined))
+
+const grupoPainel = computed(() => gruposVisiveis.value.find((g) => g.label === 'Painel'))
+const itemPainel = computed(() => grupoPainel.value?.items[0])
+const gruposDropdown = computed(() => gruposVisiveis.value.filter((g) => g.label !== 'Painel'))
+
+const grupoAberto = ref<string | null>(null)
+
+function grupoTemItemAtivo(group: NavigationGroup): boolean {
+  if (!nomeRotaAtual.value) return false
+  return group.items.some((item) => navegacaoAtiva(item, nomeRotaAtual.value))
+}
+
+function encontrarGrupoDaRota(nomeRota?: string): string | null {
+  if (!nomeRota) return null
+  for (const grupo of gruposDropdown.value) {
+    if (grupo.items.some((item) => navegacaoAtiva(item, nomeRota))) {
+      return grupo.label
+    }
+  }
+  return null
+}
+
+function alternarGrupo(labelGrupo: string, aberto: boolean): void {
+  if (aberto) {
+    grupoAberto.value = labelGrupo
+  } else if (grupoAberto.value === labelGrupo) {
+    grupoAberto.value = null
+  }
+}
+
+watch(
+  [() => route.name, () => gruposVisiveis.value],
+  ([novoNome]) => {
+    const nome = typeof novoNome === 'string' ? novoNome : undefined
+    const grupo = encontrarGrupoDaRota(nome)
+    if (grupo) {
+      grupoAberto.value = grupo
+    } else if (nome === 'inicio' || !nome) {
+      grupoAberto.value = null
+    }
+  },
+  { immediate: true },
+)
 
 async function sair(): Promise<void> {
   saindo.value = true
@@ -71,11 +126,12 @@ async function sair(): Promise<void> {
     </SidebarHeader>
 
     <SidebarContent>
-      <SidebarGroup v-for="group in gruposVisiveis" :key="group.label">
-        <SidebarGroupLabel>{{ group.label }}</SidebarGroupLabel>
+      <!-- Menu de morador / minha área -->
+      <SidebarGroup v-if="areaUsuario">
+        <SidebarGroupLabel>Minha área</SidebarGroupLabel>
         <SidebarGroupContent>
           <SidebarMenu>
-            <SidebarMenuItem v-for="item in group.items" :key="item.routeName">
+            <SidebarMenuItem v-for="item in gruposVisiveis[0]?.items ?? []" :key="item.routeName">
               <SidebarMenuButton
                 as-child
                 :is-active="navegacaoAtiva(item, nomeRotaAtual)"
@@ -90,15 +146,80 @@ async function sair(): Promise<void> {
           </SidebarMenu>
         </SidebarGroupContent>
       </SidebarGroup>
+
+      <!-- Menu administrativo com dropdowns sanfonados -->
+      <SidebarGroup v-else>
+        <SidebarGroupLabel>Administração</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu>
+            <!-- Painel / Visão Geral direto no topo -->
+            <SidebarMenuItem v-if="itemPainel">
+              <SidebarMenuButton
+                as-child
+                :is-active="navegacaoAtiva(itemPainel, nomeRotaAtual)"
+                :tooltip="itemPainel.label"
+              >
+                <RouterLink :to="{ name: itemPainel.routeName }">
+                  <component :is="itemPainel.icon" aria-hidden="true" />
+                  <span>{{ itemPainel.label }}</span>
+                </RouterLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+
+            <!-- Grupos sanfonados / dropdowns -->
+            <Collapsible
+              v-for="group in gruposDropdown"
+              :key="group.label"
+              as-child
+              :open="grupoAberto === group.label"
+              class="group/collapsible"
+              @update:open="(aberto: boolean) => alternarGrupo(group.label, aberto)"
+            >
+              <SidebarMenuItem>
+                <CollapsibleTrigger as-child>
+                  <SidebarMenuButton
+                    :tooltip="group.label"
+                    :is-active="grupoTemItemAtivo(group) && grupoAberto !== group.label"
+                  >
+                    <component :is="group.icon" v-if="group.icon" aria-hidden="true" />
+                    <span>{{ group.label }}</span>
+                    <ChevronRight
+                      class="ml-auto size-4 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90 group-data-[collapsible=icon]:hidden"
+                    />
+                  </SidebarMenuButton>
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <SidebarMenuSub>
+                    <SidebarMenuSubItem v-for="item in group.items" :key="item.routeName">
+                      <SidebarMenuSubButton
+                        as-child
+                        :is-active="navegacaoAtiva(item, nomeRotaAtual)"
+                      >
+                        <RouterLink :to="{ name: item.routeName }">
+                          <span>{{ item.label }}</span>
+                        </RouterLink>
+                      </SidebarMenuSubButton>
+                    </SidebarMenuSubItem>
+                  </SidebarMenuSub>
+                </CollapsibleContent>
+              </SidebarMenuItem>
+            </Collapsible>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
     </SidebarContent>
 
     <SidebarFooter class="border-t border-sidebar-border p-2">
       <SidebarMenu>
-        <SidebarMenuItem>
-          <SidebarMenuButton as-child :tooltip="areaUsuario ? 'Administração' : 'Minha área'">
+        <SidebarMenuItem v-if="podeAlternarArea">
+          <SidebarMenuButton
+            as-child
+            :tooltip="areaUsuario ? 'Painel Administrativo' : 'Área do Morador'"
+          >
             <RouterLink :to="{ name: areaUsuario ? 'inicio' : 'app-inicio' }">
-              <Users aria-hidden="true" />
-              <span>{{ areaUsuario ? 'Administração' : 'Minha área' }}</span>
+              <ShieldCheck v-if="areaUsuario" aria-hidden="true" />
+              <Users v-else aria-hidden="true" />
+              <span>{{ areaUsuario ? 'Administração' : 'Área do Morador' }}</span>
             </RouterLink>
           </SidebarMenuButton>
         </SidebarMenuItem>

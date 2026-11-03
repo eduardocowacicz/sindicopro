@@ -19,10 +19,31 @@ const colunas: ColunaTabela<ContaFinanceira>[] = [
     render: (c) => (c.ultimos4_conta ? `••••${c.ultimos4_conta}` : '—'),
   },
   {
-    chave: 'saldo_inicial',
-    rotulo: 'Saldo inicial',
+    chave: 'saldo_capital_giro',
+    rotulo: 'Capital de Giro',
     render: (c) =>
-      Number(c.saldo_inicial).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+      Number(c.saldo_capital_giro ?? c.saldo_inicial).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      }),
+  },
+  {
+    chave: 'saldo_fundo_reserva',
+    rotulo: 'Fundo de Reserva',
+    render: (c) =>
+      Number(c.saldo_fundo_reserva ?? c.saldo_fundo_reserva_inicial ?? 0).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      }),
+  },
+  {
+    chave: 'saldo_atual',
+    rotulo: 'Saldo Total',
+    render: (c) =>
+      Number(c.saldo_atual ?? c.saldo_inicial).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+      }),
   },
 ]
 
@@ -43,7 +64,13 @@ const campos: CampoFormulario[] = [
   { chave: 'codigo_banco', rotulo: 'Código do banco', tipo: 'texto' },
   { chave: 'agencia', rotulo: 'Agência', tipo: 'texto', somenteCriacao: true },
   { chave: 'numero_conta', rotulo: 'Número da conta', tipo: 'texto', somenteCriacao: true },
-  { chave: 'saldo_inicial', rotulo: 'Saldo inicial', tipo: 'numero', obrigatorio: true },
+  { chave: 'saldo_inicial', rotulo: 'Saldo inicial Total', tipo: 'numero', obrigatorio: true },
+  {
+    chave: 'saldo_fundo_reserva_inicial',
+    rotulo: 'Saldo inicial Fundo de Reserva',
+    tipo: 'numero',
+    ajuda: 'Parcela do saldo inicial destinada ao Fundo de Reserva (poupança do condomínio)',
+  },
   { chave: 'data_saldo_inicial', rotulo: 'Data do saldo inicial', tipo: 'data', obrigatorio: true },
 ]
 </script>

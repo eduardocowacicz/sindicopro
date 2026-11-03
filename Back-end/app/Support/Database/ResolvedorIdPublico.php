@@ -13,6 +13,13 @@ final class ResolvedorIdPublico
             return null;
         }
 
+        if (is_numeric($idPublico)) {
+            $id = DB::table($tabela)->where('id', (int) $idPublico)->value($campo);
+            if ($id !== null) {
+                return (int) $id;
+            }
+        }
+
         $id = DB::table($tabela)->where('id_publico', $idPublico)->value($campo);
 
         if ($id === null) {
@@ -27,8 +34,24 @@ final class ResolvedorIdPublico
     /**
      * @return array<int>
      */
-    public static function resolverMuitos(string $tabela, array $idsPublicos): array
+    public static function resolverMuitos(string $tabela, array $valores): array
     {
-        return DB::table($tabela)->whereIn('id_publico', $idsPublicos)->pluck('id')->all();
+        $ids = [];
+        $idsPublicos = [];
+
+        foreach ($valores as $valor) {
+            if (is_numeric($valor)) {
+                $ids[] = (int) $valor;
+            } elseif (is_string($valor) && $valor !== '') {
+                $idsPublicos[] = $valor;
+            }
+        }
+
+        if ($idsPublicos !== []) {
+            $resolvidos = DB::table($tabela)->whereIn('id_publico', $idsPublicos)->pluck('id')->all();
+            $ids = array_merge($ids, $resolvidos);
+        }
+
+        return array_values(array_unique($ids));
     }
 }

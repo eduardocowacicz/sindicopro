@@ -19,8 +19,18 @@ final class ContaFinanceiraController extends Controller
     {
         $paginador = $this->service->listar($request->boolean('somente_ativos'), (int) $request->integer('por_pagina', 20));
 
+        $itens = collect($paginador->items())->map(function (ContaFinanceira $conta) {
+            $saldos = $conta->calcularSaldos();
+            $contaArray = $conta->toArray();
+            $contaArray['saldo_atual'] = $saldos['saldo_total'];
+            $contaArray['saldo_capital_giro'] = $saldos['saldo_capital_giro'];
+            $contaArray['saldo_fundo_reserva'] = $saldos['saldo_fundo_reserva'];
+
+            return $contaArray;
+        });
+
         return response()->json([
-            'dados' => $paginador->items(),
+            'dados' => $itens,
             'meta' => ['pagina_atual' => $paginador->currentPage(), 'por_pagina' => $paginador->perPage(), 'total' => $paginador->total(), 'ultima_pagina' => $paginador->lastPage()],
         ]);
     }
@@ -32,7 +42,13 @@ final class ContaFinanceiraController extends Controller
 
     public function show(ContaFinanceira $conta_financeira): JsonResponse
     {
-        return response()->json(['dados' => $conta_financeira]);
+        $saldos = $conta_financeira->calcularSaldos();
+        $dados = $conta_financeira->toArray();
+        $dados['saldo_atual'] = $saldos['saldo_total'];
+        $dados['saldo_capital_giro'] = $saldos['saldo_capital_giro'];
+        $dados['saldo_fundo_reserva'] = $saldos['saldo_fundo_reserva'];
+
+        return response()->json(['dados' => $dados]);
     }
 
     public function update(ContaFinanceiraRequest $request, ContaFinanceira $conta_financeira): JsonResponse

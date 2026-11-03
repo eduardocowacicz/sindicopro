@@ -70,6 +70,7 @@ final class ContaFinanceiraService
             'codigo_banco' => $dados['codigo_banco'] ?? null,
             'nome_banco' => $dados['nome_banco'] ?? null,
             'saldo_inicial' => $dados['saldo_inicial'],
+            'saldo_fundo_reserva_inicial' => $dados['saldo_fundo_reserva_inicial'] ?? 0.0,
             'data_saldo_inicial' => $dados['data_saldo_inicial'],
         ];
 

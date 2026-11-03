@@ -25,4 +25,10 @@ export const financeiroRoutes: RouteRecordRaw[] = [
     component: () => import('./pages/lancamentos/LancamentosListaPage.vue'),
     meta: { permissao: 'financeiro.movimentacoes.consultar' },
   },
+  {
+    path: 'financeiro/cobrancas',
+    name: 'admin-financeiro-cobrancas',
+    component: () => import('./pages/cobrancas/CobrancasListaPage.vue'),
+    meta: { permissao: 'financeiro.movimentacoes.consultar' },
+  },
 ]

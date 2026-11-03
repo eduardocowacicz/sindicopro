@@ -13,12 +13,14 @@ final class PessoaService
 {
     use RegistraAuditoria;
 
-    public function listar(?string $busca, bool $somenteAtivas, int $porPagina): LengthAwarePaginator
+    public function listar(?string $busca, bool $somenteAtivas, int $porPagina, ?string $tipo = null, ?array $tipos = null): LengthAwarePaginator
     {
         return Pessoa::query()
             ->when($busca, fn ($query) => $query->where(fn ($q) => $q
                 ->whereRaw('LOWER(nome_completo) LIKE ?', ['%'.mb_strtolower($busca).'%'])
                 ->orWhereRaw('LOWER(email) LIKE ?', ['%'.mb_strtolower($busca).'%'])))
+            ->when($tipos, fn ($query) => $query->whereIn('tipo', $tipos))
+            ->when($tipo && ! $tipos, fn ($query) => $query->where('tipo', $tipo))
             ->when($somenteAtivas, fn ($query) => $query->where('ativo', true))
             ->orderBy('nome_completo')
             ->paginate($porPagina);
@@ -39,12 +41,13 @@ final class PessoaService
 
     public function atualizar(Pessoa $pessoa, array $dados, Usuario $usuario): Pessoa
     {
-        $antes = $pessoa->only(['nome_completo', 'email', 'telefone']);
+        $antes = $pessoa->only(['nome_completo', 'tipo', 'email', 'telefone']);
         $pessoa->fill([...$this->prepararDados($dados), 'atualizado_por' => $usuario->getKey()]);
         $pessoa->save();
 
         $this->auditarAtualizacao($usuario, 'Pessoa', $pessoa->getKey(), $antes, [
             'nome_completo' => $dados['nome_completo'],
+            'tipo' => $dados['tipo'] ?? $pessoa->tipo,
             'email' => $dados['email'] ?? null,
             'telefone' => $dados['telefone'] ?? null,
         ]);
@@ -91,6 +94,7 @@ final class PessoaService
     {
         $preparados = [
             'nome_completo' => $dados['nome_completo'],
+            'tipo' => $dados['tipo'] ?? 'MORADOR',
             'email' => $dados['email'] ?? null,
             'telefone' => $dados['telefone'] ?? null,
             'observacoes' => $dados['observacoes'] ?? null,

@@ -4,6 +4,7 @@ namespace App\Services\Financeiro;
 
 use App\Models\MovimentacaoFinanceira;
 use App\Models\PeriodoFinanceiro;
+use App\Models\Pessoa;
 use App\Models\Usuario;
 use App\Services\Concerns\RegistraAuditoria;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -17,7 +18,7 @@ final class MovimentacaoFinanceiraService
     public function listar(?int $contaId, ?string $situacao, int $porPagina): LengthAwarePaginator
     {
         return MovimentacaoFinanceira::query()
-            ->with(['conta', 'categoria', 'tipoCobranca'])
+            ->with(['conta', 'categoria', 'tipoCobranca', 'pessoa'])
             ->when($contaId, fn ($query) => $query->where('conta_financeira_id', $contaId))
             ->when($situacao, fn ($query) => $query->where('situacao', $situacao))
             ->orderByDesc('data_efetiva')
@@ -34,6 +35,17 @@ final class MovimentacaoFinanceiraService
             ]);
         }
 
+        if (! empty($dados['pessoa_id']) && empty($dados['nome_contraparte'])) {
+            $pessoa = Pessoa::query()->find($dados['pessoa_id']);
+            if ($pessoa) {
+                $dados['nome_contraparte'] = $pessoa->nome_completo;
+            }
+        }
+
+        $utilizaFundo = ! empty($dados['utiliza_fundo_reserva']) || ($dados['origem_recurso'] ?? null) === 'FUNDO_RESERVA';
+        $dados['utiliza_fundo_reserva'] = $utilizaFundo;
+        $dados['origem_recurso'] = $utilizaFundo ? 'FUNDO_RESERVA' : 'CAPITAL_GIRO';
+
         $movimentacao = MovimentacaoFinanceira::query()->create([
             ...$dados,
             'periodo_financeiro_id' => $periodo->getKey(),
@@ -49,7 +61,7 @@ final class MovimentacaoFinanceiraService
             'direcao' => $dados['direcao'],
         ]);
 
-        return $movimentacao->load(['conta', 'categoria', 'tipoCobranca']);
+        return $movimentacao->load(['conta', 'categoria', 'tipoCobranca', 'pessoa']);
     }
 
     public function atualizar(MovimentacaoFinanceira $movimentacao, array $dados, Usuario $usuario): MovimentacaoFinanceira
@@ -58,6 +70,19 @@ final class MovimentacaoFinanceiraService
             throw ValidationException::withMessages([
                 'movimentacao' => ['Somente lançamentos em rascunho podem ser editados.'],
             ]);
+        }
+
+        if (! empty($dados['pessoa_id']) && empty($dados['nome_contraparte'])) {
+            $pessoa = Pessoa::query()->find($dados['pessoa_id']);
+            if ($pessoa) {
+                $dados['nome_contraparte'] = $pessoa->nome_completo;
+            }
+        }
+
+        if (array_key_exists('utiliza_fundo_reserva', $dados) || array_key_exists('origem_recurso', $dados)) {
+            $utilizaFundo = ! empty($dados['utiliza_fundo_reserva']) || ($dados['origem_recurso'] ?? null) === 'FUNDO_RESERVA';
+            $dados['utiliza_fundo_reserva'] = $utilizaFundo;
+            $dados['origem_recurso'] = $utilizaFundo ? 'FUNDO_RESERVA' : 'CAPITAL_GIRO';
         }
 
         $antes = $movimentacao->only(['descricao', 'valor']);
@@ -69,7 +94,7 @@ final class MovimentacaoFinanceiraService
             'valor' => $dados['valor'],
         ]);
 
-        return $movimentacao->load(['conta', 'categoria', 'tipoCobranca']);
+        return $movimentacao->load(['conta', 'categoria', 'tipoCobranca', 'pessoa']);
     }
 
     public function cancelar(MovimentacaoFinanceira $movimentacao, Usuario $usuario, ?string $motivo): void

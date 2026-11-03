@@ -79,11 +79,17 @@ export const router = createRouter({
     },
     {
       path: '/',
-      redirect: '/admin',
+      redirect: () => {
+        const autenticacao = useAutenticacaoStore(pinia)
+        return autenticacao.temAcessoAdmin ? '/admin' : '/app'
+      },
     },
     {
       path: '/:pathMatch(.*)*',
-      redirect: '/admin',
+      redirect: () => {
+        const autenticacao = useAutenticacaoStore(pinia)
+        return autenticacao.temAcessoAdmin ? '/admin' : '/app'
+      },
     },
   ],
 })
@@ -95,12 +101,19 @@ router.beforeEach(async (to) => {
   if (to.meta.requerAutenticacao && !autenticacao.autenticado) {
     return {
       name: 'entrar',
-      query: to.fullPath !== '/admin' ? { redirecionar: to.fullPath } : undefined,
+      query:
+        to.fullPath !== '/admin' && to.fullPath !== '/app'
+          ? { redirecionar: to.fullPath }
+          : undefined,
     }
   }
 
   if (to.meta.somenteAnonimo && autenticacao.autenticado) {
-    return { name: 'inicio' }
+    return { name: autenticacao.temAcessoAdmin ? 'inicio' : 'app-inicio' }
+  }
+
+  if (to.path.startsWith('/admin') && !autenticacao.temAcessoAdmin) {
+    return { name: 'app-inicio' }
   }
 
   const permissao = typeof to.meta.permissao === 'string' ? to.meta.permissao : undefined

@@ -22,8 +22,8 @@ final class ValidacaoCadastrosTest extends TestCase
 
     public function test_codigo_do_bloco_e_gerado_pelo_banco_em_sequencia(): void
     {
-        $primeiro = $this->postJson('/api/blocos', ['nome' => 'Bloco A'])->assertCreated();
-        $segundo = $this->postJson('/api/blocos', ['nome' => 'Bloco B', 'codigo' => 'XYZ'])->assertCreated();
+        $primeiro = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'andares' => 2, 'apartamentos_por_andar' => 2])->assertCreated();
+        $segundo = $this->postJson('/api/blocos', ['nome' => 'Bloco B', 'andares' => 2, 'apartamentos_por_andar' => 2, 'codigo' => 'XYZ'])->assertCreated();
 
         $codigoPrimeiro = (int) $primeiro->json('dados.codigo');
         $this->assertSame($codigoPrimeiro + 1, (int) $segundo->json('dados.codigo'));
@@ -31,9 +31,9 @@ final class ValidacaoCadastrosTest extends TestCase
 
     public function test_codigo_do_bloco_nao_pode_ser_alterado(): void
     {
-        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A'])->assertCreated()->json('dados');
+        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'andares' => 2, 'apartamentos_por_andar' => 2])->assertCreated()->json('dados');
 
-        $this->putJson("/api/blocos/{$bloco['id_publico']}", ['nome' => 'Bloco A', 'codigo' => 'NOVO'])
+        $this->putJson("/api/blocos/{$bloco['id_publico']}", ['nome' => 'Bloco A', 'andares' => 2, 'apartamentos_por_andar' => 2, 'codigo' => 'NOVO'])
             ->assertOk()
             ->assertJsonPath('dados.codigo', $bloco['codigo']);
     }
@@ -47,23 +47,23 @@ final class ValidacaoCadastrosTest extends TestCase
 
     public function test_unidade_nao_aceita_bloco_inativo(): void
     {
-        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A'])->assertCreated()->json('dados');
+        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'andares' => 2, 'apartamentos_por_andar' => 2])->assertCreated()->json('dados');
         $this->postJson("/api/blocos/{$bloco['id_publico']}/inativar")->assertOk();
 
         $this->postJson('/api/unidades', [
             'bloco_id' => $bloco['id_publico'],
-            'codigo' => '101',
+            'codigo' => '999',
             'situacao_ocupacao' => 'VAGO',
         ])->assertUnprocessable()->assertJsonValidationErrors(['bloco_id']);
     }
 
     public function test_unidade_rejeita_andar_acima_do_bloco(): void
     {
-        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'quantidade_andares' => 5])->assertCreated()->json('dados');
+        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'quantidade_andares' => 5, 'apartamentos_por_andar' => 2])->assertCreated()->json('dados');
 
         $this->postJson('/api/unidades', [
             'bloco_id' => $bloco['id_publico'],
-            'codigo' => '101',
+            'codigo' => '999',
             'numero_andar' => 6,
             'situacao_ocupacao' => 'VAGO',
         ])->assertUnprocessable()->assertJsonValidationErrors(['numero_andar']);
@@ -71,11 +71,11 @@ final class ValidacaoCadastrosTest extends TestCase
 
     public function test_unidade_rejeita_codigo_com_espacos(): void
     {
-        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A'])->assertCreated()->json('dados');
+        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A', 'andares' => 2, 'apartamentos_por_andar' => 2])->assertCreated()->json('dados');
 
         $this->postJson('/api/unidades', [
             'bloco_id' => $bloco['id_publico'],
-            'codigo' => '101 A',
+            'codigo' => '999 A',
             'situacao_ocupacao' => 'VAGO',
         ])->assertUnprocessable()->assertJsonValidationErrors(['codigo']);
     }
@@ -178,13 +178,13 @@ final class ValidacaoCadastrosTest extends TestCase
 
     private function criarUnidade(): string
     {
-        $bloco = $this->postJson('/api/blocos', ['nome' => 'Bloco A'])->assertCreated()->json('dados');
+        $bloco = $this->postJson('/api/blocos', [
+            'nome' => 'Bloco A',
+            'andares' => 2,
+            'apartamentos_por_andar' => 2,
+        ])->assertCreated()->json('dados');
 
-        return $this->postJson('/api/unidades', [
-            'bloco_id' => $bloco['id_publico'],
-            'codigo' => '101',
-            'situacao_ocupacao' => 'VAGO',
-        ])->assertCreated()->json('dados.id_publico');
+        return $bloco['unidades'][0]['id_publico'];
     }
 
     private function criarPessoa(string $nome = 'Maria Silva'): string
