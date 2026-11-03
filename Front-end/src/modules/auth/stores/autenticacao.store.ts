@@ -16,6 +16,23 @@ export const useAutenticacaoStore = defineStore('autenticacao', {
     autenticado: (state): boolean => state.estado === 'autenticada' && state.sessao !== null,
     acessoIntegral: (state): boolean => state.sessao?.acesso_integral ?? false,
     permissoes: (state): string[] => state.sessao?.permissoes ?? [],
+    perfis: (state): string[] => (state.sessao?.perfis ?? []).map((p) => p.codigo),
+    temPerfil:
+      (state) =>
+      (codigo: string): boolean =>
+        (state.sessao?.perfis ?? []).some((p) => p.codigo === codigo),
+    temAcessoAdmin: (state): boolean => {
+      if (state.sessao?.acesso_integral) return true
+      if ((state.sessao?.permissoes?.length ?? 0) > 0) return true
+      const perfisComAcessoAdmin = ['SINDICO', 'SUBSINDICO', 'CONSELHO', 'ADMINISTRADOR']
+      return (state.sessao?.perfis ?? []).some((p) => perfisComAcessoAdmin.includes(p.codigo))
+    },
+    temAcessoMorador: (state): boolean => {
+      if ((state.sessao?.unidades?.length ?? 0) > 0) return true
+      return (state.sessao?.perfis ?? []).some(
+        (p) => p.codigo === 'MORADOR' || p.codigo === 'PROPRIETARIO',
+      )
+    },
   },
 
   actions: {

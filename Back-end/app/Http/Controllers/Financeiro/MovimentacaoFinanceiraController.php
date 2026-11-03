@@ -36,7 +36,7 @@ final class MovimentacaoFinanceiraController extends Controller
 
     public function show(MovimentacaoFinanceira $movimentacao_financeira): JsonResponse
     {
-        return response()->json(['dados' => $movimentacao_financeira->load(['conta', 'categoria', 'tipoCobranca'])]);
+        return response()->json(['dados' => $movimentacao_financeira->load(['conta', 'categoria', 'tipoCobranca', 'pessoa'])]);
     }
 
     public function update(MovimentacaoFinanceiraRequest $request, MovimentacaoFinanceira $movimentacao_financeira): JsonResponse

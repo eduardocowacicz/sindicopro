@@ -4,14 +4,36 @@ import * as pessoasApi from '@/modules/cadastros/api/pessoas.api'
 import type { Pessoa } from '@/modules/cadastros/types/pessoa.types'
 import type { CampoFormulario, ColunaTabela } from '@/lib/crud/types'
 
+const tipoRotulo: Record<string, string> = {
+  MORADOR: 'Morador / Geral',
+  PRESTADOR_SERVICO: 'Prestador de serviço',
+  FORNECEDOR: 'Fornecedor',
+}
+
 const colunas: ColunaTabela<Pessoa>[] = [
   { chave: 'nome_completo', rotulo: 'Nome' },
+  {
+    chave: 'tipo',
+    rotulo: 'Tipo',
+    render: (p) => tipoRotulo[p.tipo] ?? p.tipo ?? 'Morador / Geral',
+  },
   { chave: 'email', rotulo: 'E-mail', render: (p) => p.email ?? '—' },
   { chave: 'telefone', rotulo: 'Telefone', render: (p) => p.telefone ?? '—' },
 ]
 
 const campos: CampoFormulario[] = [
   { chave: 'nome_completo', rotulo: 'Nome completo', tipo: 'texto', obrigatorio: true },
+  {
+    chave: 'tipo',
+    rotulo: 'Tipo de cadastro',
+    tipo: 'selecao',
+    obrigatorio: true,
+    opcoes: [
+      { valor: 'MORADOR', rotulo: 'Morador / Geral' },
+      { valor: 'PRESTADOR_SERVICO', rotulo: 'Prestador de serviço' },
+      { valor: 'FORNECEDOR', rotulo: 'Fornecedor' },
+    ],
+  },
   {
     chave: 'cpf',
     rotulo: 'CPF',

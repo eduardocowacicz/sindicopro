@@ -16,7 +16,14 @@ const colunas: ColunaTabela<TipoCobranca>[] = [
 ]
 
 const campos: CampoFormulario[] = [
-  { chave: 'codigo', rotulo: 'Código', tipo: 'texto', obrigatorio: true },
+  {
+    chave: 'codigo',
+    rotulo: 'Código',
+    tipo: 'texto',
+    somenteEdicao: true,
+    desabilitado: true,
+    ajuda: 'Gerado automaticamente pelo sistema.',
+  },
   { chave: 'nome', rotulo: 'Nome', tipo: 'texto', obrigatorio: true },
   {
     chave: 'papel_pagador',

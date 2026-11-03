@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\VerificaPermissao;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -14,8 +15,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->statefulApi();
+        $middleware->validateCsrfTokens(except: [
+            'login',
+            'logout',
+        ]);
         $middleware->alias([
-            'permissao' => \App\Http\Middleware\VerificaPermissao::class,
+            'permissao' => VerificaPermissao::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

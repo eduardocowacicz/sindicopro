@@ -2,6 +2,8 @@
 
 namespace App\Services\Acesso;
 
+use App\Models\Perfil;
+use App\Models\Pessoa;
 use App\Models\Usuario;
 use App\Services\Concerns\RegistraAuditoria;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -16,7 +18,7 @@ final class UsuarioService
     public function listar(?string $busca, bool $somenteAtivos, int $porPagina): LengthAwarePaginator
     {
         return Usuario::query()
-            ->with('pessoa')
+            ->with(['pessoa.vinculos.unidade.bloco', 'perfisVigentes'])
             ->when($busca, fn ($query) => $query->where(fn ($q) => $q
                 ->whereRaw('LOWER(email) LIKE ?', ['%'.mb_strtolower($busca).'%'])
                 ->orWhereHas('pessoa', fn ($p) => $p->whereRaw('LOWER(nome_completo) LIKE ?', ['%'.mb_strtolower($busca).'%']))))
@@ -27,8 +29,10 @@ final class UsuarioService
 
     public function criar(array $dados, Usuario $usuarioLogado): Usuario
     {
+        $pessoa = Pessoa::query()->with('vinculos')->findOrFail($dados['pessoa_id']);
+
         $usuario = Usuario::query()->create([
-            'pessoa_id' => $dados['pessoa_id'],
+            'pessoa_id' => $pessoa->getKey(),
             'email' => $dados['email'],
             'senha' => Hash::make($dados['senha'] ?? Str::random(16)),
             'deve_alterar_senha' => true,
@@ -37,10 +41,20 @@ final class UsuarioService
             'atualizado_por' => $usuarioLogado->getKey(),
         ]);
 
-        $this->sincronizarPerfis($usuario, $dados['perfis'] ?? [], $usuarioLogado);
+        $perfis = $dados['perfis'] ?? [];
+
+        // Permissão cumulativa: todo morador é um usuário com permissão de acessar sua área (MORADOR).
+        if ($pessoa->tipo === 'MORADOR' || $pessoa->vinculos->isNotEmpty()) {
+            $perfilMorador = Perfil::query()->where('codigo', 'MORADOR')->first();
+            if ($perfilMorador && ! in_array($perfilMorador->getKey(), $perfis, true)) {
+                $perfis[] = $perfilMorador->getKey();
+            }
+        }
+
+        $this->sincronizarPerfis($usuario, $perfis, $usuarioLogado);
         $this->auditarCriacao($usuarioLogado, 'Usuario', $usuario->getKey(), ['email' => $dados['email']]);
 
-        return $usuario->load('pessoa');
+        return $usuario->load(['pessoa.vinculos.unidade.bloco', 'perfisVigentes']);
     }
 
     public function atualizar(Usuario $usuario, array $dados, Usuario $usuarioLogado): Usuario
@@ -57,12 +71,24 @@ final class UsuarioService
         $usuario->save();
 
         if (array_key_exists('perfis', $dados)) {
-            $this->sincronizarPerfis($usuario, $dados['perfis'], $usuarioLogado);
+            $perfis = $dados['perfis'];
+            $pessoa = $usuario->pessoa()->with('vinculos')->first();
+
+            // Permissão cumulativa: morador preserva o perfil MORADOR para ter acesso à sua área
+            // mesmo ao receber permissões administrativas (ex: Síndico, Conselho) ou quando estas forem revogadas.
+            if ($pessoa && ($pessoa->tipo === 'MORADOR' || $pessoa->vinculos->isNotEmpty())) {
+                $perfilMorador = Perfil::query()->where('codigo', 'MORADOR')->first();
+                if ($perfilMorador && ! in_array($perfilMorador->getKey(), $perfis, true)) {
+                    $perfis[] = $perfilMorador->getKey();
+                }
+            }
+
+            $this->sincronizarPerfis($usuario, $perfis, $usuarioLogado);
         }
 
         $this->auditarAtualizacao($usuarioLogado, 'Usuario', $usuario->getKey(), $antes, ['email' => $dados['email']]);
 
-        return $usuario->load('pessoa');
+        return $usuario->load(['pessoa.vinculos.unidade.bloco', 'perfisVigentes']);
     }
 
     public function inativar(Usuario $usuario, Usuario $usuarioLogado, ?string $motivo): void

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cadastros;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Cadastros\ObservacaoUnidadeRequest;
 use App\Http\Requests\Cadastros\UnidadeRequest;
 use App\Models\Unidade;
 use App\Services\Cadastros\UnidadeService;
@@ -43,6 +44,17 @@ final class UnidadeController extends Controller
     public function update(UnidadeRequest $request, Unidade $unidade): JsonResponse
     {
         return response()->json(['dados' => $this->service->atualizar($unidade, $request->validated(), $request->user())]);
+    }
+
+    public function atualizarObservacoes(ObservacaoUnidadeRequest $request, Unidade $unidade): JsonResponse
+    {
+        return response()->json([
+            'dados' => $this->service->atualizarObservacoes(
+                $unidade,
+                $request->string('observacoes')->value() ?: null,
+                $request->user()
+            ),
+        ]);
     }
 
     public function inativar(Request $request, Unidade $unidade): JsonResponse

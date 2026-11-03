@@ -36,7 +36,7 @@ final class UsuarioController extends Controller
 
     public function show(Usuario $usuario): JsonResponse
     {
-        return response()->json(['dados' => $usuario->load('pessoa')]);
+        return response()->json(['dados' => $usuario->load(['pessoa.vinculos.unidade.bloco', 'perfisVigentes'])]);
     }
 
     public function update(UsuarioRequest $request, Usuario $usuario): JsonResponse

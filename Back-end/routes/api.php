@@ -10,10 +10,20 @@ use App\Http\Controllers\Cadastros\PessoaController;
 use App\Http\Controllers\Cadastros\UnidadeController;
 use App\Http\Controllers\Cadastros\VeiculoController;
 use App\Http\Controllers\Cadastros\VinculoUnidadePessoaController;
+use App\Http\Controllers\Comunicados\ComunicadoController;
+use App\Http\Controllers\Fechamentos\FechamentoMensalController;
 use App\Http\Controllers\Financeiro\CategoriaFinanceiraController;
+use App\Http\Controllers\Financeiro\CobrancaController;
 use App\Http\Controllers\Financeiro\ContaFinanceiraController;
 use App\Http\Controllers\Financeiro\MovimentacaoFinanceiraController;
 use App\Http\Controllers\Financeiro\TipoCobrancaController;
+use App\Http\Controllers\Inicio\DashboardController;
+use App\Http\Controllers\Morador\MoradorAreaController;
+use App\Http\Controllers\Ocorrencias\OcorrenciaController;
+use App\Http\Controllers\Ocorrencias\TipoOcorrenciaController;
+use App\Http\Controllers\Reservas\AmbienteController;
+use App\Http\Controllers\Reservas\BloqueioAmbienteController;
+use App\Http\Controllers\Reservas\ReservaController;
 use App\Http\Controllers\Sistema\StatusController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +31,8 @@ Route::get('/status', StatusController::class);
 
 Route::middleware('auth:sanctum')->group(function (): void {
     Route::get('/sessao', SessaoController::class);
+    Route::get('/dashboard/financeiro', [DashboardController::class, 'financeiro'])
+        ->middleware('permissao:financeiro.movimentacoes.consultar');
 
     // Acesso
     Route::prefix('usuarios')->group(function (): void {
@@ -55,6 +67,7 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/', [BlocoController::class, 'index'])->middleware('permissao:cadastros.blocos.consultar');
         Route::post('/', [BlocoController::class, 'store'])->middleware('permissao:cadastros.blocos.cadastrar');
         Route::get('/{bloco}', [BlocoController::class, 'show'])->middleware('permissao:cadastros.blocos.consultar');
+        Route::get('/{bloco}/apartamentos', [BlocoController::class, 'apartamentos'])->middleware('permissao:cadastros.blocos.consultar');
         Route::get('/{bloco}/historico', [BlocoController::class, 'historico'])->middleware('permissao:cadastros.blocos.consultar');
         Route::put('/{bloco}', [BlocoController::class, 'update'])->middleware('permissao:cadastros.blocos.editar');
         Route::post('/{bloco}/inativar', [BlocoController::class, 'inativar'])->middleware('permissao:cadastros.blocos.inativar');
@@ -67,8 +80,13 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/{unidade}', [UnidadeController::class, 'show'])->middleware('permissao:cadastros.unidades.consultar');
         Route::get('/{unidade}/historico', [UnidadeController::class, 'historico'])->middleware('permissao:cadastros.unidades.consultar');
         Route::put('/{unidade}', [UnidadeController::class, 'update'])->middleware('permissao:cadastros.unidades.editar');
+        Route::patch('/{unidade}/observacoes', [UnidadeController::class, 'atualizarObservacoes'])->middleware('permissao:cadastros.unidades.editar');
         Route::post('/{unidade}/inativar', [UnidadeController::class, 'inativar'])->middleware('permissao:cadastros.unidades.inativar');
         Route::post('/{unidade}/reativar', [UnidadeController::class, 'reativar'])->middleware('permissao:cadastros.unidades.inativar');
+    });
+
+    Route::prefix('apartamentos')->group(function (): void {
+        Route::patch('/{unidade}/observacoes', [UnidadeController::class, 'atualizarObservacoes'])->middleware('permissao:cadastros.unidades.editar');
     });
 
     Route::prefix('pessoas')->group(function (): void {
@@ -137,5 +155,91 @@ Route::middleware('auth:sanctum')->group(function (): void {
         Route::get('/{movimentacao_financeira}/historico', [MovimentacaoFinanceiraController::class, 'historico'])->middleware('permissao:financeiro.movimentacoes.consultar');
         Route::put('/{movimentacao_financeira}', [MovimentacaoFinanceiraController::class, 'update'])->middleware('permissao:financeiro.movimentacoes.editar');
         Route::post('/{movimentacao_financeira}/cancelar', [MovimentacaoFinanceiraController::class, 'cancelar'])->middleware('permissao:financeiro.movimentacoes.editar');
+    });
+
+    Route::prefix('financeiro/cobrancas')->group(function (): void {
+        Route::get('/', [CobrancaController::class, 'index'])->middleware('permissao:financeiro.cobrancas.consultar');
+        Route::get('/{cobranca}', [CobrancaController::class, 'show'])->middleware('permissao:financeiro.cobrancas.consultar');
+        Route::post('/{cobranca}/registrar-pagamento', [CobrancaController::class, 'registrarPagamento'])->middleware('permissao:financeiro.recebimentos.registrar');
+        Route::post('/{cobranca}/cancelar', [CobrancaController::class, 'cancelar'])->middleware('permissao:financeiro.cobrancas.cancelar');
+    });
+
+    // Fechamentos
+    Route::prefix('fechamentos/mensais')->group(function (): void {
+        Route::get('/', [FechamentoMensalController::class, 'index'])->middleware('permissao:fechamentos.mensais.consultar');
+        Route::post('/', [FechamentoMensalController::class, 'store'])->middleware('permissao:fechamentos.mensais.fechar');
+        Route::get('/{identificador}', [FechamentoMensalController::class, 'show'])->middleware('permissao:fechamentos.mensais.consultar');
+        Route::post('/{fechamento}/reabrir', [FechamentoMensalController::class, 'reabrir'])->middleware('permissao:fechamentos.mensais.reabrir');
+    });
+
+    // Reservas
+    Route::prefix('reservas/ambientes')->group(function (): void {
+        Route::get('/', [AmbienteController::class, 'index'])->middleware('permissao:reservas.ambientes.consultar');
+        Route::post('/', [AmbienteController::class, 'store'])->middleware('permissao:reservas.ambientes.cadastrar');
+        Route::get('/{ambiente}', [AmbienteController::class, 'show'])->middleware('permissao:reservas.ambientes.consultar');
+        Route::put('/{ambiente}', [AmbienteController::class, 'update'])->middleware('permissao:reservas.ambientes.editar');
+        Route::post('/{ambiente}/inativar', [AmbienteController::class, 'inativar'])->middleware('permissao:reservas.ambientes.inativar');
+        Route::post('/{ambiente}/reativar', [AmbienteController::class, 'reativar'])->middleware('permissao:reservas.ambientes.inativar');
+        Route::get('/{ambiente}/historico', [AmbienteController::class, 'historico'])->middleware('permissao:reservas.ambientes.consultar');
+    });
+
+    Route::prefix('reservas/bloqueios')->group(function (): void {
+        Route::get('/', [BloqueioAmbienteController::class, 'index'])->middleware('permissao:reservas.bloqueios.consultar');
+        Route::post('/', [BloqueioAmbienteController::class, 'store'])->middleware('permissao:reservas.bloqueios.cadastrar');
+        Route::post('/{bloqueio}/cancelar', [BloqueioAmbienteController::class, 'cancelar'])->middleware('permissao:reservas.bloqueios.cancelar');
+    });
+
+    Route::prefix('reservas/agenda')->group(function (): void {
+        Route::get('/', [ReservaController::class, 'index'])->middleware('permissao:reservas.agenda.consultar');
+        Route::post('/', [ReservaController::class, 'store'])->middleware('permissao:reservas.agenda.cadastrar');
+        Route::get('/{reserva}', [ReservaController::class, 'show'])->middleware('permissao:reservas.agenda.consultar');
+        Route::post('/{reserva}/validar', [ReservaController::class, 'validar'])->middleware('permissao:reservas.agenda.validar');
+        Route::post('/{reserva}/cancelar', [ReservaController::class, 'cancelar'])->middleware('permissao:reservas.agenda.cancelar');
+        Route::get('/{reserva}/historico', [ReservaController::class, 'historico'])->middleware('permissao:reservas.agenda.consultar');
+    });
+
+    // Comunicados
+    Route::prefix('comunicados')->group(function (): void {
+        Route::get('/', [ComunicadoController::class, 'index'])->middleware('permissao:comunicados.consultar');
+        Route::post('/', [ComunicadoController::class, 'store'])->middleware('permissao:comunicados.cadastrar');
+        Route::get('/{comunicado}', [ComunicadoController::class, 'show'])->middleware('permissao:comunicados.consultar');
+        Route::post('/{comunicado}/publicar', [ComunicadoController::class, 'publicar'])->middleware('permissao:comunicados.publicar');
+        Route::post('/{comunicado}/cancelar', [ComunicadoController::class, 'cancelar'])->middleware('permissao:comunicados.cancelar');
+    });
+
+    // Ocorrências
+    Route::prefix('ocorrencias/tipos')->group(function (): void {
+        Route::get('/', [TipoOcorrenciaController::class, 'index'])->middleware('permissao:ocorrencias.tipos.consultar');
+        Route::post('/', [TipoOcorrenciaController::class, 'store'])->middleware('permissao:ocorrencias.tipos.cadastrar');
+        Route::get('/{tipo}', [TipoOcorrenciaController::class, 'show'])->middleware('permissao:ocorrencias.tipos.consultar');
+        Route::put('/{tipo}', [TipoOcorrenciaController::class, 'update'])->middleware('permissao:ocorrencias.tipos.editar');
+        Route::post('/{tipo}/inativar', [TipoOcorrenciaController::class, 'inativar'])->middleware('permissao:ocorrencias.tipos.inativar');
+        Route::post('/{tipo}/reativar', [TipoOcorrenciaController::class, 'reativar'])->middleware('permissao:ocorrencias.tipos.inativar');
+    });
+
+    Route::prefix('ocorrencias')->group(function (): void {
+        Route::get('/', [OcorrenciaController::class, 'index'])->middleware('permissao:ocorrencias.consultar');
+        Route::post('/', [OcorrenciaController::class, 'store'])->middleware('permissao:ocorrencias.cadastrar');
+        Route::get('/{ocorrencia}', [OcorrenciaController::class, 'show'])->middleware('permissao:ocorrencias.consultar');
+        Route::post('/{ocorrencia}/comentar', [OcorrenciaController::class, 'comentar'])->middleware('permissao:ocorrencias.responder');
+        Route::post('/{ocorrencia}/alterar-situacao', [OcorrenciaController::class, 'alterarSituacao'])->middleware('permissao:ocorrencias.alterar_situacao');
+        Route::get('/{ocorrencia}/historico', [OcorrenciaController::class, 'historico'])->middleware('permissao:ocorrencias.consultar');
+    });
+
+    // Área do Morador
+    Route::prefix('morador')->group(function (): void {
+        Route::get('/dashboard', [MoradorAreaController::class, 'dashboard']);
+        Route::get('/unidade', [MoradorAreaController::class, 'unidade']);
+        Route::get('/cobrancas', [MoradorAreaController::class, 'cobrancas']);
+        Route::get('/fechamentos', [MoradorAreaController::class, 'fechamentos']);
+        Route::get('/ambientes', [MoradorAreaController::class, 'ambientes']);
+        Route::get('/reservas', [MoradorAreaController::class, 'reservas']);
+        Route::post('/reservas', [MoradorAreaController::class, 'storeReserva']);
+        Route::post('/reservas/{reserva}/cancelar', [MoradorAreaController::class, 'cancelarReserva']);
+        Route::get('/comunicados', [MoradorAreaController::class, 'comunicados']);
+        Route::post('/comunicados/{comunicado}/lido', [MoradorAreaController::class, 'marcarComunicadoLido']);
+        Route::get('/ocorrencias', [MoradorAreaController::class, 'ocorrencias']);
+        Route::post('/ocorrencias', [MoradorAreaController::class, 'storeOcorrencia']);
+        Route::post('/ocorrencias/{ocorrencia}/comentar', [MoradorAreaController::class, 'comentarOcorrencia']);
     });
 });
