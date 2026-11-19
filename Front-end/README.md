@@ -1,6 +1,6 @@
 # Frontend do SindicoPro
 
-SPA responsiva inicializada com Vue 3, TypeScript, Vite, Tailwind CSS 4 e shadcn-vue. O layout compartilhado possui sidebar recolhível, cabeçalho, adaptação para celular e as 60 telas previstas no guia registradas como rotas navegáveis.
+SPA responsiva inicializada com Vue 3, TypeScript, Vite, Tailwind CSS 4 e shadcn-vue. O layout compartilhado possui sidebar recolhível, cabeçalho, adaptação para celular e as 47 telas previstas no guia registradas como rotas navegáveis.
 
 ## Como executar
 
@@ -31,10 +31,10 @@ O frontend inicia mesmo com o backend desligado. Nesse caso a tela informa que a
 
 ## Estado das telas
 
-As 60 rotas documentadas estão disponíveis para navegação:
+As 47 rotas documentadas estão disponíveis para navegação:
 
 - 3 telas públicas de autenticação;
-- 44 telas da administração;
+- 31 telas da administração;
 - 13 telas da área do usuário.
 
 O menu lateral separa a administração por módulo e possui um atalho no rodapé para alternar entre **Administração** e **Minha área**. Telas de lista possuem atalhos para seus detalhes; recuperação de senha permite abrir a estrutura da redefinição.

@@ -91,4 +91,18 @@ final class OcorrenciasTest extends TestCase
         $respostaResolvida->assertOk();
         $this->assertEquals('RESOLVIDO', Ocorrencia::query()->where('id_publico', $ocorrenciaId)->value('situacao'));
     }
+
+    public function test_busca_por_numero_de_protocolo(): void
+    {
+        $tipo = TipoOcorrencia::query()->firstOrFail();
+        $protocolo = $this->postJson('/api/ocorrencias', [
+            'tipo_id' => $tipo->id_publico,
+            'motivo' => 'Lâmpada queimada na escada',
+            'descricao' => 'Escada do bloco A, entre o 2º e o 3º andar.',
+        ])->assertCreated()->json('dados.numero_protocolo');
+
+        $resposta = $this->getJson('/api/ocorrencias?busca='.$protocolo)->assertOk();
+
+        $this->assertContains($protocolo, collect($resposta->json('dados'))->pluck('numero_protocolo'));
+    }
 }

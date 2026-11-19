@@ -4,9 +4,9 @@
 >
 > **Escopo atualizado:** Dashboard financeiro administrativo na branch `feature-Ajustes-Dashboard`
 >
-> **Suíte de Testes:** 59 testes no Backend (Laravel PHPUnit) + 23 testes no Frontend (Vitest)
+> **Suíte de Testes:** 69 testes no Backend (Laravel PHPUnit) + 23 testes no Frontend (Vitest)
 >
-> **Cobertura de Rotas:** 47 telas (3 Auth, 30 Administrativas, 14 Área do Morador)
+> **Cobertura de Rotas:** 47 telas (3 Auth, 31 Administrativas, 13 Área do Morador)
 
 ---
 
@@ -21,7 +21,7 @@ Este documento consolida a revisão funcional registrada anteriormente e atualiz
    - Um morador possui acesso natural à sua unidade e, caso seja eleito para cargo administrativo (Síndico, Subsíndico ou Conselho), acumula automaticamente as permissões administrativas correspondentes sem perder o vínculo com seu apartamento. Ao término do mandato, as permissões são revogadas mantendo seu perfil de morador intacto.
 3. **Validação executada nesta atualização:**
    - **Backend:** `PHPUnit` (**59/59 testes aprovados**, 304 asserções), em container PHP 8.4.26 com banco PostgreSQL isolado.
-   - **Observação do Backend:** Como `phpunit.xml` referencia `tests/Unit`, diretório inexistente neste checkout, a suíte foi executada diretamente em `tests/Feature`.
+   - **Observação do Backend:** a pasta `tests/Unit`, referenciada no `phpunit.xml`, foi criada com os testes da regra de CPF; a suíte completa roda sem precisar apontar só para `tests/Feature`.
    - **Frontend:** `npm run quality` concluído com sucesso: `Prettier`, `ESLint`, `vue-tsc`, `Vitest` (**23/23 testes em 6 arquivos**) e `vite build`.
    - **Ambiente Frontend:** Node.js 24.14.1. O `npm ci` apresentou avisos `EBADENGINE` para dependências que pedem Node.js 24.15.0 ou superior; ainda assim, todas as etapas de qualidade foram concluídas.
    - **Ambiente de Desenvolvimento & Autenticação:**
@@ -74,7 +74,7 @@ Este documento consolida a revisão funcional registrada anteriormente e atualiz
 
 ## 3. Cobertura e Resultado dos Testes Automatizados
 
-### Backend (PHPUnit — 59 Testes)
+### Backend (PHPUnit — 69 Testes)
 | Arquivo de Teste | Quantidade | Escopo Coberto |
 | :--- | :--- | :--- |
 | `AutenticacaoTest.php` | 6 testes | Login local, políticas de acesso, sessão, rate limit e idempotência do seeder. |
@@ -84,12 +84,13 @@ Este documento consolida a revisão funcional registrada anteriormente e atualiz
 | `CobrancasEFundoReservaTest.php` | 4 testes | Parcelamento, fundo de reserva de 10%, despesas discriminadas e baixa de pagamentos. |
 | `DashboardFinanceiroTest.php` | 1 teste | Endpoint financeiro, período de 12 meses, data efetiva e situação contabilizada. |
 | `FechamentoMensalTest.php` | 5 testes | Prévia de rateio, competências anuais, fechamento e reabertura de períodos. |
-| `ReservasTest.php` | 4 testes | Criação de ambientes, faixas de horários, bloqueios e validação de reservas. |
+| `ReservasTest.php` | 5 testes | Criação de ambientes, faixas de horários, bloqueios e validação de reservas. |
 | `ComunicadosTest.php` | 3 testes | Ciclo de vida de comunicados (rascunho, publicação, cancelamento e segmentação). |
-| `OcorrenciasTest.php` | 2 testes | Tipos de chamados, comentários administrativos e fluxo de resolução. |
-| `AreaMoradorTest.php` | 5 testes | Dashboard do morador, cobranças/Pix, marcação de leitura e solicitação de reserva. |
+| `OcorrenciasTest.php` | 3 testes | Tipos de chamados, comentários administrativos e fluxo de resolução. |
+| `AreaMoradorTest.php` | 10 testes | Dashboard do morador, cobranças/Pix, leitura de comunicados, reservas, notas internas ocultas e unidade da ocorrência. |
 | `UsuarioPermissaoCumulativaTest.php` | 3 testes | Atribuição de perfil Morador, promoção para Síndico e revogação sem perda de moradia. |
 | `StatusApiTest.php` | 1 teste | Health check de infraestrutura da API. |
+| `Unit/CpfValidoTest.php` | 3 testes | Dígitos verificadores, máscara, sequências repetidas e tamanho inválido. |
 
 ### Frontend (Vitest — 23 Testes, 6 arquivos)
 | Arquivo de Teste | Quantidade | Escopo Coberto |

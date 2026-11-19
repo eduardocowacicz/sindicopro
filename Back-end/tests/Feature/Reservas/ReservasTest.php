@@ -126,4 +126,11 @@ final class ReservasTest extends TestCase
         $respostaCancelar->assertOk();
         $this->assertEquals('CANCELADO', Reserva::query()->where('id_publico', $reservaId)->value('situacao'));
     }
+
+    public function test_reserva_pela_administracao_exige_campos_obrigatorios(): void
+    {
+        $this->postJson('/api/reservas/agenda', [])
+            ->assertUnprocessable()
+            ->assertJsonValidationErrors(['ambiente_id', 'faixa_horario_id', 'unidade_id', 'data_reserva']);
+    }
 }

@@ -94,8 +94,9 @@ final class OcorrenciaService
         string $conteudo,
         Usuario $usuario,
         string $visibilidade = 'TODOS_PARTICIPANTES',
+        bool $respostaDaAdministracao = true,
     ): ComentarioOcorrencia {
-        return DB::transaction(function () use ($ocorrencia, $conteudo, $usuario, $visibilidade): ComentarioOcorrencia {
+        return DB::transaction(function () use ($ocorrencia, $conteudo, $usuario, $visibilidade, $respostaDaAdministracao): ComentarioOcorrencia {
             $comentario = ComentarioOcorrencia::query()->create([
                 'ocorrencia_id' => $ocorrencia->getKey(),
                 'autor_id' => $usuario->getKey(),
@@ -104,8 +105,10 @@ final class OcorrenciaService
                 'criado_em' => now(),
             ]);
 
-            // Se a ocorrência ainda estava em ABERTO e foi a administração que respondeu, passa para EM_ANDAMENTO
-            if ($ocorrencia->situacao === 'ABERTO') {
+            // Só muda para EM_ANDAMENTO quando a administração responde ao morador.
+            // Comentário do próprio morador ou nota interna não contam como resposta.
+            $notaInterna = $visibilidade === 'SOMENTE_ADMINISTRACAO';
+            if ($ocorrencia->situacao === 'ABERTO' && $respostaDaAdministracao && ! $notaInterna) {
                 $this->alterarSituacao($ocorrencia, 'EM_ANDAMENTO', $usuario, 'Resposta da administração.');
             }
 

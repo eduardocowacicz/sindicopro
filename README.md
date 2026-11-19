@@ -87,7 +87,7 @@ Rota -> Form Request -> Controller -> Service -> Repository -> Model/Banco
 
 Não existe divisão de API por pastas `V1` ou `V2`. Controllers, Requests, Resources, Services e Repositories são agrupados diretamente por módulo de negócio.
 
-No frontend, as 60 telas planejadas já possuem rota e estrutura navegável. A separação ocorre por módulo e tela:
+No frontend, as 47 telas planejadas já possuem rota e estrutura navegável. A separação ocorre por módulo e tela:
 
 ```text
 src/modules/<modulo>/
@@ -108,6 +108,6 @@ As estruturas navegáveis ainda sem função exibem os blocos de conteúdo previ
 - [Backend](Back-end/README.md)
 - [Frontend](Front-end/README.md)
 - [Devops](Devops/README.md)
-- [Planejamento de desenvolvimento](../Desenvolvimento/README.md)
+- [Relatório de melhorias e próximos passos](MELHORIAS_E_PROXIMOS_PASSOS.md)
 
 O material histórico não é fonte ativa do desenvolvimento e deve permanecer preservado.

@@ -114,6 +114,12 @@ final class ReservaService
 
     public function validar(Reserva $reserva, Usuario $usuario): Reserva
     {
+        if ($reserva->situacao === 'CANCELADO') {
+            throw ValidationException::withMessages([
+                'reserva' => ['Uma reserva cancelada não pode ser validada.'],
+            ]);
+        }
+
         $reserva->forceFill([
             'validado_em' => now(),
             'validado_por' => $usuario->getKey(),

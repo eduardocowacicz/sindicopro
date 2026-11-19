@@ -44,6 +44,17 @@ final class ReservaController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        // Antes não havia validação aqui: sem data, o Carbon assumia o dia atual
+        // e a reserva era gravada mesmo assim.
+        $request->validate([
+            'ambiente_id' => ['required'],
+            'faixa_horario_id' => ['required'],
+            'unidade_id' => ['required'],
+            'data_reserva' => ['required', 'date'],
+            'valor_taxa' => ['nullable', 'numeric', 'min:0'],
+            'observacoes' => ['nullable', 'string', 'max:1000'],
+        ]);
+
         $ambienteId = ResolvedorIdPublico::resolver('ambientes', $request->string('ambiente_id')->value());
         $faixaId = ResolvedorIdPublico::resolver('faixas_horario_ambiente', $request->string('faixa_horario_id')->value());
         $unidadeId = ResolvedorIdPublico::resolver('unidades', $request->string('unidade_id')->value());

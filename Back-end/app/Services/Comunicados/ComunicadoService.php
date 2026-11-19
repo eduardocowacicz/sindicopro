@@ -9,6 +9,7 @@ use App\Models\VinculoUnidadePessoa;
 use App\Services\Concerns\RegistraAuditoria;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 final class ComunicadoService
 {
@@ -58,6 +59,12 @@ final class ComunicadoService
 
     public function publicar(Comunicado $comunicado, Usuario $usuario): Comunicado
     {
+        if ($comunicado->situacao === 'CANCELADO') {
+            throw ValidationException::withMessages([
+                'comunicado' => ['Um comunicado cancelado não pode ser publicado novamente.'],
+            ]);
+        }
+
         return DB::transaction(function () use ($comunicado, $usuario): Comunicado {
             $comunicado->forceFill([
                 'situacao' => 'PUBLICADO',
